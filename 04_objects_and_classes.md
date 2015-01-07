@@ -74,6 +74,8 @@ object(Address)#1 (5) {
 The output tells us, it is an `object` of the class `Address` and it has 5 properties. The `#1`
 is an internal ID that PHP assigns to every object to keep track of them.
 
+### Properties
+
 Now, every property of our object is `NULL` which is PHP's special value for "there's nothing here". To fill this address value with actual data, we could set every single property individually:
 
 ```php
@@ -102,6 +104,8 @@ object(Address)#1 (5) {
 ```
 
 To access a property of an object, PHP uses the `->` operator, so `$my_address->street` means "the `street` property of the object in the variable `$my_address`". 
+
+### Methods
 
 But setting every single property is tedious and not very easy to read. What, if we could set it all at once? We'll need to add something to the class to do that.
 
@@ -154,7 +158,9 @@ What we added, is a method. A function that is added to every object of our clas
 
 The `set` method just copies the values that it got via its arguments to the corresponding object properties.
 
-Now, making an address object without any data in the first place doesn't really make sense. It would be useful, and simpler to use, if we could set the data right when we create the object. There's a special method that does that, it's called a "contructor".
+### Constructors
+
+Making an address object without any data in the first place doesn't really make sense. It would be useful, and simpler to use, if we could set the data right when we create the object. There's a special method that does that, it's called a "contructor".
 
 ```php
 <?php
