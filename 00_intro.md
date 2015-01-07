@@ -50,7 +50,7 @@ Then we'll make a "Hello world" web application using a minimalistic framework c
 In the following chapter, we will explore the features of PHP in more detail.
 The chapters are intended to be read in the correct order since they built on previous chapters.
 
-Every few chapter there will be a practical example to put the previously covered topics into practice.
+Every few chapters there will be a practical example to put the previously covered topics to use.
 
 
 
