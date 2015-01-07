@@ -47,7 +47,7 @@ I'll now go through that piece od code, explaining what each part does.
 <?php
 ```
 
-Every PHP file has to start with this line. Just put it right at the top every time.
+Every PHP file has to start with this line. Just put it right at the top every time. There may be no other characters before the PHP tag, not even whitespace.
 
 ## Function definitions
 
