@@ -333,3 +333,7 @@ echo $my_address . PHP_EOL;
 ```
 
 This will produce the same output as before.
+
+---
+
+We now have a class for address objects that bundles data (the properties) and some logic (the constructor and toString method) and is protected from outside modification.
