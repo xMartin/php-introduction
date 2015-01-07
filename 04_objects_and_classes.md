@@ -52,9 +52,11 @@ To make an address object from this class, we use the `new` operator:
 $my_address = new Address();
 
 var_dump($my_address);
+```
 
-/* prints:
+Output:
 
+```
 object(Address)#1 (5) {
   ["street"]=>
   NULL
@@ -67,10 +69,83 @@ object(Address)#1 (5) {
   ["country"]=>
   NULL
 }
-    */
 ```
 
 The output tells us, it is an `object` of the class `Address` and it has 5 properties. The `#1`
 is an internal ID that PHP assigns to every object to keep track of them.
 
-Now, every property of our object is `NULL` which is PHP's special value for "there's nothing here".
+Now, every property of our object is `NULL` which is PHP's special value for "there's nothing here". To fill this address value with actual data, we could set every single property individually:
+
+```php
+$my_address->street = "Main Street";
+$my_address->house_number = 42;
+$my_address->city = "Some Town";
+$my_address->postal_code = "12345";
+$my_address->country = "Far Far Away";
+```
+
+Output:
+
+```
+object(Address)#1 (5) {
+  ["street"]=>
+  string(11) "Main Street"
+  ["house_number"]=>
+  int(42)
+  ["city"]=>
+  string(9) "Some Town"
+  ["postal_code"]=>
+  int(12345)
+  ["country"]=>
+  string(7) "country"
+}
+```
+
+That's tedious and not very easy to read. What, if we could set it all at once? We'll need to add something to the class to do that.
+
+```php
+<?php
+
+class Address
+{
+    public $street;
+    public $house_number;
+    public $city;
+    public $postal_code;
+    public $country;
+
+    public function set($street, $house_number, $city, $postal_code, $country)
+    {
+        $this->street = $street;
+        $this->house_number = $house_number;
+        $this->city = $city;
+        $this->postal_code = $postal_code;
+        $this->country = country;
+    }
+}
+
+$my_address = new Address();
+
+$my_address->set("Main Street", 42, "Some Town", 12345, "Far Far Away");
+
+var_dump($my_address);
+```
+
+Output:
+
+```
+object(Address)#1 (5) {
+  ["street"]=>
+  string(11) "Main Street"
+  ["house_number"]=>
+  int(42)
+  ["city"]=>
+  string(9) "Some Town"
+  ["postal_code"]=>
+  int(12345)
+  ["country"]=>
+  string(7) "country"
+}
+```
+
+What we added, is a method. A function that is added to every object of our class.
