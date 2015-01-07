@@ -18,8 +18,7 @@ Back then, PHP 4 was the current major version and it was indeed not a good
 language. It's object system was rudimentary, it's APIs were inconsistent because
 over the years, people had added features to it without adhering to a consistent style.
 
-When Ruby (mostly through Rails) became popular, many people left PHP and never looked back. So, now
-they compare the languages and frameworks they use today, in 2015, with PHP from around 2006.
+When Ruby (mostly through Rails) became popular, many people left PHP and never looked back. So now, a lot of people compare the languages and frameworks they use today, in 2015, with what they used in PHP around 2006, almost a decade years ago.
 
 So much has changed since then ...
 
