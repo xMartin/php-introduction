@@ -189,3 +189,49 @@ var_dump($my_address);
 ```
 
 The output will remain the same again. But this time, we didn't need to call an extra method to iniitalize our object. If a class has a method with the exact name `__construct`, it will be called when the object is created with the `new` operator. All arguments from the `new`call will also be passed to the contructor.
+
+
+## Visibility
+
+Right now everything in our `Address` objects is accessible from the oustide. A piece of code that doesn't behave well could to this:
+
+```php
+function does_bad_things($address)
+{
+    $address->city = "Gotham City";
+    
+    return $address;
+}
+```
+
+That function would modify an address after it has been created and filled with data. That doesn't make sense, a place doesn't change its address, streets don't magically move to a different city. People can move to a new address but the address itself can't change. We need to prevent the address from being changed after it's created. That's where the concept of "visibility" comes in. You might have wondered, what all the `public` keywords were for until now:
+
+```php
+<?php
+
+class Address
+{
+    protected $street;
+    protected $house_number;
+    protected $city;
+    protected $postal_code;
+    protected $country;
+
+    public function __construct($street, $house_number, $city, $postal_code, $country)
+    {
+        $this->street = $street;
+        $this->house_number = $house_number;
+        $this->city = $city;
+        $this->postal_code = $postal_code;
+        $this->country = country;
+    }
+}
+```
+
+Now we changed the visibility of our address' properties to `protected`. The `do_bad_things` function from before will now fail:
+
+```
+Fatal error: Cannot access protected property Address::$city in address.php on line 27
+```
+
+There are three levels of visibility in PHP: `public`, `protected` and `private`. For now, `public` means "is accessible from outside the object and `protected` means "is not accessible from the outside". We'll go into more detail on this and what `private` means when we talk about inheritance later.
