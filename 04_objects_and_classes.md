@@ -101,7 +101,9 @@ object(Address)#1 (5) {
 }
 ```
 
-That's tedious and not very easy to read. What, if we could set it all at once? We'll need to add something to the class to do that.
+To access a property of an object, PHP uses the `->` operator, so `$my_address->street` means "the `street` property of the object in the variable `$my_address`". 
+
+But setting every single property is tedious and not very easy to read. What, if we could set it all at once? We'll need to add something to the class to do that.
 
 ```php
 <?php
@@ -148,4 +150,36 @@ object(Address)#1 (5) {
 }
 ```
 
-What we added, is a method. A function that is added to every object of our class.
+What we added, is a method. A function that is added to every object of our class. Inside a method, there's a special variable called `$this`, it refers to the object that the method was called on, in this case, the address object.
+
+The `set` method just copies the values that it got via its arguments to the corresponding object properties.
+
+Now, making an address object without any data in the first place doesn't really make sense. It would be useful, and simpler to use, if we could set the data right when we create the object. There's a special method that does that, it's called a "contructor".
+
+```php
+<?php
+
+class Address
+{
+    public $street;
+    public $house_number;
+    public $city;
+    public $postal_code;
+    public $country;
+
+    public function __construct($street, $house_number, $city, $postal_code, $country)
+    {
+        $this->street = $street;
+        $this->house_number = $house_number;
+        $this->city = $city;
+        $this->postal_code = $postal_code;
+        $this->country = country;
+    }
+}
+
+$my_address = new Address("Main Street", 42, "Some Town", 12345, "Far Far Away");
+
+var_dump($my_address);
+```
+
+The output will remain the same again. But this time, we didn't need to call an extra method to iniitalize our object. If a class has a method with the exact name `__construct`, it will be called when the object is created with the `new` operator. All arguments from the `new`call will also be passed to the contructor.
