@@ -41,6 +41,19 @@ Unicode strings still need special attention to handle them correctly.
 
 PHP is flawed, sure, just like most other languages/platforms. And just like the others, it's worth learning it.
 
+# How to use this guide
+
+We will start with how to install PHP and Composer and then go through a small example program to get familiar with the syntax ad general look and feel of PHP.
+
+Then we'll make a "Hello world" web application using a minimalistic framework called "Silex". This will serve as an introduction on how to install and use third party dependencies.
+
+In the following chapter, we will explore the features of PHP in more detail.
+The chapters are intended to be read in the correct order since they built on previous chapters.
+
+Every few chapter there will be a practical example to put the previously covered topics into practice.
+
+
+
 [1]: https://getcomposer.org
 [2]: http://symfony.com
 [3]: http://silex.sensiolabs.org
