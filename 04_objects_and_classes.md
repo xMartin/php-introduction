@@ -311,7 +311,15 @@ class Address
 
     public function __toString()
     {
-        return $this->street . PHP_EOL . $this->postal_code . ', ' . $this->city . PHP_EOL . $this->country;
+        /*
+         * Here, we break a long statement into multiple lines to make it more readable.
+         * PHP will ignore the additional line breaks.
+         */
+        return
+            $this->street . PHP_EOL .
+            $this->postal_code . ', ' .
+            $this->city . PHP_EOL .
+            $this->country;
     }
 }
 ```
