@@ -99,7 +99,7 @@ object(Address)#1 (5) {
   ["postal_code"]=>
   int(12345)
   ["country"]=>
-  string(7) "country"
+  string(7) "Far Far Away"
 }
 ```
 
@@ -126,7 +126,7 @@ class Address
         $this->house_number = $house_number;
         $this->city = $city;
         $this->postal_code = $postal_code;
-        $this->country = country;
+        $this->country = $country;
     }
 }
 
@@ -150,7 +150,7 @@ object(Address)#1 (5) {
   ["postal_code"]=>
   int(12345)
   ["country"]=>
-  string(7) "country"
+  string(7) "Far Far Away"
 }
 ```
 
@@ -179,7 +179,7 @@ class Address
         $this->house_number = $house_number;
         $this->city = $city;
         $this->postal_code = $postal_code;
-        $this->country = country;
+        $this->country = $country;
     }
 }
 
@@ -223,7 +223,7 @@ class Address
         $this->house_number = $house_number;
         $this->city = $city;
         $this->postal_code = $postal_code;
-        $this->country = country;
+        $this->country = $country;
     }
 }
 ```
@@ -235,3 +235,93 @@ Fatal error: Cannot access protected property Address::$city in address.php on l
 ```
 
 There are three levels of visibility in PHP: `public`, `protected` and `private`. For now, `public` means "is accessible from outside the object and `protected` means "is not accessible from the outside". We'll go into more detail on this and what `private` means when we talk about inheritance later.
+
+# Making Addresses useful again
+
+Now we have a nice immutable (not changeable) `Address` object but it can't do anything. We can't even read the data from it. Let's say we need these addresses in plain text form, maybe to send them in an email or to send them to the shipping company for our shop website.
+
+We'll add a method that gives us the address data in a nicely formatted piece of text:
+
+```php
+<?php
+
+class Address
+{
+    protected $street;
+    protected $house_number;
+    protected $city;
+    protected $postal_code;
+    protected $country;
+
+    public function __construct($street, $house_number, $city, $postal_code, $country)
+    {
+        $this->street = $street;
+        $this->house_number = $house_number;
+        $this->city = $city;
+        $this->postal_code = $postal_code;
+        $this->country = $country;
+    }
+
+    public function getAsText()
+    {
+        return $this->street . PHP_EOL . $this->postal_code . ', ' . $this->city . PHP_EOL . $this->country;
+    }
+}
+```
+
+Now we can create an address and get the formatted text representation of it:
+
+```php
+$my_address = new Address("Main Street", 42, "Some Town", 12345, "Far Far Away");
+
+echo $my_address->getAsText() . PHP_EOL;
+```
+
+And the output will be:
+
+```
+Main Street
+12345, Some Town
+Far Far Away
+```
+
+We can make this mor convenient by using another "magic method". PHP classes have a bunch of special methods that all start with `__` and are executed automatically at certain points, `__construct()` is also one of them.
+
+This time we will make a `__toString()` method from our `getAsText()`. It is called every time when our object is used as if it were a string, for example when we try `echo $my_address;`.
+
+```php
+<?php
+
+class Address
+{
+    protected $street;
+    protected $house_number;
+    protected $city;
+    protected $postal_code;
+    protected $country;
+
+    public function __construct($street, $house_number, $city, $postal_code, $country)
+    {
+        $this->street = $street;
+        $this->house_number = $house_number;
+        $this->city = $city;
+        $this->postal_code = $postal_code;
+        $this->country = $country;
+    }
+
+    public function __toString()
+    {
+        return $this->street . PHP_EOL . $this->postal_code . ', ' . $this->city . PHP_EOL . $this->country;
+    }
+}
+```
+
+Now we can just use the address as if it were alreay a string:
+
+```php
+$my_address = new Address("Main Street", 42, "Some Town", 12345, "Far Far Away");
+
+echo $my_address . PHP_EOL;
+```
+
+This will produce the same output as before.
