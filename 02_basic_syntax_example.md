@@ -15,6 +15,10 @@ You can save this code as `fibonacci.php` and run it with `php fibonacci.php`.
 
 function fibonacci($count)
 {
+    if ($count < 0) {
+        $count = 0;
+    }
+        
     $n1 = 0;
     $n2 = 1;
     $n = 1;
@@ -234,7 +238,50 @@ The reason for this is PHP's "type juggling" which we wil dedicate a separate ch
 
 ## Control flow
 
-Our example uses on control flow structure: a for-loop.
+Our example uses two control flow structures: an if-condition and a for-loop.
+
+### If-condition
+
+Conditions are used whenever your program needs to decide what to do based on the value of an expression.
+
+```php
+$a = 42;
+$b = 23;
+
+if ($a > $b) {
+    echo "a is bigger than b" . PHP_EOL;
+}
+```
+
+There may also be an `else` part:
+
+```php
+$a = 42;
+$b = 23;
+
+if ($a > $b) {
+    echo "a is bigger than b" . PHP_EOL;
+} else {
+    echo "a is smaller than b" . PHP_EOL;
+}
+```
+
+Or multiple condition checks:
+
+```php
+$a = 42;
+$b = 23;
+
+if ($a > $b) {
+    echo "a is bigger than b" . PHP_EOL;
+} else if ($a === $b) {
+    echo "a is equal to b" . PHP_EOL;
+} else {
+    echo "a is smaller than b" . PHP_EOL;
+}
+```
+
+### For-loop
 
 For-loops are also common on other programming languages and usually have a similar syntax:
 
