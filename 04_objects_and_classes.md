@@ -1,6 +1,6 @@
 # Objects and Classes
 
-Modern PHP relies heavily on an object oriented style of structuring code. You'll find
+Modern PHP relies heavily on an object oriented style for structuring code. You'll find
 this style in many libraries, frameworks and projects.
 
 ## What is an object?
