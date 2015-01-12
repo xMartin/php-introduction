@@ -262,3 +262,78 @@ We can now replace the `var_export()` line in our URL handler with something els
  Here's where the other two contant come into play. We apss their values into our template so we can use the configured date/time formats in Twig.
  
  By registering the `TwigServiceProvider` we now have a Service for rendering Twig templates in `$app['twig']`. When we call its `render()` method with a template name and the data for that template, it returns the rendered HTML result.
+ 
+Go ahead, refresh your browser window. You'll now see an HTML list of your events. Each of the list items is a link and when you click it ... it results in an error. Don't worry, that's expected. We just havent implemented the detail page for individual events. Let's do that now:
+
+Add this to your app.php file, after the first URL handler:
+
+```php
+$app->get('{id}', function($id) use ($app) {
+    $events = get_events();
+    foreach($events as $e) {
+        if ($e['id'] === $id) {
+            $event = $e;
+            break;
+        }
+    }
+    if (!$event) {
+        $app->abort(404, "Event '$id' does not exist.");
+    }
+    return $app['twig']->render('event_details.twig', [
+        'event' => $event,
+        'date_format' => DATE_FORMAT,
+        'time_format' => TIME_FORMAT
+    ]);
+});
+```
+
+Also, make a new Twig template called `event_details.twig`:
+
+```twig
+<!doctype html>
+<html>
+    <body>
+        <h1>{{event.title}}</h1>
+        <p>{{event.date | date(date_format)}}
+        <p>{{event.date | date(time_format)}}
+        <p>{{event.description}}</p>
+    </body>
+</html>
+```
+
+This URL handler function is different from the first: It has a URL parameter `{id}`. That means, it will take that part of the URL and pass it into our function as an argument. And since all of our events have a unique ID, we can find the right one by comparing that parameter with their IDs:
+
+```php
+foreach($events as $e) {
+    if ($e['id'] === $id) {
+        $event = $e;
+        break;
+    }
+}
+ ```
+
+This is a `foreach` loop, it iterates over an array and puts the current element into the variable `$e` (or whatever else you name it) everytime it runs. Insode the loop, we check, if the current event's ID is the one we got as a URL parameter. If they match, we put that event into the `$event`variable and stop the loop with `break;`.
+
+There's the possibility that our loop didn't find any matching event. In that case the `$event` variable will be empty and we can react to that by telling Silex to produce an error page:
+
+```php
+if (!$event) {
+    $app->abort(404, "Event '$id' does not exist.");
+}
+```
+
+This works, because PHP treats a value of `null` like `false` when we use it in a condition.
+
+However, if we have found the correct event, we render the new Twig template with it:
+
+```php
+return $app['twig']->render('event_details.twig', [
+    'event' => $event,
+    'date_format' => DATE_FORMAT,
+    'time_format' => TIME_FORMAT
+]);
+```
+
+Again, we also supply the two date/time format constants, just like before.
+
+Now, when you reload the page in your browser, the links will work!
