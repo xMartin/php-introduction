@@ -1,0 +1,12 @@
+{
+    "name": "lnwdr/helloworld",
+    "require": {
+        "silex/silex": "~1.2"
+    },
+    "authors": [
+        {
+            "name": "Leon Weidauer",
+            "email": "leon@lnwdr.de"
+        }
+    ]
+}
