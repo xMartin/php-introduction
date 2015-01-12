@@ -182,3 +182,67 @@ array(4) {
 ```
 
 Here, we doubled every element of the array. We used the same approach to make a new array of events with real dates.
+
+## Listing events
+
+Ok, we did some inital setup, no we'll see, if that worked. Here's our first URL handler for the home page of our app:
+
+```php
+$app->get('/', function() use ($app) {
+    $events = get_events();
+    
+    usort($events, function($a, $b) {
+        if ($a < $b) {
+            return -1;
+        } else if ($a > $b) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    
+    return var_export($events, true);
+});
+```
+
+We use our `get_events()` function to load the event data. After that, we need to make sure that they are sorted by date properly. For that, we use `usort()`, PHP's sorting function that accepts a custom comparison function. PHP doesn't know how to sort our custom event data by date, so we have to supply a function that tells it when an event is "less than" or "greater than" another event. The convention for that is, that our function returns `-1` if the first value is considered "smaller", `0` when they are equal and `1` when the first value is "less than" the second. This way, we can make any values sortable by our own criteria.
+
+After sorting, we use `var_export()` to get a quick look at our data. `var_export()` is similar to `var_dump()` but it returns its output instead of printing it, if we set the second argument to `true`. We will use something much better for output in a moment but to check, if everything so far works, this is ok.
+
+Start the app with `php -S localhost:8000 app.php` and open `http://localhost:8000/` in your browser. The output will be hard to read. Look at the source code of the page in your browser (Usually right-click->"show source", or something like that). Now you'll see something much like a `var_dump()` output.
+
+## Twig
+
+Displaying data in such a raw form is barely useful, except for debugging purposes. We'll need to generate some HTML to make a real web page. Instead of buidling the HTML output ourselves, we will use a very powerful templating language called [Twig](http://twig.sensiolabs.org).
+
+Make a new directory in your project called `views` and create a file called `event_list.twig` with the following content:
+
+```twig
+<!doctype html>
+<html>
+    <body>
+        <ul>
+            {% for event in events %}
+            <li>
+                <a href="/{{event.id}}">
+                <h2>{{event.title}}</h2>
+                <p>{{event.date | date(date_format)}} - {{event.date | date(time_format)}}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
+```
+
+Now, our Silex application needs to know that we intend to use Twig:
+
+```php
+$app = new Silex\Application();
+
+$app->register(new Silex\Provider\TwigServiceProvider(), [
+    'twig.path' => __DIR__ . '/views'
+]);
+```
+
+Silex already has a component for using Twig, the `TwigServiceProvider`. When we instantiate it we just ned to tell it where it can find our templates. It uses an array for its configuration and the `twig.path` value must contain a directory path where the templates are stored. We use the "magic constant" `__DIR__` to get the directory where `app.php` is and then append `/views` to get the full path to our views directory.
