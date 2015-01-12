@@ -16,6 +16,7 @@ The goal is to quickly cover the things you will probably encounter in modern PH
 * application frameworks (the tutorial will use Silex)
 * OOP and Namespaces
 * Dependecy management with Composer
+* the quirks and pitfalls of PHP and how to avoid them
 
 This tutorial deliberately leaves out certain aspects of PHP that don't play an important role in modern PHP development, that are just bad style or outright dangerous. PHP has had enough of that in the past and we can do better.
 
