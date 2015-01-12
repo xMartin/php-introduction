@@ -246,3 +246,19 @@ $app->register(new Silex\Provider\TwigServiceProvider(), [
 ```
 
 Silex already has a component for using Twig, the `TwigServiceProvider`. When we instantiate it we just ned to tell it where it can find our templates. It uses an array for its configuration and the `twig.path` value must contain a directory path where the templates are stored. We use the "magic constant" `__DIR__` to get the directory where `app.php` is and then append `/views` to get the full path to our views directory.
+
+We can now replace the `var_export()` line in our URL handler with something else:
+
+```php
+    //return var_export($events, true);
+    
+    return $app['twig']->render('event_list.twig', [
+        'events' => $events,
+        'date_format' => DATE_FORMAT,
+        'time_format' => TIME_FORMAT
+    ]);
+ ```
+ 
+ Here's where the other two contant come into play. We apss their values into our template so we can use the configured date/time formats in Twig.
+ 
+ By registering the `TwigServiceProvider` we now have a Service for rendering Twig templates in `$app['twig']`. When we call its `render()` method with a template name and the data for that template, it returns the rendered HTML result.
