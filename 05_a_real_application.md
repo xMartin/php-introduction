@@ -1,16 +1,5 @@
 # DRAFT: A real application
 
-* Silex
-* A small event calendar
-* data in YAML file
-  * list of events, each has:
-    * id
-    * title
-    * date
-    * description
-    * location (?)
-* later add edit-capability
-
 This will be another exercise where we make a little web application. Again we'll use Silex as a framework.
 So first, repeat the steps from [chapter 03](03_a_web_application.md) to install Sile into a new directory.
 Every project should have its own directory so things don't get messy.
@@ -334,6 +323,8 @@ return $app['twig']->render('event_details.twig', [
 ]);
 ```
 
-Again, we also supply the two date/time format constants, just like before.
+Again, we also supply the two date/time format constants, just like before. Now, when you reload the page in your browser, the links will work!
 
-Now, when you reload the page in your browser, the links will work!
+---
+
+You now have a simple but already useful PHP aplication. Instead of writing HTML manually for this event calendar, you can edit the data in the `events.yml` file, which is far more convenient.
