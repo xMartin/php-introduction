@@ -1,8 +1,11 @@
 # php-introduction
 
+A quick introduction into PHP web development
+
+---
 **This tutorial in not finished! There are still chapters missing.**
 
-A quick introduction into PHP web development
+---
 
 Start [here](00_intro.md).
 
