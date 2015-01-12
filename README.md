@@ -2,7 +2,7 @@
 
 A quick introduction into PHP web development
 
-Start [here](00_intro.md)
+Start [here](00_intro.md).
 
 ## Who is this for?
 
