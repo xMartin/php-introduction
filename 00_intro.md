@@ -46,10 +46,8 @@ We will start with how to install PHP and Composer and then go through a small e
 
 Then we'll make a "Hello world" web application using a minimalistic framework called "Silex". This will serve as an introduction on how to install and use third party dependencies.
 
-In the following chapter, we will explore the features of PHP in more detail.
+In the following chapters, we will explore the features of PHP in more detail.
 The chapters are intended to be read in the correct order since they built on previous chapters.
-
-Every few chapters there will be a practical example to put the previously covered topics to use.
 
 
 
