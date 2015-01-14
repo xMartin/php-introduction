@@ -1,4 +1,4 @@
-# DRAFT: A real application
+# A real application
 
 This will be another exercise where we make a little web application. Again we'll use Silex as a framework.
 So first, repeat the steps from [chapter 03](03_a_web_application.md) to install Sile into a new directory.
