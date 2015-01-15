@@ -10,6 +10,8 @@ In the previous chapter, we already encountered `array_map()` and `usort()`. Bot
 
 A common source of errors and annoyance is that the arguments of these functions are not always consistant. For axample, `array_map()` expects the first argument to be a function and the second to be an array while `usort()` expects them the other way around. `array_reduce()` also expects the callback function as the second argument.
 
+Another inconsistency is in the function names. Some are written with underscores, others in one word, forexample `get_class()` and `gettype()`.
+
 The reason vof this is that for a long time, people have added features to PHP without worrying about consistency of the APIs and to maintain backwards compatibiltiy this can't be changed easily anymore. You will need to pay close attention to the order of arguments for PHP's builtin functions.
 
 ### String functions
@@ -22,31 +24,73 @@ echo substr($str, 0, 1) . PHP_EOL; //echoes "�" instead of the correct "ä"
 echo mb_subtsr($str, 0, 1, "utf-8"); //echoes "ä" correctly with "utf-8" as encoding argument
 ```
 
-When using string functions with inout that potentially has Unicode characters in it, always use the `mb_` version of it. By default, you should use "utf-8" as your encoding throughout your application to avoid any issues cause by not matching encodings.
+When using string functions with inout that potentially has Unicode characters in it, always use the `mb_` version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues cause by not matching encodings. If you have to receive or send data to external systems in ad different encoding, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.
 
 The `mb_` string functions are provided by a PHP extension called "mbstring", it is usually installed by default.
 
-## More functions
+These are some of the most commonly used string functions. You should definitely read about those:
 
-For details on how to use all these builtin functions, consult the manual page for that function. The explanations there are usually pretty good. Here's a few functions that are used very often and that you should definitely read about:
+ * `mb_substr()`
+ * `mb_strpos()`
+ * `mb_strtolower()` and `mb_strtoupper()`
+ * `sprintf()`
+ * `trim()`, `rtrim()` and `ltrim()`
+ * `str_pad()`
 
-* Array functions
-  * `array_map()`
-  * `sort()`, `usort()` and `ksort()`
-  * `array_filter()`
-  * `array_push()`, `array_pop()`, `array_shift()` and `array_unshift()`
-  * `array_key_exists()`
-  * `array_merge()`
-  * `array_slice()`
-  * `count()`
-* String functions
-  * `mb_substr()`
-  * `mb_strpos()`
-  * `mb_strtolower()` and `mb_strtoupper()`
-  * `sprintf()`
-  * `trim()`
-* Misc. functions
- * `explode()` and `implode()`
- * `isset()`, `empty()` and `is_null()`
+### Array functions
 
-There are many more and this list is by no means complete but it will get you started with some useful features of PHP.
+Apart from string operation, handling arrays is hugely important in PHP. We will see in one of the chapters, why. Most array operations are available as functions in PHP. Here are some of the most used ones:
+
+ * [`array_map()`][array_map]
+ * [`sort()`][sort], [`usort()`][usort] and [`ksort()`][ksort]
+ * [`array_filter()`][array_filter]
+ * [`array_push()`][array_push], [`array_pop()`][array_pop], [`array_shift()`][array_shift] and [`array_unshift()`][array_unshift]
+ * [`array_key_exists()`][array_key_exists]
+ * [`array_merge()`][array_merge]
+ * [`array_slice()`][array_slice]
+ * [`count()`][count]
+ * [`array_values()`][array_value] and [`array_keys()`][array_keys]
+ * [`explode()`][explode] and [`implode()`][implode]
+
+### File IO functions
+
+Reading and writing files is a very common task in almost any programming language. PHP has several ways of doing that.
+
+The simplest way is to use `file_get_contents()` and `file_put_contents()`. These two function read and write entire files from/into a string. They are very convenient but can cause problems with larger files because they load the entire contents of the file into memory at once.
+
+There are also `fopen()`, `fread()`, `fwrite()` and `fclose()`. They provide far more control over how files are read/written. There will be a dedicated chapter on file IO where we explore these in more detail.
+
+### Other functions
+
+These are a few more commonly used functions that you'll probably need often:
+
+ * `isset()`
+ * `empty()`
+ * `get_class()`
+ * `gettype()`
+ * `is_a()` and [the other `is_...()` functions](http://php.net/manual/en/ref.var.php)
+ 
+
+[isset]: http://php.net/manual/en/function.isset.php
+[empty]: http://php.net/manual/en/function.empty.php
+[get_class]: http://php.net/manual/en/function.get-class.php
+[gettype]: http://php.net/manual/en/function.gettype
+[is_a]: http://php.net/manual/en/function.is-a.php
+
+[array_map]: http://php.net/manual/en/function.array-map.php
+[sort]: http://php.net/manual/en/function.sort.php
+[usort]: http://php.net/manual/en/function.usort.php
+[ksort]: http://php.net/manual/en/function.ksort.php
+[array_filter]: http://php.net/manual/en/function.array_filter.php
+[array_push]: http://php.net/manual/en/function.array_push.php
+[array_pop]: http://php.net/manual/en/function.array_pop.php
+[array_shift]: http://php.net/manual/en/function.array_shift.php
+[array_unshift]: http://php.net/manual/en/function.array_unshift.php
+[array_key_exists]: http://php.net/manual/en/function.array_key_exists.php
+[array_merge]: http://php.net/manual/en/function.array_merge.php
+[array_slice]: http://php.net/manual/en/function.array_slice.php
+[count]: http://php.net/manual/en/function.count.php
+[array_values]: http://php.net/manual/en/function.array_values.php
+[array_keys]: http://php.net/manual/en/function.array_keys.php
+[explode]: http://php.net/manual/en/function.explode.php
+[implode]: http://php.net/manual/en/function.implode.php
