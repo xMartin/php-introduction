@@ -16,7 +16,7 @@ The reason vof this is that for a long time, people have added features to PHP w
 
 ### String functions
 
-PHP has a lot of functions to handle strings. The problem with them is that most of them don't work well with Unicode strings. Take `substr()` for example, it's supposed to extract a part of a string but when we use it with something like German umlauts, it messes up the characters:
+PHP has a lot of functions to handle strings. The problem with them is that most of them don't work well with Unicode strings. Take [`substr()`][substr] for example, it's supposed to extract a part of a string but when we use it with something like German umlauts, it messes up the characters:
 
 ```php
 $str = "äöü";
@@ -30,12 +30,12 @@ The `mb_` string functions are provided by a PHP extension called "mbstring", it
 
 These are some of the most commonly used string functions. You should definitely read about those:
 
- * `mb_substr()`
- * `mb_strpos()`
- * `mb_strtolower()` and `mb_strtoupper()`
- * `sprintf()`
- * `trim()`, `rtrim()` and `ltrim()`
- * `str_pad()`
+ * [`mb_substr()`][mb_substr]
+ * [`mb_strpos()`][mb_strpos]
+ * [`mb_strtolower()`][mb_strtolower] and [`mb_strtoupper()`][mb_strtolower]
+ * [`sprintf()`][sprintf]
+ * [`trim()`][trim], [`rtrim()`][rtrim] and [`ltrim()`][ltrim]
+ * [`str_pad()`][str_pad]
 
 ### Array functions
 
@@ -56,19 +56,19 @@ Apart from string operation, handling arrays is hugely important in PHP. We will
 
 Reading and writing files is a very common task in almost any programming language. PHP has several ways of doing that.
 
-The simplest way is to use `file_get_contents()` and `file_put_contents()`. These two function read and write entire files from/into a string. They are very convenient but can cause problems with larger files because they load the entire contents of the file into memory at once.
+The simplest way is to use [`file_get_contents()`][file_get_contents] and [`file_put_contents()`][file_put_contents]. These two function read and write entire files from/into a string. They are very convenient but can cause problems with larger files because they load the entire contents of the file into memory at once.
 
-There are also `fopen()`, `fread()`, `fwrite()` and `fclose()`. They provide far more control over how files are read/written. There will be a dedicated chapter on file IO where we explore these in more detail.
+There are also [`fopen()`][fopen], [`fread()`][fread], [`fwrite()`][fwrite] and [`fclose()`][fclose]. They provide far more control over how files are read/written. There will be a dedicated chapter on file IO where we explore these in more detail.
 
 ### Other functions
 
 These are a few more commonly used functions that you'll probably need often:
 
- * `isset()`
- * `empty()`
- * `get_class()`
- * `gettype()`
- * `is_a()` and [the other `is_...()` functions](http://php.net/manual/en/ref.var.php)
+ * [`isset()`][isset]
+ * [`empty()`][empty]
+ * [`get_class()`][get_class]
+ * [`gettype()`][gettype]
+ * [`is_a()`][is_a] and [the other `is_...()` functions](http://php.net/manual/en/ref.var.php)
  
 
 [isset]: http://php.net/manual/en/function.isset.php
@@ -94,3 +94,27 @@ These are a few more commonly used functions that you'll probably need often:
 [array_keys]: http://php.net/manual/en/function.array-keys.php
 [explode]: http://php.net/manual/en/function.explode.php
 [implode]: http://php.net/manual/en/function.implode.php
+
+[substr]: http://php.net/manual/en/function.substr.php
+[mb_substr]: http://php.net/manual/en/function.mb-substr.php
+[mb_strpos]: http://php.net/manual/en/function.mb-strpos.php
+[mb_strtolower]: http://php.net/manual/en/function.mb-strtolower.php
+[mb_strtoupper]: http://php.net/manual/en/function.mb-strtoupper.php
+[sprintf]: http://php.net/manual/en/function.sprintf.php
+[trim]: http://php.net/manual/en/function.trim.php
+[rtrim]: http://php.net/manual/en/function.rtrim.php
+[ltrim]: http://php.net/manual/en/function.ltrim.php
+[str_pad]: http://php.net/manual/en/function.str_pad.php
+
+[file_get_contents]: http://php.net/manual/en/function.file-get-contents.php
+[file_put_contents]: http://php.net/manual/en/function.file-put-contents.php
+[fopen]: http://php.net/manual/en/function.fopen.php
+[fread]: http://php.net/manual/en/function.fread.php
+[fwrite]: http://php.net/manual/en/function.fwrite.php
+[fclose]: http://php.net/manual/en/function.fclose.php
+
+[isset]: http://php.net/manual/en/function.isset.php
+[empty]: http://php.net/manual/en/function.empty.php
+[get_class]: http://php.net/manual/en/function.get_class.php
+[gettype]: http://php.net/manual/en/function.gettype.php
+[is_a]: http://php.net/manual/en/function.is_a.php
