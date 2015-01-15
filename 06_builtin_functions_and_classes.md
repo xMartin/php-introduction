@@ -49,7 +49,7 @@ Apart from string operation, handling arrays is hugely important in PHP. We will
  * [`array_merge()`][array_merge]
  * [`array_slice()`][array_slice]
  * [`count()`][count]
- * [`array_values()`][array_value] and [`array_keys()`][array_keys]
+ * [`array_values()`][array_values] and [`array_keys()`][array_keys]
  * [`explode()`][explode] and [`implode()`][implode]
 
 ### File IO functions
