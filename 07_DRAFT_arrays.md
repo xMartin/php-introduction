@@ -54,4 +54,4 @@ array(5) {
 */
 ```
 
-Now, the array has the same values in the same order but the keys are no longer in ascending order. Also note, how PHP has converted all keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with th `"a"` key.
+Now, the array has the same values but the keys are no longer in ascending order. Also note, how PHP has converted some keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with th `"a"` key.
