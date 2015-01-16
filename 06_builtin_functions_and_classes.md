@@ -70,6 +70,94 @@ These are a few more commonly used functions that you'll probably need often:
  * [`gettype()`][gettype]
  * [`is_a()`][is_a] and [the other `is_...()` functions](http://php.net/manual/en/ref.var.php)
  
+## Builtin Classes
+
+As object oriented style got more and more popular with PHP, new features have also gotten class based APIs. The most common one being [`DateTime`][DateTime] and its related classes.
+
+### `DateTime`
+
+A `DateTime` object represents a single point in time in PHP with up to microsecond precision. It enables you to reliably do date manipulations like "take NOW and add 423 days and 7 hours", correctly compare dates or describe and calculate time intervals like "the time span from NOW to the end of the year". Here's a few examples:
+
+*Note: Don't forget to set the timezone for your application with [`date_default_timezone_set()`][date_default_timezone_set].*
+
+```php
+$towel_day = new DateTime("2015-05-25"); //http://en.wikipedia.org/wiki/Towel_Day
+var_dump($towel_day);
+/* prints:
+object(DateTime)#1 (3) {
+  ["date"]=>
+  string(26) "2015-05-25 00:00:00.000000"
+  ["timezone_type"]=>
+  int(3)
+  ["timezone"]=>
+  string(13) "Europe/Berlin"
+}
+*/
+```
+
+As you can see, if you don't specify parts of the date, PHP set's them to 0. So, when you make a `DateTime` with no time information, PHP assumes, you mean "00:00:00" on that day for example.
+
+For output it's usually a good idea to use a date format. `DateTime` objects have a `format()` method that does that:
+
+```php
+$towel_day_afternoon = new DateTime("2015-05-25 16:30:00");
+
+//now print the date in a format that's common in the USA
+echo $towel_day_afternoon->format("F j Y, g:h a") . PHP_EOL;
+
+//now print it as an ISO-8601 timestamp, PHP has a shortcut for that
+echo $towel_day_afternoon->format("c") . PHP_EOL;
+```
+
+```php
+//How many days is it from the start of 2015 to Towel Day?
+$towel_day = new DateTime("2015-05-25");
+$january_first = new DateTime("2015-01-01");
+$diff = $january_first->diff($towel_day);
+
+//$diff is a DateInterval object:
+var_dump($diff);
+/* prints:
+object(DateInterval)#6 (15) {
+  ["y"]=>
+  int(0)
+  ["m"]=>
+  int(4)
+  ["d"]=>
+  int(23)
+  ["h"]=>
+  int(0)
+  ["i"]=>
+  int(0)
+  ["s"]=>
+  int(0)
+  ["weekday"]=>
+  int(0)
+  ["weekday_behavior"]=>
+  int(0)
+  ["first_last_day_of"]=>
+  int(0)
+  ["invert"]=>
+  int(0)
+  ["days"]=>
+  int(144)
+  ["special_type"]=>
+  int(0)
+  ["special_amount"]=>
+  int(0)
+  ["have_weekday_relative"]=>
+  int(0)
+  ["have_special_relative"]=>
+  int(0)
+}
+*/
+
+//to print only the total number of days:
+echo $diff->days . PHP_EOL;
+*/
+
+**When doing any arithmetic with time or date values, always use the `DateTime` (and related) classes. There are so many edge cases in date/time calculations that you certainly don't want to to it yourself.**
+
 
 [isset]: http://php.net/manual/en/function.isset.php
 [empty]: http://php.net/manual/en/function.empty.php
@@ -121,3 +209,4 @@ These are a few more commonly used functions that you'll probably need often:
 [is_a]: http://php.net/manual/en/function.is_a.php
 
 [DateTime]: http://php.net/manual/en/class.datetime.php
+[date_default_timezone_set]: http://php.net/manual/en/function.date-default-timezone-set.php
