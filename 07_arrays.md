@@ -146,7 +146,7 @@ d: 4
 
 When using `foreach`, keep in mind that it changes the internal pointer's position. So ude `reset()` after `foreach`, if you want to use functions like `current()` or `next()` after iterating. `foreach` itself always resets the pointer before starting the iteration so you can use it without manually resetting the array.
 
-## Real arrays
+# Real, actual arrays
 
 We talked about how an `array` in PHP is not actually an array data structure at all. It's a weird hybrid of various data structures and sometimes behaves unexpectedly. However, there is [`SplFixedArray`][SplFixedArray] which implements an actual array similar to other dynamic languages like Ruby or Python.
 
