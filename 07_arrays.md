@@ -192,6 +192,10 @@ reset($arr);
 echo current($arr) . PHP_EOL; //prints "1"
 ```
 
+If you need to represent a sequence of values in your program, use `SplFixedArray`. It might seem more comlicated but in fact is safer, faster and will cause you less trouble when you're debugging your code.
+
+There are more data structures in PHP that provide better access to features of `array`. We will cover some of them later as well.
+
 
 [current]: http://php.net/manual/en/function.current.php
 [next]: http://php.net/manual/en/function.next.php
