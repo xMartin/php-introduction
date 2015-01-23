@@ -100,6 +100,97 @@ echo current($arr) . PHP_EOL; //prints "1"
 
 Functions like [`current()`][current], [`next()`][next], [`reset()`][reset], [`key()`][key] and [`end()`][end] are useful when dealing with arrays, especially, if their length is not known. But keep in mind how the internal pointer position changes as you use them.
 
+## Iteration over arrays
+
+One of the moszt common things you'll do with arrays is to iterate over them, executing a piece of code with each of the array's elements. The basic way to do that is the `foreach` construct:
+
+```php
+
+$arr = [1, 2, 3, 4];
+
+foreach ($arr as $value) {
+  echo $value . PHP_EOL;
+}
+
+/* prints:
+1
+2
+3
+4
+*/
+
+```
+
+You can also get the key and the value while iterating:
+
+```php
+
+$arr = [
+  'a' => 1,
+  'b' => 2,
+  'c' => 3,
+  'd' => 4
+];
+
+foreach ($arr as $key => $value) {
+  echo $key . ': ' . $value . PHP_EOL;
+}
+
+/* prints:
+a: 1
+b: 2
+c: 3
+d: 4
+*/
+```
+
+When using `foreach`, keep in mind that it changes the internal pointer's position. So ude `reset()` after `foreach`, if you want to use functions like `current()` or `next()` after iterating. `foreach` itself always resets the pointer before starting the iteration so you can use it without manually resetting the array.
+
+## Real arrays
+
+We talked about how an `array` in PHP is not actually an array data structure at all. It's a weird hybrid of various data structures and sometimes behaves unexpectedly. However, there is [`SplFixedArray`][SplFixedArray] which implements an actual array similar to other dynamic languages like Ruby or Python.
+
+It has a fixed length and keys may only be integers. It still allows the values to be of multiple different types but that's a property that most dynamic languages share.
+
+The main benefits of this class are the much more predictable behaviour and speed. PHP's implementation of `SplFixedArray` is much faster than the one for `array`.
+
+You can contruct an `SplFixedArray` from an `array`:
+
+```php
+$arr = SplFixedArray::fromArray([1, 2, 3, 4]);
+```
+
+Or you can create one with a specific length that has `null` as values:
+
+```php
+$arr = new SplFixedArray(4);
+```
+
+`SplFixedArray` works with PHP's builtin array function and also with `foreach`:
+
+```php
+$arr = SplFixedArray::fromArray([1, 2, 3, 4]);
+
+echo current($arr) . PHP_EOL; //prints "1"
+echo next($arr) . PHP_EOL; //prints "2"
+echo current($arr) . PHP_EOL; //prints "2"
+echo end($arr) . PHP_EOL; //prints "4"
+
+foreach ($arr as $value) {
+  echo $value . PHP_EOL;
+}
+
+/* prints:
+1
+2
+3
+4
+*/
+
+reset($arr);
+
+echo current($arr) . PHP_EOL; //prints "1"
+```
 
 
 [current]: http://php.net/manual/en/function.current.php
@@ -107,3 +198,4 @@ Functions like [`current()`][current], [`next()`][next], [`reset()`][reset], [`k
 [reset]: http://php.net/manual/en/function.reset.php
 [end]: http://php.net/manual/en/function.end.php
 [key]: http://php.net/manual/en/function.key.php
+[SplFixedArray]: http://php.net/manual/en/class.splfixedarray.php
