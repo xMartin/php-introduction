@@ -55,3 +55,55 @@ array(5) {
 ```
 
 Now, the array has the same values but the keys are no longer in ascending order. Also note, how PHP has converted some keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with th `"a"` key.
+
+We will talk about this implicit conversion of types [in the next chapter](08_DRAFT_type_juggling.md) by the way.
+
+To summarize, an array in PHP is an ordered sequence of elements, each which has a key and a value. The key can be either an `int` or a `string` and the value can be of an any type. The order of the sequence does NOT depend on the keys.
+
+The PHP manual page about arrays states the following right at the beginning:
+
+> An array in PHP is actually an ordered map.
+
+This is the closest thing to a precise name I could find for this data structure. Sometimes PHP arrays are also called "associative arrays" but I think "ordered map" better describes what is going on.
+
+## The internal array pointer
+
+Every PHP `array` has an internal cursor that points to the "current element" of the sequence. This is called the "internal array pointer". There are functions that work with this pointer and/or change its position.
+
+```php
+
+$arr = [
+  'a' => 1,
+  'b' => 2,
+  'c' => 3,
+  'd' => 4
+];
+
+//current() returns the value at the internal pointer's position
+echo current($arr) . PHP_EOL; //prints "1";
+
+// next() moves the internal pointer forward one element and then does the same as current()
+echo next($arr) . PHP_EOL; //prints "2"
+echo next($arr) . PHP_EOL; //prints "3"
+echo next($arr) . PHP_EOL; //prints "4"
+echo current($arr) . PHP_EOL; //prints "4"
+
+//key() returns the key at the internal pointer's position
+echo key($arr) . PHP_EOL; //prints "d"
+
+//reset() puts the internal pointer back at the first element
+reset($arr);
+
+echo current($arr) . PHP_EOL; //prints "1"
+
+```
+
+Functions like [`current()`][current], [`next()`][next], [`reset()`][reset], [`key()`][key] and [`end()`][end] are useful when dealing with arrays, especially, if their length is not known. But keep in mind how the internal pointer position changes as you use them.
+
+
+
+[current]: http://php.net/manual/en/function.current.php
+[next]: http://php.net/manual/en/function.next.php
+[reset]: http://php.net/manual/en/function.reset.php
+[end]: http://php.net/manual/en/function.end.php
+[key]: http://php.net/manual/en/function.key.php
