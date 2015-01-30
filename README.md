@@ -5,6 +5,8 @@ A quick introduction into PHP web development
 ---
 **This tutorial in not finished! There are still chapters missing.**
 
+Feedback on the existing chapters is greatly appreciated. Feel free to [drop an issue](https://github.com/lnwdr/php-introduction/issues) if you find any mistakes or if you have suggestions for improvements.
+
 ---
 
 Start [here](00_intro.md).
