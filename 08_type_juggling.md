@@ -2,9 +2,9 @@
 
 **This chapter is especially important for using PHP in general, read it carefully.**
 
-PHP is a dynamically typed languuage, like Ruby, Python or JavaScript. That means that a variable may contain a value of any type. The type of a variable is nit known until the program actually executes.
+PHP is a dynamically typed language, like Ruby, Python or JavaScript. That means that a variable may contain a value of any type. The type of a variable is not known until the program actually executes.
 
-The alternative approach to that are statically typed languages where the type of a variable is defined explicitly in the code or inferred by the compiler before the program is executed. Because in statically typed languages the type of most values is already known, they can enforce that only compatiple operations are performed on those values.
+The alternative approach to that are statically typed languages where the type of a variable is defined explicitly in the code or inferred by the compiler before the program is executed. Because in statically typed languages the type of most values is already known, they can enforce that only compatible operations are performed on those values.
 
 Take this Java program for example:
 
@@ -92,11 +92,11 @@ Most operators in PHP can cause type juggling. The main exception is `===`, the 
 
 **When checking two values for equality, always use `===`.**
 
-Not only does it prevent hatd to predict behaviour it also makes it clear that you want to check for real equality in your code.
+Not only does it prevent hard to predict behaviour it also makes it clear that you want to check for real equality in your code.
 
 ### Explicit typecasting
 
-An alternative to letting PHP do implicit typecasting is to explcitly do it yourself. In PHP, there's a special syntax for converting types:
+An alternative to letting PHP do implicit typecasting is to explicitly do it yourself. In PHP, there's a special syntax for converting types:
 
 ```php
 <?php
@@ -112,7 +112,7 @@ var_dump( (bool)$s );   //prints 'bool(true)'
 var_dump( (float)$b );  //prints 'float(0)'
 ```
 
-Prefixing a value with a type in parentheses forces the value to be cats into that type, wether it makes sense or not. The advantage in doing so is that it's now obvious what your code does and the resulting behaviour bemoes easier to understand and more predictable. This will make it easier to spot and fix problems. Let's change our example from before accordingly:
+Prefixing a value with a type in parentheses forces the value to be cast into that type, whether it makes sense or not. The advantage in doing so is that it's now obvious what your code does and the resulting behaviour becomes easier to understand and more predictable. This will make it easier to spot and fix problems. Let's change our example from before accordingly:
 
 ```php
 <?php
