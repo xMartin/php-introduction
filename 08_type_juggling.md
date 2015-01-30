@@ -197,3 +197,7 @@ The result is sorted alphanumerically as intended:
 abc
 foobar
 ```
+
+## Further Reading
+
+Knowing PHP's quirks within its type system will save a lot of time when working with PHP. The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
