@@ -1,6 +1,6 @@
 # Type Juggling
 
-*This chapter is especially important for using PHP in general, read it carefully.*
+**This chapter is especially important for using PHP in general, read it carefully.**
 
 PHP is a dynamically typed languuage, like Ruby, Python or JavaScript. That means that a variable may contain a value of any type. The type of a variable is nit known until the program actually executes.
 
