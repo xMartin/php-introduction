@@ -2,7 +2,7 @@
 
 PHP's syntax borrows some concepts and styles from other languages, mostly C, Perl and Java.
 
-It uses "curly braces" (`{}`) to structure the code, variable names start with a `$` sign and statements
+It uses "curly braces" ( `{}` ) to structure code, variable names start with a `$` sign and statements
 end with a semicolon.
 
 Here's a piece of example PHP code that computes the first 10
