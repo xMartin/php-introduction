@@ -125,4 +125,75 @@ if ((string)$i < $s) {
 }
 ```
 
-We now convert the integer `42` into the string `'42'` before comparing it with `'derp'`. Instead of comparing `42` to `0`, as before, we now compare two strings and as a string comparison, the result actually makes sense: `'4'` comes before `'d'`. So, if you would have used this comparison to sort a list of strings alphanumerically, the result would now be correct.
+We now convert the integer `42` into the string `'42'` before comparing it with `'derp'`. Instead of comparing `42` to `0`, as before, we now compare two strings and as a string comparison, the result actually makes sense: `'4'` comes before `'d'`. So, if you would have used this comparison to sort a list of strings alphanumerically, the result would now be correct. Let's try exactly that:
+
+```php
+<?php
+
+$values = [2, "1", "abc", 4, 3, "5", "6", "foobar"];
+
+usort($values, function($a, $b) {
+    if ($a < $b) {
+        return -1;
+    } else if ($a > $b) {
+        return 1;
+    } else {
+        return 0;
+    }
+});
+
+foreach ($values as $v) {
+    echo $v . PHP_EOL;
+}
+```
+
+The result is pretty useless:
+
+```
+1
+abc
+foobar
+2
+3
+4
+5
+6
+```
+
+If we add an explicit typecast, converting all values to strings before comparing them:
+
+```php
+<?php
+
+$values = [2, "1", "abc", 4, 3, "5", "6", "foobar"];
+
+usort($values, function($a, $b) {
+    $a = (string)$a;
+    $b = (string)$b;
+
+    if ($a < $b) {
+        return -1;
+    } else if ($a > $b) {
+        return 1;
+    } else {
+        return 0;
+    }
+});
+
+foreach ($values as $v) {
+    echo $v . PHP_EOL;
+}
+```
+
+The result is sorted alphanumerically as intended:
+
+```
+1
+2
+3
+4
+5
+6
+abc
+foobar
+```
