@@ -274,7 +274,7 @@ Every time the closure is called, it will return the value of `$i`and increment 
 
 ## Argument list of arbitrary length
 
-Functions can be called with more arguments than they accept.
+Functions can be called with more arguments than they accept. Normally they just ignore those unknown arguments.
 
 ```php
 <?php
