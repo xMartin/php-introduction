@@ -204,6 +204,14 @@ Start the app with `php -S localhost:8000 app.php` and open `http://localhost:80
 
 Displaying data in such a raw form is barely useful, except for debugging purposes. We'll need to generate some HTML to make a real web page. Instead of buidling the HTML output ourselves, we will use a very powerful templating language called [Twig](http://twig.sensiolabs.org).
 
+To use Twig, we need to install it. It doesn't come bundled with Silex.
+
+```sh
+./composer require twig/twig
+```
+
+This will download the Twig source code into your `vendor` directory and update the `composer.json` file accordingly so that `./composer install` will later also install Twig along with the other dependencies,
+
 Make a new directory in your project called `views` and create a file called `event_list.twig` with the following content:
 
 ```twig
