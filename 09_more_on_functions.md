@@ -270,3 +270,43 @@ Here we use a function that returns another function, one of the features of ano
 Now this anonymous function is also a closure with access to `$i` and it can modify the variable `$i` because we passed it "by reference".
 
 Every time the closure is called, it will return the value of `$i`and increment it by one. And by calling `get_incrementor()` again, we can get a new closure that starts at `0` again while the original one still continues its sequence as expected.
+
+
+## Argument list of arbitrary length
+
+Functions can be called with more arguments than they accept.
+
+```php
+<?php
+
+function foo($a, $b)
+{
+    echo $a . ' ' . $b . PHP_EOL;
+}
+
+foo(1, 2, 3, 4); // prints "1 2"
+```
+
+But there are ways to access these excess arguments. One of them is the "variadic function" syntax that was introduced in PHP 5.6:
+
+```php
+function bar($a, $b, ...$args) {
+    echo $a . ' ' . $b . ' ' . implode('/', $args) . PHP_EOL;
+}
+
+bar(1, 2, 3, 4, 5); //prints "1 2 3/4/5"
+```
+
+This syntax is quite new and maybe not available on every PHP installation but there's another way to do this, using [`func_get_args()`](http://php.net/manual/en/function.func-get-args.php) and [`func_get_arg()`](http://php.net/manual/en/function.func-get-arg.php):
+
+```php
+function bar() {
+    $a = func_get_arg(0);
+    $b = func_get_arg(1);
+    $args = array_slice(func_get_args(), 2);
+
+    echo $a . ' ' . $b . ' ' . implode('/', $args) . PHP_EOL;
+}
+
+bar(1, 2, 3, 4, 5); //prints "1 2 3/4/5"
+```
