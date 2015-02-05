@@ -155,6 +155,7 @@ object(DateInterval)#6 (15) {
 //to print only the total number of days:
 echo $diff->days . PHP_EOL;
 */
+```
 
 **When doing any arithmetic with time or date values, always use the `DateTime` (and related) classes. There are so many edge cases in date/time calculations that you certainly don't want to to it yourself.**
 
