@@ -6,7 +6,7 @@ Now we're going to get into more detail about them.
 ## Type hinting
 
 Among the popular dynamic languages, PHP has an unusual feature. It's called ["type hinting"](http://php.net/manual/en/language.oop5.typehinting.php).
-In PHP, functions have s limited way of declaring the type of their expected arguments.
+In PHP, functions have a limited way of declaring the type of their expected arguments.
 If an argument is supposed to be an `array` or an instance of a specific class, we can make sure that these requirements are fulfilled.
 
 ```php
