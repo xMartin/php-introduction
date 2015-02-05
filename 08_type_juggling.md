@@ -97,7 +97,7 @@ Not only does it prevent hard to predict behaviour it also makes it clear that y
 
 There are no type safe equivalents for the other comaprison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, somtimes in unexpected ways. For example, it can happen, that two strings are cast into intgers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operatins due to their inherent imprecision.
 
-## Comparing objects
+### Comparing objects
 
 For objects, the comparison operators behave differently. `==` will return true, if both values are objects of the same class and have the same values in their properties. The properties are compared using `==` again.
 
@@ -127,7 +127,7 @@ var_dump($a === $c);  //prints "true", $a and $c contain the exact same object
 
 The non-equal comparison operators, `<`, `>`, `<=` and `>=`, are [practically unusable and undocumented on objects](http://php.net/manual/en/language.oop5.object-comparison.php#98725).
 
-## Comparing strings
+### Comparing strings
 
 When comparing strings, it can happen that PHP converts both values of a comparison into integers or floats. To avoid that, use the [`strcmp`](http://php.net/manual/en/function.strcmp.php) function.
 
