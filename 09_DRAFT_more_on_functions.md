@@ -78,7 +78,7 @@ function print_array(array $values, $reverse = false)
         $print_values = $values;
     }
     
-    foreach ($values as $value) {
+    foreach ($print_values as $value) {
         echo $value . PHP_EOL;
     }
 }
