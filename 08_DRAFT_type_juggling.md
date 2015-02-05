@@ -1,4 +1,4 @@
-# Type Juggling
+# Type Juggling And Comparisons
 
 **This chapter is especially important for using PHP in general, read it carefully.**
 
@@ -97,6 +97,10 @@ Not only does it prevent hard to predict behaviour it also makes it clear that y
 
 There are no type safe equivalents for the other comaprison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, somtimes in unexpected ways. For example, it can happen, that two strings are cast into intgers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operatins due to their inherent imprecision.
 
+## Comparing objects
+
+For objects, the comparison operators behave differently. `==` will return true, if both values are objects of the same class and have the same values in their properties. The properties are compared using `==` again.
+
 For objects, `===` will only return `true`, if both values are the exact same object.
 
 ```php
@@ -110,21 +114,18 @@ class Foo
     {
         $this->str = $str;
     }
-
-    public function __toString()
-    {
-        return $this->str;
-    }
 }
 
-$a = new Foo("foo");
-$b = new Foo("foo");
+$a = new Foo("42");
+$b = new Foo(42);
 $c = $a;
 
-var_dump($a === $b); //prints "false"
-var_dump($a == $b);  //prints "true"
-var_dump($a == $c);  //prints "true"
+var_dump($a === $b); //prints "false", $a and $b contain different objects
+var_dump($a == $b);  //prints "true", $a and $b are of the same class and have equal properties
+var_dump($a === $c);  //prints "true", $a and $c contain the exact same object
 ```
+
+The non-equal comparison operators, `<`, `>`, `<=` and `>=`, are [practically unusable and undocumented on objects](http://php.net/manual/en/language.oop5.object-comparison.php#98725).
 
 ### Explicit typecasting
 
