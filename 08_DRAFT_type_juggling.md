@@ -90,9 +90,41 @@ Now, the comparison in `42 < 0` which is `false`. That's why the `echo` line was
 
 Most operators in PHP can cause type juggling. The main exception is `===`, the type safe equality operator. It returns `true` if both values are of the same type and the same value and it doesn't try to convert them into anything. The `==` only checks for equal values AFTER implicit type casting.
 
-**When checking two values for equality, always use `===`.**
+**When checking two non-object values for equality, always use `===`.**
+
 
 Not only does it prevent hard to predict behaviour it also makes it clear that you want to check for real equality in your code.
+
+There are no type safe equivalents for the other comaprison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, somtimes in unexpected ways. For example, it can happen, that two strings are cast into intgers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operatins due to their inherent imprecision.
+
+For objects, `===` will only return `true`, if both values are the exact same object.
+
+```php
+<?php
+
+class Foo
+{
+    protected $str;
+
+    public function __construct($str)
+    {
+        $this->str = $str;
+    }
+
+    public function __toString()
+    {
+        return $this->str;
+    }
+}
+
+$a = new Foo("foo");
+$b = new Foo("foo");
+$c = $a;
+
+var_dump($a === $b); //prints "false"
+var_dump($a == $b);  //prints "true"
+var_dump($a == $c);  //prints "true"
+```
 
 ### Explicit typecasting
 
@@ -125,78 +157,7 @@ if ((string)$i < $s) {
 }
 ```
 
-We now convert the integer `42` into the string `'42'` before comparing it with `'derp'`. Instead of comparing `42` to `0`, as before, we now compare two strings and as a string comparison, the result actually makes sense: `'4'` comes before `'d'`. So, if you would have used this comparison to sort a list of strings alphanumerically, the result would now be correct. Let's try exactly that:
-
-```php
-<?php
-
-$values = [2, "1", "abc", 4, 3, "5", "6", "foobar"];
-
-usort($values, function($a, $b) {
-    if ($a < $b) {
-        return -1;
-    } else if ($a > $b) {
-        return 1;
-    } else {
-        return 0;
-    }
-});
-
-foreach ($values as $v) {
-    echo $v . PHP_EOL;
-}
-```
-
-The result is pretty useless:
-
-```
-1
-abc
-foobar
-2
-3
-4
-5
-6
-```
-
-If we add an explicit typecast, converting all values to strings before comparing them:
-
-```php
-<?php
-
-$values = [2, "1", "abc", 4, 3, "5", "6", "foobar"];
-
-usort($values, function($a, $b) {
-    $a = (string)$a;
-    $b = (string)$b;
-
-    if ($a < $b) {
-        return -1;
-    } else if ($a > $b) {
-        return 1;
-    } else {
-        return 0;
-    }
-});
-
-foreach ($values as $v) {
-    echo $v . PHP_EOL;
-}
-```
-
-The result is sorted alphanumerically as intended:
-
-```
-1
-2
-3
-4
-5
-6
-abc
-foobar
-```
+We now convert the integer `42` into the string `'42'` before comparing it with `'derp'`. Instead of comparing `42` to `0`, as before, we now compare two strings and as a string comparison, the result actually makes sense: `'4'` comes before `'d'`. So, if you would have used this comparison to sort a list of strings alphanumerically, the result would now be correct.
 
 ## Further Reading
 
