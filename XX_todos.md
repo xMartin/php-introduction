@@ -1,6 +1,6 @@
 # Basics
 * [x] type juggling
-* [ ] closures
+* [x] closures
 
 # OOP
 * [ ] inheritance
