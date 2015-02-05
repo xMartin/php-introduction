@@ -216,7 +216,7 @@ array(5) {
 
 Here we use the [`usort()`](http://php.net/manual/en/function.usort.php) function that uses a custom function to compare values of an array in order to sort them. We then use an anonymous function that extracts the llast names from the two arguments and passes them to [`strcmp()`](http://php.net/manual/en/function.strcmp.php), returning the result.
 
-Anonymous functions are a good way to pass bahaviour into other functions or objects from the outside.
+Anonymous functions are a good way to inject bahaviour and logic into other functions or objects from the outside.
 
 ## Closures
 
