@@ -51,7 +51,7 @@ print_array($a);
 
 print_foo($b); //prints "some_name"
 
-print_array("this is a string"); //results in a "Fatal Error", PHP does not allow this call and stops the program
+print_array("this is a string"); //terminates with a "Fatal Error"
 ```
 
 Violations of type hints result in "Catchable fatal errors" and terminate the entire program, if they're not caught.
