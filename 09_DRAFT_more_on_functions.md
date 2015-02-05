@@ -73,7 +73,7 @@ That way, a function may be used more conveniently wothout having to specify all
 function print_array(array $values, $reverse = false)
 {
     if ($reverse) {
-        $print_values = reverse($values);
+        $print_values = array_reverse($values);
     } else {
         $print_values = $values;
     }
