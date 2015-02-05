@@ -97,7 +97,7 @@ object(DateTime)#1 (3) {
 
 As you can see, if you don't specify parts of the date, PHP set's them to 0. So, when you make a `DateTime` with no time information, PHP assumes, you mean "00:00:00" on that day for example.
 
-For output it's usually a good idea to use a date format. `DateTime` objects have a `format()` method that does that:
+For output it's usually a good idea to use a date format. `DateTime` objects have a [`format()`][DateTime_format] method that does that. It uses a [special syntax for defining date formats from the `date()` function][date]:
 
 ```php
 $towel_day_afternoon = new DateTime("2015-05-25 16:30:00");
@@ -210,4 +210,6 @@ echo $diff->days . PHP_EOL;
 [is_a]: http://php.net/manual/en/function.is_a.php
 
 [DateTime]: http://php.net/manual/en/class.datetime.php
+[DateTime_format]: http://php.net/manual/en/datetime.format.php
+[date]: http://php.net/manual/en/function.date.php
 [date_default_timezone_set]: http://php.net/manual/en/function.date-default-timezone-set.php
