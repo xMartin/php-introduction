@@ -165,7 +165,7 @@ $app->get("/", function(){
 $app->run();
 ```
 
-This piece of code contains a special kind of function called an anonymous function:
+This piece of code contains a special kind of function called an [anonymous function](http://php.net/manual/en/functions.anonymous.php):
 
 ```php
 $app->get("/", function(){
