@@ -145,7 +145,7 @@ Some of PHP's built-in functions have "by reference" arguments, for example [`so
 
 Usually it is not necessary to use "pass by reference" and it's often even dangerous as function suddenly have side effects that can be hard to predict but there are situations where it is useful. One of them is described later in this chapter.
 
-**Important note: Objects are ALWAYS passed by reference! They are not autoamtically copied when passed as arguments!**
+**Important note: Objects are ALWAYS passed by reference! They are not automatically copied when passed as arguments!**
 
 ## Anonymous functions
 
@@ -175,7 +175,7 @@ $app->get("/", function(){
 
 Here, a function is created and used as an argument for the `$app->get()` function. Unlike "normal" PHP functions, it doesn't have a name. It's just a value that can be stored in a variable, passed into another function or be returned by a function. Functions that can be used like any other value are also called "higher order functions" or "first class functions".
 
-A common usgae for them is sorting. Let's sort an array of people's names by their last name, something the builtin sorting functions can't do:
+A common usage for them is sorting. Let's sort an array of people's names by their last name, something the builtin sorting functions can't do:
 
 ```php
 <?php
@@ -214,13 +214,13 @@ array(5) {
 */
 ```
 
-Here we use the [`usort()`](http://php.net/manual/en/function.usort.php) function that uses a custom function to compare values of an array in order to sort them. We then use an anonymous function that extracts the llast names from the two arguments and passes them to [`strcmp()`](http://php.net/manual/en/function.strcmp.php), returning the result.
+Here we use the [`usort()`](http://php.net/manual/en/function.usort.php) function that uses a custom function to compare values of an array in order to sort them. We then use an anonymous function that extracts the last names from the two arguments and passes them to [`strcmp()`](http://php.net/manual/en/function.strcmp.php), returning the result.
 
-Anonymous functions are a good way to inject bahaviour and logic into other functions or objects from the outside.
+Anonymous functions are a good way to inject behaviour and logic into other functions or objects from the outside.
 
 ## Closures
 
-PHP's anonymous functions have another feature. They can behave as closures. A closure is a function that has access to the scope in which is was originally definef while normal functions can only access their own arguments and variables that were created inside the function.
+PHP's anonymous functions have another feature. They can behave as closures. A closure is a function that has access to the scope in which is was originally defined while normal functions can only access their own arguments and variables that were created inside the function.
 
 ```php
 
@@ -233,9 +233,9 @@ $f = function($x) use ($foo) {
 echo $f(2) . PHP_EOL; // prints: "84"
 ```
 
-Unlike other in languages, we have to explicitly declare what variable the closure may access.
+Unlike in other languages, we have to explicitly declare what variable the closure may access.
 
-Let's say, we need a function that produces automatically increasing numbers. This can be implmented using a closure:
+Let's say, we need a function that produces automatically increasing numbers. This can be implemented using a closure:
 
 ```php
 <?php
@@ -267,6 +267,6 @@ echo $incrementor() . PHP_EOL;  // prints "5"
 
 Here we use a function that returns another function, one of the features of anonymous functions. But we also declare the variable `$i` and pass it into this anonymous function with the `use ()` syntax. We pass it "by reference" because it must be modified when the anonymous function is called.
 
-Now this anonymous function is also a closure with access to `$i` and it can modify the variable `$i` because we passd it "by reference".
+Now this anonymous function is also a closure with access to `$i` and it can modify the variable `$i` because we passed it "by reference".
 
-Every time the closure is called, it will return the value of `$i`and increment it by one. And by calling `get_incrementor()` again, we can get a new closure that starts at `0` again while the original one still continues it's sequence as expected.
+Every time the closure is called, it will return the value of `$i`and increment it by one. And by calling `get_incrementor()` again, we can get a new closure that starts at `0` again while the original one still continues its sequence as expected.
