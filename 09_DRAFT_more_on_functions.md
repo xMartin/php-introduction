@@ -5,7 +5,7 @@ Now we're going to get into more detail about them.
 
 ## Type hinting
 
-Among the popular dynamic languages, PHP has an unusual feature. It's called ["type hinting"][type_hinting].
+Among the popular dynamic languages, PHP has an unusual feature. It's called ["type hinting"](http://php.net/manual/en/language.oop5.typehinting.php).
 In PHP, functions have s limited way of declaring the type of their expected arguments.
 If an argument is supposed to be an `array` or an instance of a specific class, we can make sure that these requirements are fulfilled.
 
@@ -101,4 +101,172 @@ print_array([1, 2, 3, 4], true);
 */
 ```
 
-[type_hinting]: http://php.net/manual/en/language.oop5.typehinting.php
+## Pass by reference
+
+Usually, function arguments are passed "by value". That means, the content of a variable is copied into the functions argument variable when it is called. As a consequence, function can't modify the contents of the variables where their arguments came from:
+
+```php
+<?php
+
+$foo = 42;
+
+function bar($n)
+{
+    $n = n + 1;
+    return $n;
+}
+echo $foo . PHP_EOL;      // prints "42"
+echo bar($foo) . PHP_EOL; // prints "43"
+echo $foo . PHP_EOL;      // still prints "42"
+```
+
+The value `42` was copied into the function `bar()` and only that copy was modified into `43`. The value inide if `$foo` was not changed.
+
+Sometimes, it is necessary to circumvent this. You can pass a variable into  a function "by reference". That means, you give the actual variable, not a copy of its value, into a function so the function can modify it. Arguments that are passed "by reference" are marked with an `&`:
+
+```php
+<?php
+
+$foo = 42;
+
+function bar(&$n)
+{
+    $n = n + 1;
+    return $n;
+}
+echo $foo . PHP_EOL;      // prints "42"
+echo bar($foo) . PHP_EOL; // prints "43"
+echo $foo . PHP_EOL;      // also prints "43"
+```
+
+Now, the value in `$foo` has changed because it wasn't copied as it was passed into the function `bar()`.
+
+Some of PHP's built-in functions have "by reference" arguments, for example [`sort()`](http://php.net/manual/de/function.sort.php), [`reset()`](http://php.net/manual/de/function.reset.php) or [`shuffle()`](http://php.net/manual/de/function.shuffle.php).
+
+Usually it is not necessary to use "pass by reference" and it's often even dangerous as function suddenly have side effects that can be hard to predict but there are situations where it is useful. One of them is described later in this chapter.
+
+**Important note: Objects are ALWAYS passed by reference! They are not autoamtically copied when passed as arguments!**
+
+## Anonymous functions
+
+When we built that small application with Silex, we already saw a slightly different function syntax:
+
+```php
+<?php
+
+require "vendor/autoload.php";
+
+$app = new Silex\Application();
+
+$app->get("/", function(){
+    return "Hello world!";
+});
+
+$app->run();
+```
+
+This piece of code contains a special kind of function called an anonymous function:
+
+```php
+$app->get("/", function(){
+    return "Hello world!";
+});
+```
+
+Here, a function is created and used as an argument for the `$app->get()` function. Unlike "normal" PHP functions, it doesn't have a name. It's just a value that can be stored in a variable, passed into another function or be returned by a function. Functions that can be used like any other value are also called "higher order functions" or "first class functions".
+
+A common usgae for them is sorting. Let's sort an array of people's names by their last name, something the builtin sorting functions can't do:
+
+```php
+<?php
+
+$people = [
+    "Marie Curie",
+    "Alan Turing",
+    "Grace Hopper",
+    "Ada Lovelace",
+    "Albert Einstein"
+];
+
+usort($people, function($a, $b) {
+    $a_array = explode(' ', $a);
+    $b_array = explode(' ', $b);
+    $a_last_name = end($a_array);
+    $b_last_name = end($b_array);
+    
+    return strcmp($a_last_name, $b_last_name);
+});
+
+var_dump($people);
+/* prints:
+array(5) {
+  [0]=>
+  string(11) "Marie Curie"
+  [1]=>
+  string(15) "Albert Einstein"
+  [2]=>
+  string(12) "Grace Hopper"
+  [3]=>
+  string(12) "Ada Lovelace"
+  [4]=>
+  string(11) "Alan Turing"
+}
+*/
+```
+
+Here we use the [`usort()`](http://php.net/manual/en/function.usort.php) function that uses a custom function to compare values of an array in order to sort them. We then use an anonymous function that extracts the llast names from the two arguments and passes them to [`strcmp()`](http://php.net/manual/en/function.strcmp.php), returning the result.
+
+Anonymous functions are a good way to pass bahaviour into other functions or objects from the outside.
+
+## Closures
+
+PHP's anonymous functions have another feature. They can behave as closures. A closure is a function that has access to the scope in which is was originally definef while normal functions can only access their own arguments and variables that were created inside the function.
+
+```php
+
+$foo = 42;
+
+$f = function($x) use ($foo) {
+    return $x * $foo;
+}
+
+echo $f(2) . PHP_EOL; // prints: "84"
+```
+
+Unlike other in languages, we have to explicitly declare what variable the closure may access.
+
+Let's say, we need a function that produces automatically increasing numbers. This can be implmented using a closure:
+
+```php
+<?php
+
+function get_incrementor()
+{
+    $i = 0;
+
+    return function() use (&$i)
+    {
+        return $i++;
+    };
+}
+
+$incrementor = get_incrementor();
+
+echo $incrementor() . PHP_EOL;  // prints "0"
+echo $incrementor() . PHP_EOL;  // prints "1"
+echo $incrementor() . PHP_EOL;  // prints "2"
+echo $incrementor() . PHP_EOL;  // prints "3"
+echo $incrementor() . PHP_EOL;  // prints "4"
+
+$incrementor2 = get_incrementor();
+echo $incrementor2() . PHP_EOL; // prints "0"
+echo $incrementor2() . PHP_EOL; // prints "1"
+
+echo $incrementor() . PHP_EOL;  // prints "5"
+```
+
+Here we use a function that returns another function, one of the features of anonymous functions. But we also declare the variable `$i` and pass it into this anonymous function with the `use ()` syntax. We pass it "by reference" because it must be modified when the anonymous function is called.
+
+Now this anonymous function is also a closure with access to `$i` and it can modify the variable `$i` because we passd it "by reference".
+
+Every time the closure is called, it will return the value of `$i`and increment it by one. And by calling `get_incrementor()` again, we can get a new closure that starts at `0` again while the original one still continues it's sequence as expected.
