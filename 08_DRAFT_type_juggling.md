@@ -167,10 +167,13 @@ We now convert the integer `42` into the string `'42'` before comparing it with 
 ## Guidelines
 
 * for primitive values, use `===` to check for equality and `!==` for inequality
+* use specific comparison functions like `strcmp()`, if possible.
 * be aware of implicit type casting when using any other comparison operator
-* for objects, `===` checks, if two values are the same object.
-* other operators are not very useful on objects.
-* use explicit type casting to make your intent clear in your code.
+* for objects, `===` checks, if two values are the same object
+  * other operators are not very useful on objects.
+  * you should implement specific methods for comparisons between objects.
+* use explicit type casting to make your intent clear in your code, if it's ambiguous
+* consult the manual frequently
 
 ## Further Reading
 
