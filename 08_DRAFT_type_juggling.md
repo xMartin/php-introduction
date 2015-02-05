@@ -162,4 +162,4 @@ We now convert the integer `42` into the string `'42'` before comparing it with 
 
 ## Further Reading
 
-Knowing PHP's quirks within its type system will save a lot of time when working with PHP. The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
+Sadly, there are no simple rules for dealing with the behaviour of types in PHP. There are just too many exceptions and unexpected cases. That's why it's important to be aware of this problem and refer to the manual when in doubt.  The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
