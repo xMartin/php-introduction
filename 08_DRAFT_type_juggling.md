@@ -127,6 +127,10 @@ var_dump($a === $c);  //prints "true", $a and $c contain the exact same object
 
 The non-equal comparison operators, `<`, `>`, `<=` and `>=`, are [practically unusable and undocumented on objects](http://php.net/manual/en/language.oop5.object-comparison.php#98725).
 
+## Comparing strings
+
+When comparing strings, it can happen that PHP converts both values of a comparison into integers or floats. To avoid that, use the [`strcmp`](http://php.net/manual/en/function.strcmp.php) function.
+
 ### Explicit typecasting
 
 An alternative to letting PHP do implicit typecasting is to explicitly do it yourself. In PHP, there's a special syntax for converting types:
@@ -160,6 +164,14 @@ if ((string)$i < $s) {
 
 We now convert the integer `42` into the string `'42'` before comparing it with `'derp'`. Instead of comparing `42` to `0`, as before, we now compare two strings and as a string comparison, the result actually makes sense: `'4'` comes before `'d'`. So, if you would have used this comparison to sort a list of strings alphanumerically, the result would now be correct.
 
+## Guidelines
+
+* for primitive values, use `===` to check for equality and `!==` for inequality
+* be aware of implicit type casting when using any other comparison operator
+* for objects, `===` checks, if two values are the same object.
+* other operators are not very useful on objects.
+* use explicit type casting to make your intent clear in your code.
+
 ## Further Reading
 
-Sadly, there are no simple rules for dealing with the behaviour of types in PHP. There are just too many exceptions and unexpected cases. That's why it's important to be aware of this problem and refer to the manual when in doubt.  The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
+Sadly, there are no simple, universal rules for dealing with the behaviour of types in PHP. There are just too many exceptions and unexpected cases. That's why it's important to be aware of this problem and refer to the manual when in doubt.  The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
