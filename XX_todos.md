@@ -3,8 +3,8 @@
 * [x] closures
 
 # OOP
-* [ ] inheritance
-* [ ] interfaces
+* [x] inheritance
+* [x] interfaces
 
 # Data Structures
 * [x] array -> SplFixedArray
