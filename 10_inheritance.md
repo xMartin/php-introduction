@@ -4,13 +4,13 @@
 
 As an object oriented language, PHP also supports inheritance. In PHP, inheritance is class based, like in Java or Ruby. That means, a class may have a superclass from which it inherits all properties and methods.
 
-Class inheritance is single-inheritance, meaning a class can only inheit from one superclass, not multiple, although PHP supports a kind multiple-inheritance with Traits but more on that later.
+Class inheritance is single-inheritance, meaning a class can only inherit from one superclass, not multiple, although PHP supports a kind multiple-inheritance with Traits but more on that later.
 
 PHP also offers interfaces which support multiple-inheritance, again as in Java. In general much of PHP's object system shows a lot of influence from the Java language.
 
 ## Class inheritance
 
-Let's define a class that represents a news articele. It will have a title, a short teaser text and the full text body. We will also give it a `__toString()` method so it can be represented as a string. It should render itself as [Markdown](http://en.wikipedia.org/wiki/Markdown), a simple text markup language, in that case.
+Let's define a class that represents a news article. It will have a title, a short teaser text and the full text body. We will also give it a `__toString()` method so it can be represented as a string. It should render itself as [Markdown](http://en.wikipedia.org/wiki/Markdown), a simple text markup language, in that case.
 
 ```php
 <?php
@@ -76,7 +76,7 @@ Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit ame
 */
 ```
 
-*Note, how we didn't use `PHP_EOL` for line breaks this time. Instead we used `\n`, the default line break on UNIX-like systems (basically anything other than Windows). This is because we are procusing Markdown code which should usually have UNIX line endings. In earlier chapters, we used `PHP_EOL` because we were writing things to the terminal. When generating code or writing files, `\n` is usually the right thing. We have to use double quoted strings (`""`) though for it to work. Single quoted strings `''` don't accept these "escape sequences" (special characters starting with a "\") instead they leave them as the two characters "\n".*
+*Note, how we didn't use `PHP_EOL` for line breaks this time. Instead we used `\n`, the default line break on UNIX-like systems (basically anything other than Windows). This is because we are producing Markdown code which should usually have UNIX line endings. In earlier chapters, we used `PHP_EOL` because we were writing things to the terminal. When generating code or writing files, `\n` is usually the right thing. We have to use double quoted strings (`""`) though for it to work. Single quoted strings `''` don't accept these "escape sequences" (special characters starting with a "\") instead they leave them as the two characters "\n".*
 
 Now, maybe later we'll need articles with an image. The original Article class doesn't support this. We could change it but then we could break compatibility with the rest of your code by doing that. Instead, we can extend it, which is PHP's keyword for class inheritance:
 
@@ -142,15 +142,15 @@ So, we extended our `Article` into a class named `ImageArticle`. `ImageArticle` 
 
 In this case, we added two properties, `image_url` and `image_title`, as well as a method to set them, `setImage()`. These don't yet change anything about the original article but enable us to store information about an image inside the article objects.
 
-To change how the article is rendered into a string, we need to `override` (sometimes also called "overwrite") a method. We did that with the new `__toString()` method that now inclues the image in the Markdown output. An overridden emthod replaces another method on an extended class while the superclass stays unchanged by all of this.
+To change how the article is rendered into a string, we need to `override` (sometimes also called "overwrite") a method. We did that with the new `__toString()` method that now includes the image in the Markdown output. An overridden method replaces another method on an extended class while the superclass stays unchanged by all of this.
 
 By just adding things and making a minimal change, we added a feature to our new `ImageArticle` class without changing the `Article` class.
 
 ## Interfaces
 
-Staying with our example of articles, lets say our application handles all kinds of documents like invoices, memos and our articles. It may also have a function to send them to some web API somehwhere for example. But how should that method know about all the different kinds of documents when all it needs is a way of getting a string representation of them that it can send away. And maybe it needs a way to get the title as well.
+Staying with our example of articles, lets say our application handles all kinds of documents like invoices, memos and our articles. It may also have a function to send them to some web API somewhere for example. But how should that method know about all the different kinds of documents when all it needs is a way of getting a string representation of them that it can send away. And maybe it needs a way to get the title as well.
 
-We could base all of our documents on a common superclass that has a `__toString()` and a `getTitle()` method but that would severely limit us in terms of how are classes can be extended. We can however set up a kind of "contract" that classes need to adhere to and that enforces certain methods to be availabla on a class. That is called an interface in PHP:
+We could base all of our documents on a common superclass that has a `__toString()` and a `getTitle()` method but that would severely limit us in terms of how are classes can be extended. We can however set up a kind of "contract" that classes need to adhere to and that enforces certain methods to be available on a class. That is called an interface in PHP:
 
 ```php
 <?php
@@ -162,7 +162,7 @@ interface Document
 }
 ```
 
-This interface forces all classes that `implement` it to have these two methods. It doesn't care what the methods actually to, they just have to match the decription in the interface. Now let's add that interface to our Article. I'll just write the `Article`class with empty methods now to save some space:
+This interface forces all classes that `implement` it to have these two methods. It doesn't care what the methods actually to, they just have to match the description in the interface. Now let's add that interface to our Article. I'll just write the `Article`class with empty methods now to save some space:
 
 ```php
 <?php
@@ -213,14 +213,14 @@ class Article implements Document
 }
 ```
 
-Now PHP doesn't compain anymore and since interfaces also work with [type hinting](09_more_on_functions.md#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
+Now PHP doesn't complain anymore and since interfaces also work with [type hinting](09_more_on_functions.md#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
 
 
 ## Traits
 
-We can add another useful feature to our `Article` class and it's child classes: converting the Markdown content to HTML. But maybe other classes in our project will need that feaure as well so we want to implement it only once. We can't use inheritance to give it to all classes that need it because they may already have a superclass.
+We can add another useful feature to our `Article` class and it's child classes: converting the Markdown content to HTML. But maybe other classes in our project will need that feature as well so we want to implement it only once. We can't use inheritance to give it to all classes that need it because they may already have a superclass.
 
-As mentioned at the start of this chapter, there is a way in PHPto inherit from multiple things. It doesn't work with classes (for a good reason) but there are Traits:
+As mentioned at the start of this chapter, there is a way in PHP to inherit from multiple things. It doesn't work with classes (for a good reason) but there are Traits:
 
 ```php
 
@@ -234,7 +234,7 @@ trait toHTML
         $parser = new ParseDown();
         
         // we cast to string to execute the objects __toString() method
-        // since we want to mardown representation.
+        // since we want to markdown representation.
         return $parser->text((string)$this);
     }
 }
