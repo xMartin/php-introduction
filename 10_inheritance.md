@@ -382,7 +382,7 @@ $bar->bar_test();
 PUBLIC!!
 PROTECTED!!
 
-Fatal error: Call to private method Foo::a_private_method() from context 'Bar' in /Users/lnwdr/Desktop/temp/visibility.php on line 34
+Fatal error: Call to private method Foo::a_private_method() from context 'Bar' in visibility.php on line 34
 */
 
 //Objects can't see private methods from their class' superclasses. This is the difference between protected and private.
@@ -394,7 +394,7 @@ $bar->external_test($foo);
 PUBLIC!!
 PROTECTED!!
 
-Fatal error: Call to private method Foo::a_private_method() from context 'Bar' in /Users/lnwdr/Desktop/temp/visibility.php on line 41
+Fatal error: Call to private method Foo::a_private_method() from context 'Bar' in visibility.php on line 41
 */
 
 //Objects can see other object's protected methods as long as their classes have a common ancenstor. They're "family" so to speak. Private methods are still off limits, though.
