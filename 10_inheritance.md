@@ -220,7 +220,7 @@ Now PHP doesn't complain anymore and since interfaces also work with [type hinti
 
 We can add another useful feature to our `Article` class and it's child classes: converting the Markdown content to HTML. But maybe other classes in our project will need that feature as well so we want to implement it only once. We can't use inheritance to give it to all classes that need it because they may already have a superclass.
 
-As mentioned at the start of this chapter, there is a way in PHP to inherit from multiple things. It doesn't work with classes ([for a good reason](http://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)) but there are Traits:
+As mentioned at the start of this chapter, there is a way in PHP to inherit from multiple things. It doesn't work with classes ([for a good reason](http://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)) but there are [Traits](http://php.net/manual/de/language.oop5.traits.php):
 
 ```php
 
