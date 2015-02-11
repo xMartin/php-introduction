@@ -1,4 +1,4 @@
-# DRAFT: Inheritance
+# Inheritance
 
 **Note: in this chapter, I will use a thing that I won't explain:** [`sprintf()`](http://php.net/manual/de/function.sprintf.php), look it up. Learn what it does from the manual. Experiment with it.
 
