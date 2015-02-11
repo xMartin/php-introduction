@@ -192,7 +192,9 @@ If we just add the `Document` interface to our class without changing anything e
 Fatal error: Class Article contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Document::getTitle) in inheritance.php on line 39
 ```
 
-It tells us that we forgot to implement the `getTitle()` method that the interface demands. Let's add it:
+It tells us that we forgot to implement the `getTitle()` method that the interface demands. These methods in the interface that have no actual code in them are called "abstract methods".
+
+Let's add `getTitle()`:
 
 ```php
 <?php
@@ -210,3 +212,5 @@ class Article implements Document
   //...
 }
 ```
+
+Now PHP doesn't compain anymore and since interfaces also work with [type hinting](09_more_on_functions.md#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
