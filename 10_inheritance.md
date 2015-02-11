@@ -261,6 +261,7 @@ Now, `Article`and it's subclasses like `ImageArticle` have a `toHTML()` method:
 ```php
 <?php
 
+//assuming $article is our ImageArticle from before:
 echo $article->toHTML();
 
 /* prints something like:
