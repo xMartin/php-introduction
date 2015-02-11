@@ -413,3 +413,9 @@ PROTECTED!!
 Fatal error: Call to private method Foo::a_private_method() from context 'Bar' in visibility.php on line 41
 */
 ```
+
+---
+
+Mostly, `public` and `protected` are used to limit access to object's methods and properties. `private` is relatively uncommon because it's often too restrictive to be practical.
+
+It's common (and I'd recommend) to set all properties to `protected` and add `public` methods that manipulate their values. Having `public` properties usually leaves your objects open to too much interfering from the outside and can lead to all sorts of problems. Objects should communicate with their surroundings via methods.
