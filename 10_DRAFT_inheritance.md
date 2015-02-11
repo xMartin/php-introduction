@@ -20,32 +20,33 @@ class Article
   protected $title;
   protected $teaser;
   protected $full_text;
-  
+
   public function __construct($title, $teaser, $full_text)
   {
     $this->title = $title;
     $this->teaser = $teaser;
     $this->full_text = $full_text;
   }
-  
+
   public function __toString()
   {
     return sprintf(
-      "%s\n\n---\n\n%s\n",
-      $this->renderTeaser()
+      "%s\n---\n\n%s\n",
+      $this->renderTeaser(),
       $this->full_text
     );
   }
-  
+
   protected function renderTeaser()
   {
     return sprintf(
       "# %s\n\n%s\n",
-      $this->title
+      $this->title,
       $this->teaser
     );
   }
 }
+
 
 ```
 
