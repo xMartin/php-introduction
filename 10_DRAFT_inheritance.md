@@ -137,3 +137,76 @@ Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cum soci
 Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
 */
 ```
+
+So, we extended our `Article` into a class named `ImageArticle`. `ImageArticle` automatically get's all properties and methods from its superclass so we only need to give it the additional things that we want to add or change.
+
+In this case, we added two properties, `image_url` and `image_title`, as well as a method to set them, `setImage()`. These don't yet change anything about the original article but enable us to store information about an image inside the article objects.
+
+To change how the article is rendered into a string, we need to `override` (sometimes also called "overwrite") a method. We did that with the new `__toString()` method that now inclues the image in the Markdown output. An overridden emthod replaces another method on an extended class while the superclass stays unchanged by all of this.
+
+By just adding things and making a minimal change, we added a feature to our new `ImageArticle` class without changing the `Article` class.
+
+## Interfaces
+
+Staying with our example of articles, lets say our application handles all kinds of documents like invoices, memos and our articles. It may also have a function to send them to some web API somehwhere for example. But how should that method know about all the different kinds of documents when all it needs is a way of getting a string representation of them that it can send away. And maybe it needs a way to get the title as well.
+
+We could base all of our documents on a common superclass that has a `__toString()` and a `getTitle()` method but that would severely limit us in terms of how are classes can be extended. We can however set up a kind of "contract" that classes need to adhere to and that enforces certain methods to be availabla on a class. That is called an interface in PHP:
+
+```php
+<?php
+
+interface Document
+{
+  public function getTitle();
+  public function __toString();
+}
+```
+
+This interface forces all classes that `implement` it to have these two methods. It doesn't care what the methods actually to, they just have to match the decription in the interface. Now let's add that interface to our Article. I'll just write the `Article`class with empty methods now to save some space:
+
+```php
+<?php
+
+class Article implements Document
+{
+  public function __construct()
+  {
+    //...
+  }
+  
+  public function __toString()
+  {
+    //...
+  }
+  
+  protected function renderTeaser()
+  {
+    //...
+  }
+}
+```
+
+If we just add the `Document` interface to our class without changing anything else, PHP will complain:
+
+```
+Fatal error: Class Article contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Document::getTitle) in inheritance.php on line 39
+```
+
+It tells us that we forgot to implement the `getTitle()` method that the interface demands. Let's add it:
+
+```php
+<?php
+
+class Article implements Document
+{
+
+  //...
+  
+  public function getTitle()
+  {
+    return $this->title;
+  }
+  
+  //...
+}
+```
