@@ -85,25 +85,27 @@ Now, maybe later we'll need articles with an image. The original Article class d
 
 class ImageArticle extends Article
 {
-  $protected $image_title; 
-  $protected $image_url;
-  
+  protected $image_title;
+  protected $image_url;
+
   public function setImage($image_title, $image_url)
   {
     $this->image_title = $image_title;
     $this->image_url = $image_url;
   }
-  
+
   protected function renderTeaser()
   {
     return sprintf(
-      "# %s\n\n![%s](%s)\n",
-      $this->title
+      "# %s\n\n![%s](%s)\n\n%s\n",
+      $this->title,
       $this->image_title,
-      $this->image_url
+      $this->image_url,
+      $this->teaser
     );
   }
 }
+
 ```
 
 So, now our `ImageArticle` class can also hold an image:
@@ -111,7 +113,7 @@ So, now our `ImageArticle` class can also hold an image:
 ```php
 $article = new ImageArticle(
   'Lorem Ipsum',
-  'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.'
+  'Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.',
   'Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.'
