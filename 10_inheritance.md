@@ -1,6 +1,6 @@
 # Inheritance
 
-**Note: in this chapter, I will use a thing that I won't explain:** [`sprintf()`](http://php.net/manual/de/function.sprintf.php), look it up. Learn what it does from the manual. Experiment with it. It isn't really related to the current topic but it's very useful.
+*Note: in this chapter, I will use a thing that I won't explain: [`sprintf()`](http://php.net/manual/de/function.sprintf.php), look it up. Learn what it does from the manual. Experiment with it. It isn't really related to the current topic but it's very useful.*
 
 As an object oriented language, PHP also supports inheritance. In PHP, inheritance is class based, like in Java or Ruby. That means, a class may have a superclass from which it inherits all properties and methods.
 
