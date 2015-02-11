@@ -214,3 +214,63 @@ class Article implements Document
 ```
 
 Now PHP doesn't compain anymore and since interfaces also work with [type hinting](09_more_on_functions.md#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
+
+
+## Traits
+
+We can add another useful feature to our `Article` class and it's child classes: converting the Markdown content to HTML. But maybe other classes in our project will need that feaure as well so we want to implement it only once. We can't use inheritance to give it to all classes that need it because they may already have a superclass.
+
+As mentioned at the start of this chapter, there is a way in PHPto inherit from multiple things. It doesn't work with classes (for a good reason) but there are Traits:
+
+```php
+
+<?php
+
+trait toHTML
+{
+    public function toHTML()
+    {
+        //"Parsedown" is a library for handling markdown, check it out: http://parsedown.org
+        $parser = new ParseDown();
+        
+        // we cast to string to execute the objects __toString() method
+        // since we want to mardown representation.
+        return $parser->text((string)$this);
+    }
+}
+```
+
+A trait is a small set of methods and properties that can be "injected" into classes:
+
+```
+<?php
+
+class Article implements Document
+{
+ 
+  //...
+  
+  use toHTML;
+  
+  //...
+}
+```
+
+Now, `Article`and it's subclasses like `ImageArticle` have a `toHTML()` method:
+
+```php
+<?php
+
+echo $article->toHTML();
+
+/* prints something like:
+<h1>Lorem Ipsum</h1>
+<p>
+<img alt="A Kitten" src="(http://placekitten.com/800/400"/>
+</p>
+<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.</p>
+<hr>
+...
+...
+*/
+```
