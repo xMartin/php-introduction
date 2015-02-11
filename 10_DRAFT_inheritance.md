@@ -122,7 +122,9 @@ echo $article;
 
 /*prints:
 # Lorem Ipsum
+
 ![A Kitten](http://placekitten.com/800/400)
+
 Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.
 
 ---
