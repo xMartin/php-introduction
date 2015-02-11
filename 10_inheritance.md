@@ -345,6 +345,8 @@ $foo->a_public_function();
 /* prints
 "PUBLIC!!"
 */
+
+//Public methods are always visible.
 ```
 
 ```php
