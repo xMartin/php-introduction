@@ -45,7 +45,7 @@ $app->get('/', function() use ($app) {
         }
     });
 
-    //return "<pre>".var_export($events, true);
+    return var_export($events, true);
 
     return $app['twig']->render('event_list.twig', [
         'events' => $events,

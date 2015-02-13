@@ -1,0 +1,16 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<ul>
+    {% for image in images %}
+        <li>
+            <a href="/{{image.id}}" title="{{image.title}}">
+            <h2>{{image.title}}</h2>
+            <img src="{{image.url}}" alt="{{image.title}}" />
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
