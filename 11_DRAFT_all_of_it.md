@@ -114,6 +114,7 @@ We used several third party libraries in this example, some of which we already 
 
 The [`Finder`](http://symfony.com/doc/current/components/finder.html) is one we haven't seen before. It's a component that helps us locate files and read them. There are PHP functions for most of that but the `Finder` component is more convenient.
 
+This "Symfony" that keeps popping up is another PHP framework, like Silex, but much more complex. You might want to [have a look at it](http://symfony.com). Apart from the actual framework, it has many standalone components that can be used anywhere.
 
 ## Twig template inheritance
 
