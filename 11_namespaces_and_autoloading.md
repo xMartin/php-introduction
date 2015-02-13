@@ -71,7 +71,10 @@ For a basic project you can leave most of the questions unanswered or use the de
 }
 ```
 
+### Autoloading
+
 The easiest way to make our `src` directory known to composer as the "place for everything" is to add this "autoload" section to `composer.json`:
+
 ```json
 {
     "name": "lnwdr/my-project",
