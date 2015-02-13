@@ -37,6 +37,8 @@ Just a quick recap of what I did to set this project up:
 1. composer install
 1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace](11_namespaces_and_autoloading.md#autoloading)
 
+Now, there are some new conceptes in this application. Let's talk about those.
+
 ## Putting the M in MVC
 
 Most modern web applications are designed with the ["Model View Controller Pattern (MVC)"](http://en.wikipedia.org/wiki/Model–view–controller). Basically it means, that an application is separated into three general parts:
@@ -62,3 +64,16 @@ Our controller is everything in `app.php`. It accepts incoming requests, calls a
 The view layer consists of our Twig templates in the `views/` directory.The inly thing it does is to produce HTML output.
 
 An application that follows this mattern can later easily be extended with new componenents. Also, part of it can be completely rewritten or replace by something else without affecting the rest. For example, we could add more views that produce RSS feeds instead of HTML pages, or we could replace the file based storage model with one that reads from a database.
+
+
+## Services and Entities
+
+We could have put all of our model logic in the `Image` class but that class would have become quite cumbersome and complicated. Also, an `Image` should really just represent itself, not our entire storage mechanism. One way of separating entities like our `Image` from the rest of the model are services. Services are classes that provide functionality to the rest of the application. We already saw another service in action: Silex's TwigServiceProvider, a class that provides a functionality (rendering Twig templates) our application.
+
+To handle our images, we have an `ImageService` which is responsible for loading data from files and transforming it into `Image` objects. Such objects that represent data are often called "Entities".
+
+*To summarize:*
+
+* Entities are objects that **are** things
+* Services are objects that **do** things
+
