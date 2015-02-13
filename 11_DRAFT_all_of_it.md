@@ -59,6 +59,6 @@ In our little image gallery the model describes that there are images (the `Imag
 
 Our controller is everything in `app.php`. It accepts incoming requests, calls appropriate model methods and passes their results along to the view. The controller also transforms the `Image` objects from the model into plain arrays to prevent the view from having too much access to the model.
 
-The View layer consists of our Twig templates in the `views/` directory.The inly thing it does is to produce HTML output.
+The view layer consists of our Twig templates in the `views/` directory.The inly thing it does is to produce HTML output.
 
 An application that follows this mattern can later easily be extended with new componenents. Also, part of it can be completely rewritten or replace by something else without affecting the rest. For example, we could add more views that produce RSS feeds instead of HTML pages, or we could replace the file based storage model with one that reads from a database.
