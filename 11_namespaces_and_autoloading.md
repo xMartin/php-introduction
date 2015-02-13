@@ -1,4 +1,4 @@
-# Namespaces and Ecosystem
+# Namespaces and Autoloading
 
 There's more to a programming language than just the syntax and semnatics of the language itself. There's usually also a builtin library for the most common tasks and often countless third-party libraries that you can build upon. We already coverd most of PHP's language core and some of the [included library of functions and classes](06_builtin_functions_and_classes.md).
 
