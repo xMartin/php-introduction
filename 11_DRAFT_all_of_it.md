@@ -77,3 +77,18 @@ To handle our images, we have an `ImageService` which is responsible for loading
 * Entities are objects that **are** things
 * Services are objects that **do** things
 
+## Custom exceptions
+
+We have created a `NotFoundException` class that seemingly does nothing. It just extends the regular `Exception`. The point of this is to distinguish exceptions that we know from the ones we don't know. Our application only knwos how to handle the case when an image was not found. But there are other things that could go wrong and that need to be handled differently. Not every exception should result in showing the user the "not found" error page.
+
+When catching an exception we can specify what type of Exception we want to catch:
+
+```
+try {
+  //...
+} catch (NotFoundException $e) {
+  //handle only NotFoundException, not all exceptions
+}
+```
+
+`catch` will only catch Exceptions of the specified type and those that inherit from it. All other Exceptions are not caught by this `catch` statement and can be handled elsewhere.
