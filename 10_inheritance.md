@@ -242,7 +242,7 @@ trait toHTML
 
 A trait is a small set of methods and properties that can be "injected" into classes:
 
-```
+```php
 <?php
 
 class Article implements Document
