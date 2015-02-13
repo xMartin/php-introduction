@@ -103,3 +103,13 @@ Abstract methods can also be used in classes, forcing their inheritants to imple
 
 Interfaces contain only abstract methods. which is why they don't need the `abstract` keyword in front of them.
 
+## Third party components
+
+We used several third party libraries in this example, some of which we already know:
+
+* Symfony Finder
+* Symfony YAML
+* Twig
+* Silex
+
+The [`Finder`](http://symfony.com/doc/current/components/finder.html) is one we haven't seen before. It's a component that helps us locate files and read them. There are PHP functions for most of that but the `Finder` component is more convenient.
