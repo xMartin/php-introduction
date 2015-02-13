@@ -92,3 +92,14 @@ try {
 ```
 
 `catch` will only catch Exceptions of the specified type and those that inherit from it. All other Exceptions are not caught by this `catch` statement and can be handled elsewhere.
+
+## The toArray trait and abstract methods
+
+Our controller should convert all objects that come from the model into arrays before giving them to the view. That's because the view should not be allowed to touch model objects directly. We could have just added a `toArray()` method to our `Image` class but maybe we'll need that functinonality on other classes later as well.
+
+The trait `toArray` has something new in it: an abstract method. Any class that uses this trait must implement this method or PHP will complain about it aith a fatal error. This way we can force classes who want to use this trait to provide the `getArrayKeys()` method that the trait needs in order to work.
+
+Abstract methods can also be used in classes, forcing their inheritants to implement certain methods.
+
+Interfaces contain only abstract methods. which is why they don't need the `abstract` keyword in front of them.
+
