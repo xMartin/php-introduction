@@ -194,7 +194,7 @@ echo current($arr) . PHP_EOL; //prints "1"
 
 If you need to represent a sequence of values in your program, use `SplFixedArray`. It might seem more comlicated but in fact is safer, faster and will cause you less trouble when you're debugging your code.
 
-There are more data structures in PHP that provide better access to features of `array`. We will cover some of them later as well.
+There are more data structures in PHP that provide better access to features of `array`. One of them is [SplOjectStorage][SplOjectStorage]. Its use cases are a bit beyond the scope of this tutorial but you should read the manual pages about it.
 
 
 [current]: http://php.net/manual/en/function.current.php
@@ -203,3 +203,4 @@ There are more data structures in PHP that provide better access to features of 
 [end]: http://php.net/manual/en/function.end.php
 [key]: http://php.net/manual/en/function.key.php
 [SplFixedArray]: http://php.net/manual/en/class.splfixedarray.php
+[SplObjectStorage]: http://php.net/manual/en/class.splobjectstorage.php
