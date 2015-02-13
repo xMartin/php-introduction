@@ -142,7 +142,7 @@ So, we extended our `Article` into a class named `ImageArticle`. `ImageArticle` 
 
 In this case, we added two properties, `image_url` and `image_title`, as well as a method to set them, `setImage()`. These don't yet change anything about the original article but enable us to store information about an image inside the article objects.
 
-To change how the article is rendered into a string, we need to `override` (sometimes also called "overwrite") a method. We did that with the new `__toString()` method that now includes the image in the Markdown output. An overridden method replaces another method on an extended class while the superclass stays unchanged by all of this.
+To change how the article is rendered into a string, we need to `override` (sometimes also called "overwrite") a method. We did that with the new `renderTeaser()` method that now includes the image in the Markdown output. An overridden method replaces another method on an extended class while the superclass stays unchanged by all of this.
 
 By just adding things and making a minimal change, we added a feature to our new `ImageArticle` class without changing the `Article` class.
 
