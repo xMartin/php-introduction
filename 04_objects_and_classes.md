@@ -337,3 +337,29 @@ This will produce the same output as before.
 ---
 
 We now have a class for address objects that bundles data (the properties) and some logic (the constructor and toString method) and is protected from outside modification.
+
+## Static
+
+While properties and emthods usually belong to instances of classes, there are cases when a class itself needs to hold values in properties or offer methods. Those are called `static` properties and methods:
+
+```php
+<?php
+
+class Foo
+{
+    static protected $some_value = "Bar!";
+    
+    static public function do_something()
+    {
+        echo static::$some_value . PHP_EOL;
+    }
+}
+
+Foo::do_something();
+```
+
+We can call the `do_something()` method without making an instance of `Foo` at all. Instead of `->` we use [`::`](http://php.net/manual/de/keyword.paamayim-nekudotayim.php) to access a class' static properties and methods.
+
+The visibility modifiers (`public`, `protected` and `private`) apply in the same way as for instances.
+
+Static access is less common in PHP as it often introduces similar problems as global variables: a class with a static property is basically the same as a global variable and can make it very hard to keep track of where it is changed and where it is read from.
