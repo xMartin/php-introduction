@@ -113,3 +113,14 @@ We used several third party libraries in this example, some of which we already 
 * Silex
 
 The [`Finder`](http://symfony.com/doc/current/components/finder.html) is one we haven't seen before. It's a component that helps us locate files and read them. There are PHP functions for most of that but the `Finder` component is more convenient.
+
+
+## Twig template inheritance
+
+Our Twig templates use a yet unfamilar syntax: `{% extends ... %}`
+
+[Twig templates can inherit](http://twig.sensiolabs.org/doc/templates.html#template-inheritance) from other Twig templates, just like PHP classes. And just like classes, the child template can override parts of its parent.
+
+In `layout.twig` there's a `{% block ... %}` named "content" and it's empty. Any template that inherits from `layout.twig` can now also define a block with the same name to replace the empty block with actual content.
+
+This way we only have to write the `<!doctype html><html><head> ...` part of our HTML code one and can reuse it in all of our templates.
