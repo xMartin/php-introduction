@@ -37,13 +37,15 @@ class ImageService
     {
         $finder = new Finder();
         $finder->name($id . '.yml')->in('data');
-
+        
         $files = iterator_to_array($finder);
 
         if (count($files) === 0) {
             throw new NotFoundException($id);
         }
-
+        
+        //the array resulting from the Finder only has one element
+        //so we only take that by popping it off
         return $this->createImageFromFile(array_pop($files));
     }
 }
