@@ -10,7 +10,7 @@ You put image files (JPGs, PNGs, ...) in a directory and YAML files with some ex
 
 Our application will present a web page listing all images and clicking on one of them will lead to another page with just that one image.
 
-This project will use most of the things that we covered in the past 10 chapters as well as some new things:
+This project will use most of the things that we covered in the past 11 chapters as well as some new things:
 
 * Composer
 * Silex
