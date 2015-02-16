@@ -30,7 +30,7 @@ performance has greatly increased
 and some weird configuration options that were outright dangerous have been deprecated and removed.
 
 [Composer][1], a new package manager for PHP, has fixed the tedious installation of third party libraries.
-The popular application frameworks from the Ruby world now have a PHP equivalents
+The popular application frameworks from the Ruby world now have PHP equivalents
 (Rails -> [Symfony][2], Sinatra -> [Silex][3]).
 
 Some things still remain weird, though, like PHP's "type juggling"
