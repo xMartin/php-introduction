@@ -118,7 +118,7 @@ require "vendor/autoload.php";
 When we ran `./composer install` it created an `autoload.php` file inside the `vendor` directory.
 That file contains instructions for PHP how to find Silex and all other dependencies.
 
-The `require` keyword is used to load another PHP file into our program. Ater that, PHP knows where to fond everything.
+The `require` keyword is used to load another PHP file into our program. After that, PHP knows where to fond everything.
 
 Next, we create an `Application` object. PHP is also an object oriented language and it uses a
 class based object system, like Java or Ruby. Classes are organized into "namespaces" to prevent multiple

@@ -82,7 +82,7 @@ PHP didn't complain about comparing two incompatible types. It did something to 
 
 Now, the comparison in `42 < 0` which is `false`. That's why the `echo` line wasn't executed.
 
-**This behaviour, called "type juggling", "type coercion" or "implicit typecasting" is one of the major sources of bugs, security flaws and code maintainability issues in PHP. It's usually a good idea to avoid it.**
+**This behavior, called "type juggling", "type coercion" or "implicit typecasting" is one of the major sources of bugs, security flaws and code maintainability issues in PHP. It's usually a good idea to avoid it.**
 
 ## Avoiding type juggling
 
@@ -93,9 +93,9 @@ Most operators in PHP can cause type juggling. The main exception is `===`, the 
 **When checking two non-object values for equality, always use `===`.**
 
 
-Not only does it prevent hard to predict behaviour it also makes it clear that you want to check for real equality in your code.
+Not only does it prevent hard to predict behavior it also makes it clear that you want to check for real equality in your code.
 
-There are no type safe equivalents for the other comaprison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, somtimes in unexpected ways. For example, it can happen, that two strings are cast into intgers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operatins due to their inherent imprecision.
+There are no type safe equivalents for the other comparison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, sometimes in unexpected ways. For example, it can happen, that two strings are cast into integers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operations due to their inherent imprecision.
 
 ### Comparing objects
 
@@ -149,7 +149,7 @@ var_dump( (bool)$s );   //prints 'bool(true)'
 var_dump( (float)$b );  //prints 'float(0)'
 ```
 
-Prefixing a value with a type in parentheses forces the value to be cast into that type, whether it makes sense or not. The advantage in doing so is that it's now obvious what your code does and the resulting behaviour becomes easier to understand and more predictable. This will make it easier to spot and fix problems. Let's change our example from before accordingly:
+Prefixing a value with a type in parentheses forces the value to be cast into that type, whether it makes sense or not. The advantage in doing so is that it's now obvious what your code does and the resulting behavior becomes easier to understand and more predictable. This will make it easier to spot and fix problems. Let's change our example from before accordingly:
 
 ```php
 <?php
@@ -177,4 +177,4 @@ We now convert the integer `42` into the string `'42'` before comparing it with 
 
 ## Further Reading
 
-Sadly, there are no simple, universal rules for dealing with the behaviour of types in PHP. There are just too many exceptions and unexpected cases. That's why it's important to be aware of this problem and refer to the manual when in doubt.  The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.
+Sadly, there are no simple, universal rules for dealing with the behavior of types in PHP. There are just too many exceptions and unexpected cases. That's why it's important to be aware of this problem and refer to the manual when in doubt.  The PHP manual has a pretty detailed chapters on [type juggling](http://php.net/manual/en/language.types.type-juggling.php), [comparison operators](http://php.net/language.operators.comparison) and [extensive tables on how values compare to each other](http://php.net/manual/en/types.comparisons.php). It's good to remember where to find these.

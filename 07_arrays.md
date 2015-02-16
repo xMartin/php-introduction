@@ -8,7 +8,7 @@ What exactly is an array? It's a data structure that represents a sequence of va
 
 PHP array are more like hash maps in other languages. They have a set of "keys" which can be strings or integers and each key has a value associated with it. If all keys are integers and are consecutive numbers, PHP arrays behave similar to real arrays, except that their size is not fixed. But if the keys are out of order, or some keys are strings, PHP arrays behave more like hash maps.
 
-If you contruct an array only with it's values, it becomes a numerically indexed array. All keys will be integers and will start with `0`.
+If you construct an array only with it's values, it becomes a numerically indexed array. All keys will be integers and will start with `0`.
 
 ```php
 $arr = [1, 2, 3, 4];
@@ -54,7 +54,7 @@ array(5) {
 */
 ```
 
-Now, the array has the same values but the keys are no longer in ascending order. Also note, how PHP has converted some keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with th `"a"` key.
+Now, the array has the same values but the keys are no longer in ascending order. Also note, how PHP has converted some keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with the `"a"` key.
 
 We will talk about this implicit conversion of types [in the next chapter](08_DRAFT_type_juggling.md) by the way.
 
@@ -102,7 +102,7 @@ Functions like [`current()`][current], [`next()`][next], [`reset()`][reset], [`k
 
 ## Iteration over arrays
 
-One of the moszt common things you'll do with arrays is to iterate over them, executing a piece of code with each of the array's elements. The basic way to do that is the `foreach` construct:
+One of the most common things you'll do with arrays is to iterate over them, executing a piece of code with each of the array's elements. The basic way to do that is the `foreach` construct:
 
 ```php
 
@@ -144,7 +144,7 @@ d: 4
 */
 ```
 
-When using `foreach`, keep in mind that it changes the internal pointer's position. So ude `reset()` after `foreach`, if you want to use functions like `current()` or `next()` after iterating. `foreach` itself always resets the pointer before starting the iteration so you can use it without manually resetting the array.
+When using `foreach`, keep in mind that it changes the internal pointer's position. So use `reset()` after `foreach`, if you want to use functions like `current()` or `next()` after iterating. `foreach` itself always resets the pointer before starting the iteration so you can use it without manually resetting the array.
 
 # Real, actual arrays
 
@@ -152,9 +152,9 @@ We talked about how an `array` in PHP is not actually an array data structure at
 
 It has a fixed length and keys may only be integers. It still allows the values to be of multiple different types but that's a property that most dynamic languages share.
 
-The main benefits of this class are the much more predictable behaviour and speed. PHP's implementation of `SplFixedArray` is much faster than the one for `array`.
+The main benefits of this class are the much more predictable behavior and speed. PHP's implementation of `SplFixedArray` is much faster than the one for `array`.
 
-You can contruct an `SplFixedArray` from an `array`:
+You can construct an `SplFixedArray` from an `array`:
 
 ```php
 $arr = SplFixedArray::fromArray([1, 2, 3, 4]);
@@ -166,7 +166,7 @@ Or you can create one with a specific length that has `null` as values:
 $arr = new SplFixedArray(4);
 ```
 
-`SplFixedArray` works with PHP's builtin array function and also with `foreach`:
+`SplFixedArray` works with PHP's built in array function and also with `foreach`:
 
 ```php
 $arr = SplFixedArray::fromArray([1, 2, 3, 4]);
@@ -192,7 +192,7 @@ reset($arr);
 echo current($arr) . PHP_EOL; //prints "1"
 ```
 
-If you need to represent a sequence of values in your program, use `SplFixedArray`. It might seem more comlicated but in fact is safer, faster and will cause you less trouble when you're debugging your code.
+If you need to represent a sequence of values in your program, use `SplFixedArray`. It might seem more complicated but in fact is safer, faster and will cause you less trouble when you're debugging your code.
 
 There are more data structures in PHP that provide better access to features of `array`. One of them is [SplOjectStorage][SplOjectStorage]. Its use cases are a bit beyond the scope of this tutorial but you should read the manual pages about it.
 

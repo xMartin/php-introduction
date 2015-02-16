@@ -1,18 +1,18 @@
-# Builtin Functions and Classes
+# Built-in Functions and Classes
 
-PHP comes with a pretty large set of features that are already built into it. Most of them are available as plain functions that can be called from anyhwere in your code. This is a big difference to languages where the standard library is completely organised into modules and classes. When PHP first became really popular, object oriented programming was not nearly as widely adopted as today and PHP adopted the style of the C programming language that also uses globally available functions. Later, mostly after PHP 5 was widely is use, some of the core functionality was also made available via classes, the probably most common example being the [`DateTime`][DateTime] class.
+PHP comes with a pretty large set of features that are already built into it. Most of them are available as plain functions that can be called from anywhere in your code. This is a big difference to languages where the standard library is completely organized into modules and classes. When PHP first became really popular, object oriented programming was not nearly as widely adopted as today and PHP adopted the style of the C programming language that also uses globally available functions. Later, mostly after PHP 5 was widely is use, some of the core functionality was also made available via classes, the probably most common example being the [`DateTime`][DateTime] class.
 
 In today's PHP, the "old way" of just calling functions is still available and it's often the only way to access a feature of the PHP runtime. Some things have also gotten object oriented API's (like [`DateTime`][DateTime]) and some new features are only available as object oriented APIs like the classes from the [SPL (Standard PHP Library)](http://php.net/manual/en/book.spl.php).
 
-## Builtin Functions
+## Built-in Functions
 
 In the previous chapter, we already encountered [`array_map()`][array_map] and [`usort()`][usort]. Both are functions that provide common operations on arrays. The PHP manual has a complete list of [PHP's array functions](http://php.net/manual/en/ref.array.php).
 
-A common source of errors and annoyance is that the arguments of these functions are not always consistant. For axample, [`array_map()`][array_map] expects the first argument to be a function and the second to be an array while [`usort()`][usort] expects them the other way around. [`array_reduce()`][array_reduce] also expects the callback function as the second argument.
+A common source of errors and annoyance is that the arguments of these functions are not always consistent. For example, [`array_map()`][array_map] expects the first argument to be a function and the second to be an array while [`usort()`][usort] expects them the other way around. [`array_reduce()`][array_reduce] also expects the callback function as the second argument.
 
-Another inconsistency is in the function names. Some are written with underscores, others in one word, forexample [`get_class()`][get_class] and [`gettype()`][gettype].
+Another inconsistency is in the function names. Some are written with underscores, others in one word, for example [`get_class()`][get_class] and [`gettype()`][gettype].
 
-The reason vof this is that for a long time, people have added features to PHP without worrying about consistency of the APIs and to maintain backwards compatibiltiy this can't be changed easily anymore. You will need to pay close attention to the order of arguments for PHP's builtin functions.
+The reason for this is that for a long time, people have added features to PHP without worrying about consistency of the APIs and to maintain backwards compatibility this can't be changed easily anymore. You will need to pay close attention to the order of arguments for PHP's built-in functions.
 
 ### String functions
 
@@ -24,7 +24,7 @@ echo substr($str, 0, 1) . PHP_EOL; //echoes "�" instead of the correct "ä"
 echo mb_subtsr($str, 0, 1, "utf-8"); //echoes "ä" correctly with "utf-8" as encoding argument
 ```
 
-When using string functions with inout that potentially has Unicode characters in it, always use the `mb_` version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues cause by not matching encodings. If you have to receive or send data to external systems in ad different encoding, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.
+When using string functions with input that potentially has Unicode characters in it, always use the `mb_` version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues cause by not matching encodings. If you have to receive or send data to external systems in ad different encoding, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.
 
 The `mb_` string functions are provided by a PHP extension called "mbstring", it is usually installed by default.
 
@@ -105,7 +105,7 @@ $towel_day_afternoon = new DateTime("2015-05-25 16:30:00");
 //now print the date in a format that's common in the USA
 echo $towel_day_afternoon->format("F j Y, g:h a") . PHP_EOL;
 
-//now print it as an ISO-8601 timestamp, PHP has a shortcut for that
+//now print it as an ISO-8601 time stamp, PHP has a shortcut for that
 echo $towel_day_afternoon->format("c") . PHP_EOL;
 ```
 

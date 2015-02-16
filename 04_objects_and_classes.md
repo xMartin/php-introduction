@@ -20,7 +20,7 @@ It consists of several pieces of data:
 With the simpler primitive types, we can't store an address in a meaningful way so we need a
 data structure to store an address in one single value to make sure, we keep track of every piece of data that belongs to it.
 
-We also ned to make sure that all addresses have the same structure, so that the parts of our application that handle addresses
+We also need to make sure that all addresses have the same structure, so that the parts of our application that handle addresses
 can rely on. For example, the `postal_code` property of an address should always have the same name. If it's called `zip_code`
 sometimes, it leads to inconsistency and potentially dangerous bugs.
 
@@ -160,7 +160,7 @@ The `set` method just copies the values that it got via its arguments to the cor
 
 ### Constructors
 
-Making an address object without any data in the first place doesn't really make sense. It would be useful, and simpler to use, if we could set the data right when we create the object. There's a special method that does that, it's called a "contructor".
+Making an address object without any data in the first place doesn't really make sense. It would be useful, and simpler to use, if we could set the data right when we create the object. There's a special method that does that, it's called a "constructor".
 
 ```php
 <?php
@@ -188,12 +188,12 @@ $my_address = new Address("Main Street", 42, "Some Town", 12345, "Far Far Away")
 var_dump($my_address);
 ```
 
-The output will remain the same again. But this time, we didn't need to call an extra method to iniitalize our object. If a class has a method with the exact name `__construct`, it will be called when the object is created with the `new` operator. All arguments from the `new`call will also be passed to the contructor.
+The output will remain the same again. But this time, we didn't need to call an extra method to initialize our object. If a class has a method with the exact name `__construct`, it will be called when the object is created with the `new` operator. All arguments from the `new`call will also be passed to the constructor.
 
 
 ## Visibility
 
-Right now everything in our `Address` objects is accessible from the oustide. A piece of code that doesn't behave well could to this:
+Right now everything in our `Address` objects is accessible from the outside. A piece of code that doesn't behave well could to this:
 
 ```php
 function does_bad_things($address)
@@ -285,7 +285,7 @@ Main Street
 Far Far Away
 ```
 
-We can make this mor convenient by using another "magic method". PHP classes have a bunch of special methods that all start with `__` and are executed automatically at certain points, `__construct()` is also one of them.
+We can make this more convenient by using another "magic method". PHP classes have a bunch of special methods that all start with `__` and are executed automatically at certain points, `__construct()` is also one of them.
 
 This time we will make a `__toString()` method from our `getAsText()`. It is called every time when our object is used as if it were a string, for example when we try `echo $my_address;`.
 
@@ -324,7 +324,7 @@ class Address
 }
 ```
 
-Now we can just use the address as if it were alreay a string:
+Now we can just use the address as if it were already a string:
 
 ```php
 $my_address = new Address("Main Street", 42, "Some Town", 12345, "Far Far Away");
@@ -340,7 +340,7 @@ We now have a class for address objects that bundles data (the properties) and s
 
 ## Static
 
-While properties and emthods usually belong to instances of classes, there are cases when a class itself needs to hold values in properties or offer methods. Those are called `static` properties and methods:
+While properties and methods usually belong to instances of classes, there are cases when a class itself needs to hold values in properties or offer methods. Those are called `static` properties and methods:
 
 ```php
 <?php

@@ -24,7 +24,7 @@ So much has changed since then ...
 
 With PHP 5 and especially it's minor releases 5.2 and 5.3 a lot of things were improved.
 There's now a much better object model,
-there are important built in data structures that were missing before,
+there are important built-in data structures that were missing before,
 higher order functions were added,
 performance has greatly increased
 and some weird configuration options that were outright dangerous have been deprecated and removed.
@@ -35,7 +35,7 @@ The popular application frameworks from the Ruby world now have PHP equivalents
 
 Some things still remain weird, though, like PHP's "type juggling"
 which is similar to JavaScript's implicit type conversion and causes similar problems.
-The APIs of the built in functions is still inconsistent and
+The APIs of the built-in functions is still inconsistent and
 Unicode strings still need special attention to handle them correctly.
 
 PHP is flawed, sure, just like most other languages/platforms. And just like the others, it's worth learning it.
@@ -44,7 +44,7 @@ PHP is flawed, sure, just like most other languages/platforms. And just like the
 
 With countless alternatives to choose from, why should you learn PHP? Well, the most likely reason is that you have a project that you want to work on or a job that simply requires it. There are tons of PHP projects out there that are actively maintained and many companies that have been in web development for a while probably have PHP code that's actively in use.
 
-If you run into problems and need help, it's very likely, someone else has already asked your question on [StackOverflow](http://stackoverflow.com) and there are problably already very good answers that are still correct.
+If you run into problems and need help, it's very likely, someone else has already asked your question on [StackOverflow](http://stackoverflow.com) and there are probably already very good answers that are still correct.
 
 The main upside of PHP however is operations. Since it has been in very wide spread use for such a long time, it's supported by practically every hosting company and running PHP on your own production server is a very well known and well documented topic. Also, PHP tends to be very stable in terms of backwards compatibility and not break existing code with its minor updates.
 
@@ -52,7 +52,7 @@ The main upside of PHP however is operations. Since it has been in very wide spr
 
 We will start with how to install PHP and Composer and then go through a small example program to get familiar with the syntax ad general look and feel of PHP.
 
-Then we'll make a "Hello world" web application using a minimalistic framework called "Silex". This will serve as an introduction on how to install and use third party dependencies.
+Then we'll make a "Hello world" web application using a minimalist framework called "Silex". This will serve as an introduction on how to install and use third party dependencies.
 
 In the following chapters, we will explore the features of PHP in more detail.
 The chapters are intended to be read in the correct order since they built on previous chapters.

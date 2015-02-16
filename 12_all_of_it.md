@@ -2,7 +2,7 @@
 
 We now have covered most of the PHP language and the most important parts of its general ecosystem.
 
-There is of course still much to learn, though. We haven't talked about databases at all for example. But at the enf of this chapter you'll have all the tools and the vocabulary you need to learn about all the rest of the PHP world on your own. The purpose of this introduction was to get you familiar with PHP itself and the way modern PHP applications are built. We'll finish this off by building something again: a dynamic image gallery.
+There is of course still much to learn, though. We haven't talked about databases at all for example. But at the end of this chapter you'll have all the tools and the vocabulary you need to learn about all the rest of the PHP world on your own. The purpose of this introduction was to get you familiar with PHP itself and the way modern PHP applications are built. We'll finish this off by building something again: a dynamic image gallery.
 
 Here's how it should work:
 
@@ -37,7 +37,7 @@ Just a quick recap of what I did to set this project up:
 1. composer install
 1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace](11_namespaces_and_autoloading.md#autoloading)
 
-Now, there are some new conceptes in this application. Let's talk about those.
+Now, there are some new concepts in this application. Let's talk about those.
 
 ## Putting the M in MVC
 
@@ -61,9 +61,9 @@ In our little image gallery the model describes that there are images (the `Imag
 
 Our controller is everything in `app.php`. It accepts incoming requests, calls appropriate model methods and passes their results along to the view. The controller also transforms the `Image` objects from the model into plain arrays to prevent the view from having too much access to the model.
 
-The view layer consists of our Twig templates in the `views/` directory.The inly thing it does is to produce HTML output.
+The view layer consists of our Twig templates in the `views/` directory.The only thing it does is to produce HTML output.
 
-An application that follows this mattern can later easily be extended with new componenents. Also, part of it can be completely rewritten or replace by something else without affecting the rest. For example, we could add more views that produce RSS feeds instead of HTML pages, or we could replace the file based storage model with one that reads from a database.
+An application that follows this pattern can later easily be extended with new components. Also, part of it can be completely rewritten or replace by something else without affecting the rest. For example, we could add more views that produce RSS feeds instead of HTML pages, or we could replace the file based storage model with one that reads from a database.
 
 
 ## Services and Entities
@@ -79,7 +79,7 @@ To handle our images, we have an `ImageService` which is responsible for loading
 
 ## Custom exceptions
 
-We have created a `NotFoundException` class that seemingly does nothing. It just extends the regular `Exception`. The point of this is to distinguish exceptions that we know from the ones we don't know. Our application only knwos how to handle the case when an image was not found. But there are other things that could go wrong and that need to be handled differently. Not every exception should result in showing the user the "not found" error page.
+We have created a `NotFoundException` class that seemingly does nothing. It just extends the regular `Exception`. The point of this is to distinguish exceptions that we know from the ones we don't know. Our application only knows how to handle the case when an image was not found. But there are other things that could go wrong and that need to be handled differently. Not every exception should result in showing the user the "not found" error page.
 
 When catching an exception we can specify what type of Exception we want to catch:
 
@@ -95,9 +95,9 @@ try {
 
 ## The toArray trait and abstract methods
 
-Our controller should convert all objects that come from the model into arrays before giving them to the view. That's because the view should not be allowed to touch model objects directly. We could have just added a `toArray()` method to our `Image` class but maybe we'll need that functinonality on other classes later as well.
+Our controller should convert all objects that come from the model into arrays before giving them to the view. That's because the view should not be allowed to touch model objects directly. We could have just added a `toArray()` method to our `Image` class but maybe we'll need that functionality on other classes later as well.
 
-The trait `toArray` has something new in it: an abstract method. Any class that uses this trait must implement this method or PHP will complain about it aith a fatal error. This way we can force classes who want to use this trait to provide the `getArrayKeys()` method that the trait needs in order to work.
+The trait `toArray` has something new in it: an abstract method. Any class that uses this trait must implement this method or PHP will complain about it with a fatal error. This way we can force classes who want to use this trait to provide the `getArrayKeys()` method that the trait needs in order to work.
 
 Abstract methods can also be used in classes, forcing their inheritants to implement certain methods.
 
@@ -118,7 +118,7 @@ This "Symfony" that keeps popping up is another PHP framework, like Silex, but m
 
 ## Twig template inheritance
 
-Our Twig templates use a yet unfamilar syntax: `{% extends ... %}`
+Our Twig templates use a yet unfamiliar syntax: `{% extends ... %}`
 
 [Twig templates can inherit](http://twig.sensiolabs.org/doc/templates.html#template-inheritance) from other Twig templates, just like PHP classes. And just like classes, the child template can override parts of its parent.
 

@@ -1,11 +1,11 @@
 # A real application
 
 This will be another exercise where we make a little web application. Again we'll use Silex as a framework.
-So first, repeat the steps from [chapter 03](03_a_web_application.md) to install Sile into a new directory.
+So first, repeat the steps from [chapter 03](03_a_web_application.md) to install Silex into a new directory.
 Every project should have its own directory so things don't get messy.
 
 Last time, our application just said "Hello World", now that's nice but not very useful. This time, we'll make an
-event calendar, a website that shows events, ordered by date, each witht a title, and description.
+event calendar, a website that shows events, ordered by date, each with a title, and description.
 Each event will also have it's own page so we could send people a direct link to an event.
 
 ## Data
@@ -30,7 +30,7 @@ human-readable format called "YAML". It will look like this:
   date: 2015-02-17 21:00
   ```
   
-If you wonder, what that gibberish text is, it's called ["Lorem Ipsum"](http://en.wikipedia.org/wiki/Lorem_ipsum). It's used as a palceholder because I didn't come up with something more creative.
+If you wonder, what that gibberish text is, it's called ["Lorem Ipsum"](http://en.wikipedia.org/wiki/Lorem_ipsum). It's used as a placeholder because I didn't come up with something more creative.
 
 Just save that into a file called `events.yml` in your project's  directory. Change the titles and descriptions, if you like.
 
@@ -61,11 +61,11 @@ We will need another library to read our YAML file. YAML support is not built in
 `composer require` tells Compose  to download one specific dependency and also to add it to our project's `composer.json` file.
 If you already know what libraries you want to install, it's quicker than the interactive method we used before.
 
-The things, composer installs for you are called "packages" and each of them has a unique name consisiting of a vendor name and a pakcage name, separated by a `/`,
+The things, composer installs for you are called "packages" and each of them has a unique name consisting of a vendor name and a package name, separated by a `/`,
 like `silex/silex` or `symfony/yaml`. These packages are hosted on <https://packagist.org>. There you can get information on each package or search for new packages.
 
 The `symfony/yaml` package provides a namespace `Symfony\Component\Yaml`.
-That's a bit too long to type it everytime we want to use something from it. PHP has a way to make the contents of a namespace available to our code more conveniently:
+That's a bit too long to type it every time we want to use something from it. PHP has a way to make the contents of a namespace available to our code more conveniently:
  
 ```php
 use Symfony\Component\Yaml\Yaml;
@@ -86,13 +86,13 @@ function get_events() {
 }
 ```
 
-Now let's see what we did here. `Yaml::parse()` is a so called "static method" of the class `Yaml`. Static methods can be called without making an instance of the class first. They are directly callable on the class itself. Thsi method takes a string as an argument and tries to parse it as YAML. It then returns the result.
+Now let's see what we did here. `Yaml::parse()` is a so called "static method" of the class `Yaml`. Static methods can be called without making an instance of the class first. They are directly callable on the class itself. This method takes a string as an argument and tries to parse it as YAML. It then returns the result.
 
-We get the YAML string from the `events.yml` file using `file_get_contents()`, it's a builtin function of PHP that reads a text file into a string. For a small file like ours, it's perfectly fine. For large files, it can be probelmatic because it loads the entire file into memory at once.
+We get the YAML string from the `events.yml` file using `file_get_contents()`, it's a built-in function of PHP that reads a text file into a string. For a small file like ours, it's perfectly fine. For large files, it can be problematic because it loads the entire file into memory at once.
 
 ## Date
 
-Our events have a date but in our YAML files, the dates are just strings like "2015-01-20". We will later do some date/time operations with the so we need to convert them into actual dates. PHP has the `DateTime` class for this which represents a point in time and enables many time-related operations. We can contruct one of those by using the string representation as an argument for the constructor:
+Our events have a date but in our YAML files, the dates are just strings like "2015-01-20". We will later do some date/time operations with the so we need to convert them into actual dates. PHP has the `DateTime` class for this which represents a point in time and enables many time-related operations. We can construct one of those by using the string representation as an argument for the constructor:
 
 ```php
 $date = new DateTime('2015-01-20');
@@ -112,7 +112,7 @@ object(DateTime)#1 (3) {
 }
 ```
 
-Note that the output contains a timezone. PHP always needs to know what timezone it should use for time-related operations. The default timezone is either configured for the entire PHP installation or it can be set by the application itself. We will set it ourselves. To make our app usable in different timezones, we put the timezone into a configration file instead of hard-coding it into our PHP code. Let's call it `config.yml` and put this into it:
+Note that the output contains a timezone. PHP always needs to know what timezone it should use for time-related operations. The default timezone is either configured for the entire PHP installation or it can be set by the application itself. We will set it ourselves. To make our app usable in different time zones, we put the timezone into a configuration file instead of hard-coding it into our PHP code. Let's call it `config.yml` and put this into it:
 
 ```yml
 ---
@@ -123,7 +123,7 @@ time_format: "H:i"
 
 The other two entries, beside the timezone, will become important soon.
 
-To actually use this configuration, we need to parse this YAML file and put the config values somwhere where we can access it conveniently throughout our application. We'll use constants for that:
+To actually use this configuration, we need to parse this YAML file and put the config values somewhere where we can access it conveniently throughout our application. We'll use constants for that:
 
 ```php
 $config = Yaml::parse(file_get_contents('config.yml'));
@@ -174,7 +174,7 @@ Here, we doubled every element of the array. We used the same approach to make a
 
 ## Listing events
 
-Ok, we did some inital setup, no we'll see, if that worked. Here's our first URL handler for the home page of our app:
+OK, we did some initial setup, no we'll see, if that worked. Here's our first URL handler for the home page of our app:
 
 ```php
 $app->get('/', function() use ($app) {
@@ -196,13 +196,13 @@ $app->get('/', function() use ($app) {
 
 We use our `get_events()` function to load the event data. After that, we need to make sure that they are sorted by date properly. For that, we use `usort()`, PHP's sorting function that accepts a custom comparison function. PHP doesn't know how to sort our custom event data by date, so we have to supply a function that tells it when an event is "less than" or "greater than" another event. The convention for that is, that our function returns `-1` if the first value is considered "smaller", `0` when they are equal and `1` when the first value is "less than" the second. This way, we can make any values sortable by our own criteria.
 
-After sorting, we use `var_export()` to get a quick look at our data. `var_export()` is similar to `var_dump()` but it returns its output instead of printing it, if we set the second argument to `true`. We will use something much better for output in a moment but to check, if everything so far works, this is ok.
+After sorting, we use `var_export()` to get a quick look at our data. `var_export()` is similar to `var_dump()` but it returns its output instead of printing it, if we set the second argument to `true`. We will use something much better for output in a moment but to check, if everything so far works, this is OK.
 
 Start the app with `php -S localhost:8000 app.php` and open `http://localhost:8000/` in your browser. The output will be hard to read. Look at the source code of the page in your browser (Usually right-click->"show source", or something like that). Now you'll see something much like a `var_dump()` output.
 
 ## Twig
 
-Displaying data in such a raw form is barely useful, except for debugging purposes. We'll need to generate some HTML to make a real web page. Instead of buidling the HTML output ourselves, we will use a very powerful templating language called [Twig](http://twig.sensiolabs.org).
+Displaying data in such a raw form is barely useful, except for debugging purposes. We'll need to generate some HTML to make a real web page. Instead of building the HTML output ourselves, we will use a very powerful templating language called [Twig](http://twig.sensiolabs.org).
 
 To use Twig, we need to install it. It doesn't come bundled with Silex.
 
@@ -242,7 +242,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), [
 ]);
 ```
 
-Silex already has a component for using Twig, the `TwigServiceProvider`. When we instantiate it we just ned to tell it where it can find our templates. It uses an array for its configuration and the `twig.path` value must contain a directory path where the templates are stored. We use the "magic constant" `__DIR__` to get the directory where `app.php` is and then append `/views` to get the full path to our views directory.
+Silex already has a component for using Twig, the `TwigServiceProvider`. When we instantiate it we just need to tell it where it can find our templates. It uses an array for its configuration and the `twig.path` value must contain a directory path where the templates are stored. We use the "magic constant" `__DIR__` to get the directory where `app.php` is and then append `/views` to get the full path to our views directory.
 
 We can now replace the `var_export()` line in our URL handler with something else:
 
@@ -256,11 +256,11 @@ We can now replace the `var_export()` line in our URL handler with something els
     ]);
  ```
  
- Here's where the other two contant come into play. We apss their values into our template so we can use the configured date/time formats in Twig.
+ Here's where the other two constant come into play. We pass their values into our template so we can use the configured date/time formats in Twig.
  
  By registering the `TwigServiceProvider` we now have a Service for rendering Twig templates in `$app['twig']`. When we call its `render()` method with a template name and the data for that template, it returns the rendered HTML result.
  
-Go ahead, refresh your browser window. You'll now see an HTML list of your events. Each of the list items is a link and when you click it ... it results in an error. Don't worry, that's expected. We just havent implemented the detail page for individual events. Let's do that now:
+Go ahead, refresh your browser window. You'll now see an HTML list of your events. Each of the list items is a link and when you click it ... it results in an error. Don't worry, that's expected. We just haven't implemented the detail page for individual events. Let's do that now:
 
 Add this to your app.php file, after the first URL handler:
 
@@ -309,7 +309,7 @@ foreach($events as $e) {
 }
  ```
 
-This is a `foreach` loop, it iterates over an array and puts the current element into the variable `$e` (or whatever else you name it) everytime it runs. Insode the loop, we check, if the current event's ID is the one we got as a URL parameter. If they match, we put that event into the `$event`variable and stop the loop with `break;`.
+This is a `foreach` loop, it iterates over an array and puts the current element into the variable `$e` (or whatever else you name it) every time it runs. Inside the loop, we check, if the current event's ID is the one we got as a URL parameter. If they match, we put that event into the `$event`variable and stop the loop with `break;`.
 
 There's the possibility that our loop didn't find any matching event. In that case the `$event` variable will be empty and we can react to that by telling Silex to produce an error page:
 
@@ -335,4 +335,4 @@ Again, we also supply the two date/time format constants, just like before. Now,
 
 ---
 
-You now have a simple but already useful PHP aplication. Instead of writing HTML manually for this event calendar, you can edit the data in the `events.yml` file, which is far more convenient.
+You now have a simple but already useful PHP application. Instead of writing HTML manually for this event calendar, you can edit the data in the `events.yml` file, which is far more convenient.

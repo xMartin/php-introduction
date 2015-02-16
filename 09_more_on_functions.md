@@ -65,7 +65,7 @@ Type hints can prevent many of the [issues caused by PHP's type system](08_type_
 ## Default values for arguments
 
 Sometimes a function doesn't need all of it's arguments for every call. It can be useful to provide default values for them.
-That way, a function may be used more conveniently wothout having to specify all arguments.
+That way, a function may be used more conveniently without having to specify all arguments.
 
 ```php
 <?php
@@ -120,7 +120,7 @@ echo bar($foo) . PHP_EOL; // prints "43"
 echo $foo . PHP_EOL;      // still prints "42"
 ```
 
-The value `42` was copied into the function `bar()` and only that copy was modified into `43`. The value inide if `$foo` was not changed.
+The value `42` was copied into the function `bar()` and only that copy was modified into `43`. The value inside if `$foo` was not changed.
 
 Sometimes, it is necessary to circumvent this. You can pass a variable into  a function "by reference". That means, you give the actual variable, not a copy of its value, into a function so the function can modify it. Arguments that are passed "by reference" are marked with an `&`:
 
@@ -175,7 +175,7 @@ $app->get("/", function(){
 
 Here, a function is created and used as an argument for the `$app->get()` function. Unlike "normal" PHP functions, it doesn't have a name. It's just a value that can be stored in a variable, passed into another function or be returned by a function. Functions that can be used like any other value are also called "higher order functions" or "first class functions".
 
-A common usage for them is sorting. Let's sort an array of people's names by their last name, something the builtin sorting functions can't do:
+A common usage for them is sorting. Let's sort an array of people's names by their last name, something the built in sorting functions can't do:
 
 ```php
 <?php
@@ -216,7 +216,7 @@ array(5) {
 
 Here we use the [`usort()`](http://php.net/manual/en/function.usort.php) function that uses a custom function to compare values of an array in order to sort them. We then use an anonymous function that extracts the last names from the two arguments and passes them to [`strcmp()`](http://php.net/manual/en/function.strcmp.php), returning the result.
 
-Anonymous functions are a good way to inject behaviour and logic into other functions or objects from the outside.
+Anonymous functions are a good way to inject behavior and logic into other functions or objects from the outside.
 
 ## Closures
 

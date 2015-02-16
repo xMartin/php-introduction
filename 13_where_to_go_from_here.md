@@ -16,7 +16,7 @@ There are also other PHP frameworks that have a different approach. [Symfony](ht
 
 Most web applications read from and write to some kind of database, most commonly relational databases like MySQL. But things non-relational DBs like CouchDB are often a good option. For most databases, there are packages available via Composer to communicate with them. Just try a search on [packagist.org](https://packagist.org).
 
-Support for MySQL and SQLite is built right into PHP. SQLite doesn't even require a seperate DB installation, it stores everything in local files. SQLite is great to get started with relational databases. [The "Databeses" section on PHP The Right Way](http://www.phptherightway.com/#databases) is a good place to start.
+Support for MySQL and SQLite is built right into PHP. SQLite doesn't even require a separate DB installation, it stores everything in local files. SQLite is great to get started with relational databases. [The "Databases" section on PHP The Right Way](http://www.phptherightway.com/#databases) is a good place to start.
 
 ## Continue learning about PHP
 
@@ -30,4 +30,4 @@ We've already seen a few places where PHP is kind of weird and I'll be honest wi
 
 There's a detailed article called ["PHP - a fractal of bad design"](http://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) about the things that are bad and dangerous in PHP. I suggest you read it, now that you've seen some PHP code.
 
-Keep in mind though that many of the things that this article points out are outdated and many of them have significantly improved over the past years or are just never actually used. Also it has a generally very negatuve tone. Still, it's good to know the hidden traps in PHP and this article is a pretty comprehensive list of those.
+Keep in mind though that many of the things that this article points out are outdated and many of them have significantly improved over the past years or are just never actually used. Also it has a generally very negative tone. Still, it's good to know the hidden traps in PHP and this article is a pretty comprehensive list of those.

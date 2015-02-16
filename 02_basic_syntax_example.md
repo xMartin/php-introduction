@@ -43,7 +43,7 @@ The output should look like this:
 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
 ```
 
-I'll now go through that piece od code, explaining what each part does.
+I'll now go through that piece of code, explaining what each part does.
 
 ## The PHP Tag
 
@@ -51,7 +51,7 @@ I'll now go through that piece od code, explaining what each part does.
 <?php
 ```
 
-Every PHP file has to start with this line. Just put it right at the top every time. There may be no other characters before the PHP tag, not even whitespace.
+Every PHP file has to start with this line. Just put it right at the top every time. There may be no other characters before the PHP tag, not even white-space.
 
 ## Function definitions
 
@@ -123,7 +123,7 @@ define("MY_CONSTANT", 42);
 var_dump(MY_CONSTANT); //prints int(42)
 ```
 
-PHP has a lot of builtin constants, one of them is `PHP_EOL` which contains a string with a line ending.
+PHP has a lot of built-in constants, one of them is `PHP_EOL` which contains a string with a line ending.
 
 On some operating systems, line endings are different. By using `PHP_EOL` you can make sure to always use the correct one
 for the OS your program is running on.
@@ -191,7 +191,7 @@ array(3) {
 ```
 
 An array in PHP is a list of arbitrary values. Each value has an index that can be used to
-adress it:
+address it:
 
 ```php
 var_dump($foo[1]); //prints int(2)
@@ -233,8 +233,8 @@ There are a lot more but those will be covered in more detail later.
 
 **An important thing about comparison operators:**
 
-In most cases, use the type safe versions `===` and  `!==` to check for (un)equality.
-The reason for this is PHP's "type juggling" which we wil dedicate a separate chapter to.
+In most cases, use the type safe versions `===` and  `!==` to check for (in)equality.
+The reason for this is PHP's "type juggling" which we will dedicate a separate chapter to.
 
 ## Control flow
 

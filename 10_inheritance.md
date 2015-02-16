@@ -402,7 +402,7 @@ Fatal error: Call to private method Foo::a_private_method() from context 'Bar' i
 
 ---
 
-Objects can see other object's protected methods as long as their classes have a common ancenstor. They're "family" so to speak. Private methods are still off limits, though.
+Objects can see other object's protected methods as long as their classes have a common ancestor. They're "family" so to speak. Private methods are still off limits, though.
 
 ```php
 $bar->external_test($foo);
