@@ -40,6 +40,14 @@ Unicode strings still need special attention to handle them correctly.
 
 PHP is flawed, sure, just like most other languages/platforms. And just like the others, it's worth learning it.
 
+## So, why learn PHP?
+
+With countless alternatives to choose from, why should you learn PHP? Well, the most likely reason is that you have a project that you want to work on or a job that simply requires it. There are tons of PHP projects out there that are actively maintained and many companies that have been in web development for a while probably have PHP code that's actively in use.
+
+If you run into problems and need help, it's very likely, someone else has already asked your question on [StackOverflow](http://stackoverflow.com) and there are problably already very good answers that are still correct.
+
+The main upside of PHP however is operations. Since it has been in very wide spread use for such a long time, it's supported by practically every hosting company and running PHP on your own production server is a very well known and well documented topic. Also, PHP tends to be very stable in terms of backwards compatibility and not break existing code with its minor updates.
+
 # How to use this guide
 
 We will start with how to install PHP and Composer and then go through a small example program to get familiar with the syntax ad general look and feel of PHP.
