@@ -24,7 +24,7 @@ Support for MySQL and SQLite is built right into PHP. SQLite doesn't even requir
 
 ## Be wary. There be dragons.
 
-We've already seen a few places where PHP is kind of weird and sometimes just broken. That's the way it is right now, so you'll have to deal with it.
+We've already seen a few places where PHP is kind of weird and I'll be honest with you: Sometimes it's just horribly broken. That's the way it is right now, so you'll have to deal with it.
 
 There's a detailed article called ["PHP - a fractal of bad design"](http://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/) about the things that are bad and dangerous in PHP. I suggest you read it, now that you've seen some PHP code.
 
