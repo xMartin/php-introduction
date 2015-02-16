@@ -231,7 +231,7 @@ trait toHTML
     public function toHTML()
     {
         //"Parsedown" is a library for handling markdown, check it out: http://parsedown.org
-        $parser = new ParseDown();
+        $parser = new Parsedown();
         
         // we cast to string to execute the objects __toString() method
         // since we want to markdown representation.
