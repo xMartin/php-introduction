@@ -14,7 +14,7 @@ There are also other PHP frameworks that have a different approach. [Symfony](ht
 
 ## Learn about Databases
 
-Most web applications read from and write to some kind of database, most commonly relational databases like MySQL. But things non-relatinal DBs like CouchDB are often a good option. For most databases, there are packages available via Composer to communicate with them. Just try a search on [packagist.org](https://packagist.org).
+Most web applications read from and write to some kind of database, most commonly relational databases like MySQL. But things non-relational DBs like CouchDB are often a good option. For most databases, there are packages available via Composer to communicate with them. Just try a search on [packagist.org](https://packagist.org).
 
 ## Continue learning about PHP
 
