@@ -16,9 +16,11 @@ There are also other PHP frameworks that have a different approach. [Symfony](ht
 
 Most web applications read from and write to some kind of database, most commonly relational databases like MySQL. But things non-relational DBs like CouchDB are often a good option. For most databases, there are packages available via Composer to communicate with them. Just try a search on [packagist.org](https://packagist.org).
 
+Support for MySQL and SQLite is built right into PHP. SQLite doesn't even require a seperate DB installation, it stores everything in local files. SQLite is great to get started with relational databases. [The "Databeses" section on PHP The Right Way](http://www.phptherightway.com/#databases) is a good place to start.
+
 ## Continue learning about PHP
 
-[PHP the right way](http://www.phptherightway.com) is a great resource to get you started on a variety of topics. It's also a good reference to look things up.
+[PHP The Right Way](http://www.phptherightway.com) in general is a great resource to get you started on a variety of topics. It's also a good reference to look things up.
 
 ## Be wary. There be dragons.
 
