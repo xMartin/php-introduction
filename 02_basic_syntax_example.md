@@ -68,7 +68,7 @@ Functions have input values, called "arguments".
 Here, the function `foo` has two arguments `$bar` and `$batz`.
 
 Functions also have exactly one output value, it's called the "return value". This example function
-returns the sum if its two arguments.
+returns the sum of its two arguments.
 
 The function's "body", the code that it executes, is contained in curly braces. Because function
 definitions are not statements, they do not end with a semicolon.
@@ -80,7 +80,7 @@ definitions are not statements, they do not end with a semicolon.
 $n = 1;
 ```
 
-Variable names in PHP start with a `$` sign and may contain alphanumeric character and `_`.
+Variable names in PHP start with a `$` sign and may contain alphanumeric characters and `_`.
 They may not start with a number. There's no real standard on how variable names should be written but to
 distinguish them from other names, it's useful to write them in all lowercase and with underscores:
 
@@ -283,7 +283,7 @@ if ($a > $b) {
 
 ### For-loop
 
-For-loops are also common on other programming languages and usually have a similar syntax:
+For-loops are also common on other programming languages and usually have similar syntax:
 
 ```php
 for($i = 0; $i < 4; $i++) {
