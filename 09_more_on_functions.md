@@ -120,7 +120,7 @@ echo bar($foo) . PHP_EOL; // prints "43"
 echo $foo . PHP_EOL;      // still prints "42"
 ```
 
-The value `42` was copied into the function `bar()` and only that copy was modified into `43`. The value inside if `$foo` was not changed.
+The value `42` was copied into the function `bar()` and only that copy was modified into `43`. The value inside of `$foo` was not changed.
 
 Sometimes, it is necessary to circumvent this. You can pass a variable into  a function "by reference". That means, you give the actual variable, not a copy of its value, into a function so the function can modify it. Arguments that are passed "by reference" are marked with an `&`:
 
@@ -143,7 +143,7 @@ Now, the value in `$foo` has changed because it wasn't copied as it was passed i
 
 Some of PHP's built-in functions have "by reference" arguments, for example [`sort()`](http://php.net/manual/de/function.sort.php), [`reset()`](http://php.net/manual/de/function.reset.php) or [`shuffle()`](http://php.net/manual/de/function.shuffle.php).
 
-Usually it is not necessary to use "pass by reference" and it's often even dangerous as function suddenly have side effects that can be hard to predict but there are situations where it is useful. One of them is described later in this chapter.
+Usually it is not necessary to use "pass by reference" and it's often even dangerous as functions suddenly have side effects that can be hard to predict but there are situations where it is useful. One of them is described later in this chapter.
 
 **Important note: Objects are ALWAYS passed by reference! They are not automatically copied when passed as arguments!**
 
