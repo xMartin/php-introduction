@@ -49,7 +49,7 @@ Most modern web applications are designed with the ["Model View Controller Patte
 
 * **Controller**
 
-  A relatively thin layer that coordinate model and view according to incoming input.
+  A relatively thin layer that coordinates model and view according to incoming input.
 
 * **View**
 
@@ -124,4 +124,4 @@ Our Twig templates use a yet unfamiliar syntax: `{% extends ... %}`
 
 In `layout.twig` there's a `{% block ... %}` named "content" and it's empty. Any template that inherits from `layout.twig` can now also define a block with the same name to replace the empty block with actual content.
 
-This way we only have to write the `<!doctype html><html><head> ...` part of our HTML code one and can reuse it in all of our templates.
+This way we only have to write the `<!doctype html><html><head> ...` part of our HTML code once and can reuse it in all of our templates.
