@@ -50,12 +50,12 @@ The main upside of PHP however is operations. Since it has been in very wide spr
 
 # How to use this guide
 
-We will start with how to install PHP and Composer and then go through a small example program to get familiar with the syntax ad general look and feel of PHP.
+We will start with how to install PHP and Composer and then go through a small example program to get familiar with the syntax and general look and feel of PHP.
 
 Then we'll make a "Hello world" web application using a minimalist framework called "Silex". This will serve as an introduction on how to install and use third party dependencies.
 
 In the following chapters, we will explore the features of PHP in more detail.
-The chapters are intended to be read in the correct order since they built on previous chapters.
+The chapters are intended to be read in the correct order since they build on previous chapters.
 
 
 
