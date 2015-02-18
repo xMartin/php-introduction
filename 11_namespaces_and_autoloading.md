@@ -1,10 +1,10 @@
 # Namespaces and Autoloading
 
-There's more to a programming language than just the syntax and semantics of the language itself. There's usually also a built in library for the most common tasks and often countless third-party libraries that you can build upon. We already covered most of PHP's language core and some of the [included library of functions and classes](06_builtin_functions_and_classes.md).
+There's more to a programming language than just the syntax and semantics of the language itself. There's usually also a built-in library for the most common tasks and often countless third-party libraries that you can build upon. We already covered most of PHP's language core and some of the [included library of functions and classes](06_builtin_functions_and_classes.md).
 
 In the past, adding more libraries to your PHP project involved copying their code into your project and keeping track of everything yourself but those days are over! Now there's [Composer](https://getcomposer.org) which we already used to install the Silex framework in our previous examples.
 
-Composer not only managed your dependencies for your, it also gives you an easy way to make your own code available throughout your project. It's common practice now to have a `src` directory that contains all actual source code files of your application. Further, you should put every class in its own file, named like the class with `.php` at the end. Now this is where namespaces come in.
+Composer not only manages your dependencies for your, it also gives you an easy way to make your own code available throughout your project. It's common practice now to have a `src` directory that contains all actual source code files of your application. Further, you should put every class in its own file, named like the class with `.php` at the end. Now this is where namespaces come in.
 
 ## Namespaces
 
@@ -24,11 +24,11 @@ class Derp
 }
 ```
 
-Namespaces are kind of like directories for your code and they usually directly map to actual file directories, like this `MyProject\Foo\Derp" class that lives inside the file `src/MyProject/Foo/Derp.php`. Even the syntax is similar, namespaces just use a `\` as a separator instead of `/`.
+Namespaces are kind of like directories for your code and they usually directly map to actual file directories, like this `MyProject\Foo\Derp` class that lives inside the file `src/MyProject/Foo/Derp.php`. Even the syntax is similar, namespaces just use a `\` as a separator instead of `/`.
 
 Namespaces apply to the entire PHP file that contains the `namespace` declaration. All code in that file now is located in the `MyProject\Foo` namespace.
 
-Notice that there's no `src` namespace although we have a `src` directory. That's because the `src` directory contains the "global" namespace, the top level of all namespaces. Well, it doesn't yet, but Composer will fix that for us. For every project, we should have a `composer.json` file. Composer can help us creating it with `composer init`:
+Notice that there's no `src` namespace although we have a `src` directory. That's because the `src` directory contains the "global" namespace, the top level of all namespaces. Well, it doesn't yet, but Composer will fix that for us. For every project, we should have a `composer.json` file. Composer can help us create it with `composer init`:
 
 ```
 Package name (<vendor>/<name>) [lnwdr/my-project]:
@@ -56,7 +56,7 @@ Would you like to define your dev dependencies (require-dev) interactively [yes]
 Do you confirm generation [yes]? yes
 ```
 
-For a basic project you can leave most of the questions unanswered or use the default answers. No, let's see what's inside `composer.json`:
+For a basic project you can leave most of the questions unanswered or use the default answers. Now, let's see what's inside `composer.json`:
 
 ```json
 {
@@ -73,7 +73,7 @@ For a basic project you can leave most of the questions unanswered or use the de
 
 ### Autoloading
 
-The easiest way to make our `src` directory known to composer as the "place for everything" is to add this "autoload" section to `composer.json`:
+The easiest way to make our `src` directory known to Composer as "the place for everything" is to add this "autoload" section to `composer.json`:
 
 ```json
 {
