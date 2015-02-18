@@ -24,7 +24,7 @@ echo substr($str, 0, 1) . PHP_EOL; //echoes "�" instead of the correct "ä"
 echo mb_subtsr($str, 0, 1, "utf-8"); //echoes "ä" correctly with "utf-8" as encoding argument
 ```
 
-When using string functions with input that potentially has Unicode characters in it, always use the `mb_` version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues cause by not matching encodings. If you have to receive or send data to external systems in ad different encoding, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.
+When using string functions with input that potentially has Unicode characters in it, always use the `mb_` version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues caused by not matching encodings. If you have to receive or send data to external systems in different encodings, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.
 
 The `mb_` string functions are provided by a PHP extension called "mbstring", it is usually installed by default.
 
@@ -76,7 +76,7 @@ As object oriented style got more and more popular with PHP, new features have a
 
 ### `DateTime`
 
-A `DateTime` object represents a single point in time in PHP with up to microsecond precision. It enables you to reliably do date manipulations like "take NOW and add 423 days and 7 hours", correctly compare dates or describe and calculate time intervals like "the time span from NOW to the end of the year". Here's a few examples:
+A `DateTime` object represents a single point in time in PHP with up to microsecond precision. It enables you to reliably do date manipulations like "take NOW and add 423 days and 7 hours", correctly compare dates or describe and calculate time intervals like "the time span from NOW to the end of the year". Here are a few examples:
 
 *Note: Don't forget to set the timezone for your application with [`date_default_timezone_set()`][date_default_timezone_set].*
 
@@ -157,7 +157,7 @@ echo $diff->days . PHP_EOL;
 */
 ```
 
-**When doing any arithmetic with time or date values, always use the `DateTime` (and related) classes. There are so many edge cases in date/time calculations that you certainly don't want to to it yourself.**
+**When doing any arithmetic with time or date values, always use the `DateTime` (and related) classes. There are so many edge cases in date/time calculations that you certainly don't want to do it yourself.**
 
 
 [isset]: http://php.net/manual/en/function.isset.php
