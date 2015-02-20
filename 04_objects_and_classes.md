@@ -107,7 +107,7 @@ To access a property of an object, PHP uses the `->` operator, so `$my_address->
 
 ### Methods
 
-But setting every single property is tedious and not very easy to read. What, if we could set it all at once? We'll need to add something to the class to do that.
+But setting every single property is tedious and not very easy to read. What if we could set it all at once? We'll need to add something to the class to do that.
 
 ```php
 <?php
@@ -193,7 +193,7 @@ The output will remain the same again. But this time, we didn't need to call an 
 
 ## Visibility
 
-Right now everything in our `Address` objects is accessible from the outside. A piece of code that doesn't behave well could to this:
+Right now everything in our `Address` objects is accessible from the outside. A piece of code that doesn't behave well could do this:
 
 ```php
 function does_bad_things($address)

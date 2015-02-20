@@ -162,7 +162,7 @@ interface Document
 }
 ```
 
-This interface forces all classes that `implement` it to have these two methods. It doesn't care what the methods actually to, they just have to match the description in the interface. Now let's add that interface to our Article. I'll just write the `Article`class with empty methods now to save some space:
+This interface forces all classes that `implement` it to have these two methods. It doesn't care what the methods actually do, they just have to match the description in the interface. Now let's add that interface to our Article. I'll just write the `Article`class with empty methods now to save some space:
 
 ```php
 <?php
@@ -336,7 +336,7 @@ $foo = new Foo();
 $bar = new Bar();
 ```
 
-Remember, `$foo` in an instance if `Foo` and `$bar` in a `Bar` which inherits from `Foo`.
+Remember, `$foo` is an instance of `Foo` and `$bar` is a `Bar` which inherits from `Foo`.
 
 First, we'll try to run three methods on `$foo` from the outside. Then `$foo->foo_test()` runs three methods on `$foo` itself, `$bar->bar_test()` tries to do the same and `$bar->external_test($foo)` will try to run those methods on `$foo` but seen from inside `$bar`.
 

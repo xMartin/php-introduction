@@ -256,7 +256,7 @@ We can now replace the `var_export()` line in our URL handler with something els
     ]);
  ```
  
- Here's where the other two constant come into play. We pass their values into our template so we can use the configured date/time formats in Twig.
+ Here's where the other two constants come into play. We pass their values into our template so we can use the configured date/time formats in Twig.
  
  By registering the `TwigServiceProvider` we now have a Service for rendering Twig templates in `$app['twig']`. When we call its `render()` method with a template name and the data for that template, it returns the rendered HTML result.
  

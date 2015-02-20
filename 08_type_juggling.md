@@ -80,7 +80,7 @@ When we execute this program, no output is printed. But why?
 
 PHP didn't complain about comparing two incompatible types. It did something to the `'derp'` value in `$s`. When a value in PHP is used in a context that it normally wouldn't fit, PHP will try to convert the value into a type that is compatible with the attempted operation. In this case, we try to compare a string to an integer. PHP converts both values into integers to make the comparison possible. Since `'derp'` contains no digits that could be parsed as a number, PHP converts in into `0`.
 
-Now, the comparison in `42 < 0` which is `false`. That's why the `echo` line wasn't executed.
+Now, the comparison is `42 < 0` which is `false`. That's why the `echo` line wasn't executed.
 
 **This behavior, called "type juggling", "type coercion" or "implicit typecasting" is one of the major sources of bugs, security flaws and code maintainability issues in PHP. It's usually a good idea to avoid it.**
 
@@ -93,7 +93,7 @@ Most operators in PHP can cause type juggling. The main exception is `===`, the 
 **When checking two non-object values for equality, always use `===`.**
 
 
-Not only does it prevent hard to predict behavior it also makes it clear that you want to check for real equality in your code.
+Not only does it prevent hard to predict behavior, it also makes it clear that you want to check for real equality in your code.
 
 There are no type safe equivalents for the other comparison operators, like `<`, `>`, `<=` and `>=`. They always cause implicit type casting, sometimes in unexpected ways. For example, it can happen, that two strings are cast into integers or float when compared with these operators. In most cases, it's only safe to use them with integers. Floats are problematic for comparison operations due to their inherent imprecision.
 
