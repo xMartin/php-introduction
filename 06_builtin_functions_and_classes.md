@@ -205,7 +205,6 @@ echo $diff->days . PHP_EOL;
 
 [isset]: http://php.net/manual/en/function.isset.php
 [empty]: http://php.net/manual/en/function.empty.php
-[get_class]: http://php.net/manual/en/function.get_class.php
 [gettype]: http://php.net/manual/en/function.gettype.php
 [is_a]: http://php.net/manual/en/function.is_a.php
 
