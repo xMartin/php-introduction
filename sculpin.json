@@ -1,0 +1,19 @@
+{
+    "name": "berlinonline/php-introduction",
+    "description": "A short introduction to PHP web development",
+    "type": "website",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leon Weidauer",
+            "email": "leon@lnwdr.de",
+            "homepage": "http://www.lnwdr.de"
+        }
+    ],
+    "require": {
+        "components/foundation": "*"
+    },
+    "config": {
+        "component-dir": "source/components"
+    }
+}

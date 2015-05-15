@@ -1,0 +1,11 @@
+code {
+    overflow-x: scroll;
+}
+
+pre {
+    margin-bottom: 1.25em;
+}
+
+.main-section {
+    padding-top: 20px;
+}

@@ -1,0 +1,21 @@
+{% extends "body.twig" %}
+
+{% block tab_bar %}
+                <section class="middle tab-bar-section">
+                    <h1 class="title"> {{site.title}}</h1>
+                </section>
+{% endblock %}
+
+{% block inner %}
+            <aside class="left-off-canvas-menu">
+                {% include "toc.twig" with { class: "off-canvas-list"} %}
+            </aside>
+
+            <section class="main-section">
+                <div class="row">
+                    <div class="small-12 columns">
+                        {% block content_wrapper %}{% block content %}{% endblock %}{% endblock %}
+                    </div>
+                </div>
+            </section>
+{% endblock %}

@@ -1,0 +1,34 @@
+# The contents of this file are parsed and made available as
+# via `site.*`. So for example, {{ site.title }} can be used
+# in a template to get the contents of the `title` key.
+title: PHP Introduction
+subtitle: A short introduction to PHP web development
+
+toc:
+  - title: "Intro"
+    url: "/chapters/intro/"
+  - title: "Installing PHP"
+    url: "/chapters/installation/"
+  - title: "Basic Syntax"
+    url: "/chapters/basic_syntax/"
+  - title: "A Web Application"
+    url: "/chapters/a_web_application/"
+  - title: "Objects and Classes"
+    url: "/chapters/objects_and_classes/"
+  - title: "A Real Application"
+    url: "/chapters/a_real_application/"
+  - title: "Built-in Functions and Classes"
+    url: "/chapters/builtin_functions_and_classes/"
+  - title: "Arrays"
+    url: "/chapters/arrays/"
+  - title: "Type Juggling and Comparisons"
+    url: "/chapters/type_juggling/"
+  - title: "More On Functions"
+    url: "/chapters/more_on_functions/"
+  - title: "Inheritance"
+    url: "/chapters/inheritance/"
+  - title: "Namespaces and Autoloading"
+    url: "/chapters/namespaces_and_autoloading/"
+  - title: "All Of It"
+    url: "/chapters/all_of_it/"
+

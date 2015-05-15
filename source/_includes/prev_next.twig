@@ -1,0 +1,32 @@
+{% set prev = null %}
+{% set next = null %}
+{% for index, item in site.toc %}
+    {% if page.title == item.title %}
+        {% if index > 0 %}
+            {% set prev = site.toc[index-1] %}
+        {% endif %}
+        {% if index < site.toc|length - 1 %}
+            {% set next = site.toc[index+1] %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+<div class="row">
+    <div class="small-4 columns text-left">
+        {% if prev %}
+            <a href="{{prev.url}}">Previous</a>
+        {% else %}
+            &nbsp;
+        {% endif %}
+    </div>
+    <div class="small-4 columns text-center">
+        <a href="{{ site.url }}/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+        {% if next %}
+            <a href="{{next.url}}">Next</a>
+        {% else %}
+            &nbsp;
+        {% endif %}
+    </div>
+</div>
