@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "components/foundation": "*"
+        "components/foundation": "*",
+        "components/highlightjs": "*"
     },
     "config": {
         "component-dir": "source/components"
