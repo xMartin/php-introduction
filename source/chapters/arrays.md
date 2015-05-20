@@ -59,7 +59,7 @@ array(5) {
 
 Now, the array has the same values but the keys are no longer in ascending order. Also note, how PHP has converted some keys into integers although we specified two of them as strings. PHP will try to convert any array key into an integer. Only if that conversion does not work, it will leave it as a string as it did with the `"a"` key.
 
-We will talk about this implicit conversion of types [in the next chapter](/chapters/type_juggling) by the way.
+We will talk about this implicit conversion of types [in the next chapter]({{site.url}}chapters/type_juggling) by the way.
 
 To summarize, an array in PHP is an ordered sequence of elements, each which has a key and a value. The key can be either an `int` or a `string` and the value can be of an any type. The order of the sequence does NOT depend on the keys.
 

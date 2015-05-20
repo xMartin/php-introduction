@@ -1,4 +1,5 @@
 /output_dev
+/output_prod
 .DS_Store
 /source/components
 /.sculpin

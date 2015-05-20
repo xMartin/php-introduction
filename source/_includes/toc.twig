@@ -1,7 +1,7 @@
 <ul class="{{class}}">
 {% for item in  site.toc %}
     <li>
-        <a href="{{item.url}}">{{item.title}}</a>
+        <a href="{{site.url}}{{item.url}}">{{item.title}}</a>
     </li>
 {% endfor %}
 </ul>

@@ -38,7 +38,7 @@ Just a quick recap of what I did to set this project up:
     * `twig/twig` - templates
     * `symfony/finder` - searching for files
 1. composer install
-1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace](/chapters/namespaces_and_autoloading/#autoloading)
+1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace]({{site.url}}chapters/namespaces_and_autoloading/#autoloading)
 
 Now, there are some new concepts in this application. Let's talk about those.
 

@@ -4,7 +4,7 @@ layout: default
 ---
 
 This will be another exercise where we make a little web application. Again we'll use Silex as a framework.
-So first, repeat the steps from [chapter 03](/chapters/a_web_application/) to install Silex into a new directory.
+So first, repeat the steps from [chapter 03]({{site.url}}chapters/a_web_application/) to install Silex into a new directory.
 Every project should have its own directory so things don't get messy.
 
 Last time, our application just said "Hello World", now that's nice but not very useful. This time, we'll make an

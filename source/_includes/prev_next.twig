@@ -14,17 +14,17 @@
 <div class="row">
     <div class="small-4 columns text-left">
         {% if prev %}
-            <a href="{{prev.url}}">Previous</a>
+            <a href="{{site.url}}{{prev.url}}">Previous</a>
         {% else %}
             &nbsp;
         {% endif %}
     </div>
     <div class="small-4 columns text-center">
-        <a href="{{ site.url }}/">Index</a>
+        <a href="{{ site.url }}">Index</a>
     </div>
     <div class="small-4 columns text-right">
         {% if next %}
-            <a href="{{next.url}}">Next</a>
+            <a href="{{site.url}}{{next.url}}">Next</a>
         {% else %}
             &nbsp;
         {% endif %}
