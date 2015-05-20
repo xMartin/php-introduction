@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Basic Syntax &mdash; PHP Introduction &mdash; A short introduction to PHP web development</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/components/foundation/css/foundation.min.css" rel="stylesheet" type="text/css" />
+        <link href="/components/highlightjs/styles/default.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="/components/highlightjs/styles/github.css" />
+                                    </head>
+    <body>
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                                    <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                </section>
+                <section class="middle tab-bar-section">
+                    <h1 class="title">Basic Syntax &mdash; PHP Introduction</h1>
+                </section>
+                </nav>
+                            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list">
+    <li>
+        <a href="/chapters/intro/">Intro</a>
+    </li>
+    <li>
+        <a href="/chapters/installation/">Installing PHP</a>
+    </li>
+    <li>
+        <a href="/chapters/basic_syntax/">Basic Syntax</a>
+    </li>
+    <li>
+        <a href="/chapters/a_web_application/">A Web Application</a>
+    </li>
+    <li>
+        <a href="/chapters/objects_and_classes/">Objects and Classes</a>
+    </li>
+    <li>
+        <a href="/chapters/a_real_application/">A Real Application</a>
+    </li>
+    <li>
+        <a href="/chapters/builtin_functions_and_classes/">Built-in Functions and Classes</a>
+    </li>
+    <li>
+        <a href="/chapters/arrays/">Arrays</a>
+    </li>
+    <li>
+        <a href="/chapters/type_juggling/">Type Juggling and Comparisons</a>
+    </li>
+    <li>
+        <a href="/chapters/more_on_functions/">More On Functions</a>
+    </li>
+    <li>
+        <a href="/chapters/inheritance/">Inheritance</a>
+    </li>
+    <li>
+        <a href="/chapters/namespaces_and_autoloading/">Namespaces and Autoloading</a>
+    </li>
+    <li>
+        <a href="/chapters/all_of_it/">All Of It</a>
+    </li>
+</ul>
+            </aside>
+
+            <section class="main-section">
+                <div class="row">
+                    <div class="small-12 columns">
+                                                                                                                                        
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="/chapters/installation/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="/chapters/a_web_application/">Next</a>
+            </div>
+</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h1 id="basic-syntax">Basic Syntax</h1>
+
+<p>PHP's syntax borrows some concepts and styles from other languages, mostly C, Perl and Java.</p>
+
+<p>It uses "curly braces" ( <code>{}</code> ) to structure code, variable names start with a <code>$</code> sign and statements
+end with a semicolon.</p>
+
+<p>Here's a piece of example PHP code that computes the first 10
+<a href="http://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci Numbers</a> and prints them to the console.</p>
+
+<p>You can save this code as <code>fibonacci.php</code> and run it with <code>php fibonacci.php</code>.</p>
+
+<pre><code class="php">&lt;?php
+
+function fibonacci($count)
+{
+    if ($count &lt; 0) {
+        $count = 0;
+    }
+
+    $n1 = 0;
+    $n2 = 1;
+    $n = 1;
+    $numbers = [];
+
+    for ($i = 0; $i &lt; $count; $i++) {
+        $numbers[] = $n;
+        $n = $n1 + $n2;
+        $n1 = $n2;
+        $n2 = $n;
+    }
+
+    return $numbers;
+}
+
+echo implode(fibonacci(10), ", ") . PHP_EOL;
+</code></pre>
+
+<p>The output should look like this:</p>
+
+<pre><code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+</code></pre>
+
+<p>I'll now go through that piece of code, explaining what each part does.</p>
+
+<h2 id="the-php-tag">The PHP Tag</h2>
+
+<pre><code class="php">&lt;?php
+</code></pre>
+
+<p>Every PHP file has to start with this line. Just put it right at the top every time. There may be no other characters before the PHP tag, not even white-space.</p>
+
+<h2 id="function-definitions">Function definitions</h2>
+
+<pre><code class="php">function foo($bar, $batz)
+{
+    return $bar + $batz;
+}
+</code></pre>
+
+<p>A function is a piece of code that is given a name and is reusable.</p>
+
+<p>Functions have input values, called "arguments".
+Here, the function <code>foo</code> has two arguments <code>$bar</code> and <code>$batz</code>.</p>
+
+<p>Functions also have exactly one output value, it's called the "return value". This example function
+returns the sum of its two arguments.</p>
+
+<p>The function's "body", the code that it executes, is contained in curly braces. Because function
+definitions are not statements, they do not end with a semicolon.</p>
+
+<h2 id="variables">Variables</h2>
+
+<pre><code class="php">$n = 1;
+</code></pre>
+
+<p>Variable names in PHP start with a <code>$</code> sign and may contain alphanumeric characters and <code>_</code>.
+They may not start with a number. There's no real standard on how variable names should be written but to
+distinguish them from other names, it's useful to write them in all lowercase and with underscores:</p>
+
+<pre><code class="php">$my_new_variable = 42;
+</code></pre>
+
+<p>Every variable in PHP has a certain "visibility". Variables that are defined inside a function are only visible
+inside that function. Also variables from outside of a function are not visible on the inside.</p>
+
+<pre><code class="php">&lt;?php
+
+$foo = 23;
+
+function test()
+{
+    $foo = 42;
+    echo $foo . PHP_EOL; //will print "42"
+}
+
+echo $foo . PHP_EOL;     //will print "23"
+
+test();
+</code></pre>
+
+<p>The <code>$foo</code> variable inside the function is not the same a the one on the outside. The function
+creates a clear separation of those two scopes. That means, you can use variable names inside of functions without worrying,
+if they are already used somewhere else.</p>
+
+<h2 id="constants">Constants</h2>
+
+<p>Constants are containers for values, like variables, but they can only be set once.
+Their names are written in all upper case, alphanumeric characters and underscores.</p>
+
+<p><code>define()</code> is used to set a constant:</p>
+
+<pre><code class="php">define("MY_CONSTANT", 42);
+var_dump(MY_CONSTANT); //prints int(42)
+</code></pre>
+
+<p>PHP has a lot of built-in constants, one of them is <code>PHP_EOL</code> which contains a string with a line ending.</p>
+
+<p>On some operating systems, line endings are different. By using <code>PHP_EOL</code> you can make sure to always use the correct one
+for the OS your program is running on.</p>
+
+<h2 id="primitive-types">Primitive Types</h2>
+
+<p>Every value in PHP has a type. There are eight different basic types, also called "primitive" types.</p>
+
+<p>Here are a few of them:</p>
+
+<h3 id="boolean">Boolean</h3>
+
+<pre><code class="php">var_dump(true);  //prints bool(true)
+var_dump(false); //prints bool(false)
+</code></pre>
+
+<p>Boolean values are either <code>true</code>or <code>false</code>. They are used for simple yes/no decisions.</p>
+
+<p>For example, the comparison operators like <code>===</code>, <code>&gt;</code>, <code>&lt;=</code>, etc. return boolean values.</p>
+
+<h3 id="integer">Integer</h3>
+
+<pre><code class="php">var_dump(42); //prints int(42)
+</code></pre>
+
+<p>Integers are whole numbers, positive and negative.</p>
+
+<h3 id="floating-point-number">Floating Point Number</h3>
+
+<pre><code class="php">var_dump(23.5); //prints float(23.5)
+</code></pre>
+
+<p>"Floats" are numbers with decimal fractions, also positive and negative.</p>
+
+<h3 id="string">String</h3>
+
+<pre><code class="php">var_dump("foobar"); //prints string(6) "foobar"
+var_dump('derp');   //prints string(4) "derp"
+</code></pre>
+
+<p>A string is a list of characters that usually form a piece of text.</p>
+
+<h3 id="array">Array</h3>
+
+<pre><code class="php">$foo = [1,2,3];
+
+var_dump($foo);
+
+/* prints:
+array(3) {
+ [0]=&gt;
+ int(1)
+ [1]=&gt;
+ int(2)
+ [2]=&gt;
+ int(3)
+}
+*/
+</code></pre>
+
+<p>An array in PHP is a list of arbitrary values. Each value has an index that can be used to
+address it:</p>
+
+<pre><code class="php">var_dump($foo[1]); //prints int(2)
+</code></pre>
+
+<p>A new element is added to the end of an array like this:</p>
+
+<pre><code class="php">$foo = [1,2,3];
+$foo[] = 4;
+
+var_dump($foo);
+
+/* prints:
+array(3) {
+ [0]=&gt;
+ int(1)
+ [1]=&gt;
+ int(2)
+ [2]=&gt;
+ int(3)
+ [3]=&gt;
+ int(4)
+}
+*/
+</code></pre>
+
+<p>Arrays also have other uses in PHP, but those will be covered later.</p>
+
+<h2 id="operators">Operators</h2>
+
+<p>Our example code only uses a few operators:</p>
+
+<p><a href="http://php.net/manual/en/language.operators.arithmetic.php">Arithmetic Operators</a>
+<a href="http://php.net/manual/en/language.operators.string.php">String Operators</a>
+<a href="http://php.net/manual/en/language.operators.comparison.php">Comparison Operators</a></p>
+
+<p>There are a lot more but those will be covered in more detail later.</p>
+
+<p><strong>An important thing about comparison operators:</strong></p>
+
+<p>In most cases, use the type safe versions <code>===</code> and  <code>!==</code> to check for (in)equality.
+The reason for this is PHP's "type juggling" which we will dedicate a separate chapter to.</p>
+
+<h2 id="control-flow">Control flow</h2>
+
+<p>Our example uses two control flow structures: an if-condition and a for-loop.</p>
+
+<h3 id="if-condition">If-condition</h3>
+
+<p>Conditions are used whenever your program needs to decide what to do based on the value of an expression.</p>
+
+<pre><code class="php">$a = 42;
+$b = 23;
+
+if ($a &gt; $b) {
+    echo "a is bigger than b" . PHP_EOL;
+}
+</code></pre>
+
+<p>There may also be an <code>else</code> part:</p>
+
+<pre><code class="php">$a = 42;
+$b = 23;
+
+if ($a &gt; $b) {
+    echo "a is bigger than b" . PHP_EOL;
+} else {
+    echo "a is smaller than b" . PHP_EOL;
+}
+</code></pre>
+
+<p>Or multiple condition checks:</p>
+
+<pre><code class="php">$a = 42;
+$b = 23;
+
+if ($a &gt; $b) {
+    echo "a is bigger than b" . PHP_EOL;
+} else if ($a === $b) {
+    echo "a is equal to b" . PHP_EOL;
+} else {
+    echo "a is smaller than b" . PHP_EOL;
+}
+</code></pre>
+
+<h3 id="for-loop">For-loop</h3>
+
+<p>For-loops are also common on other programming languages and usually have similar syntax:</p>
+
+<pre><code class="php">for($i = 0; $i &lt; 4; $i++) {
+    echo $i . PHP_EOL;
+}
+
+/* prints:
+0
+1
+2
+3
+4
+*/
+</code></pre>
+
+<p>In the for loop's head, there are three expressions:</p>
+
+<ol>
+<li><code>$i = 0</code>: This is executed once at the start of the loop.</li>
+<li><code>$i &lt; 4</code>: This is checked before every iteration of the loop. The loop will iterate further, if this is <code>true</code>.</li>
+<li><code>$i++</code>: This is executed after each iteration of the loop.</li>
+</ol>
+
+<p>The code inside the <code>{}</code> is called the loop's "body" and is executed on each iteration.</p>
+
+<h2 id="complex-expressions">Complex Expressions</h2>
+
+<p>The last line of our example has a more complex expression:</p>
+
+<pre><code class="php">echo implode(fibonacci(10), ", ") . PHP_EOL;
+</code></pre>
+
+<p>The <code>implode()</code> function is a built-in function of PHP.
+It takes an array and a string as arguments and returns a single string:</p>
+
+<pre><code class="php">echo implode([1,2,3], ", "); //prints 1, 2, 3
+echo implode([1,2,3], "/");  //prints 1/2/3
+</code></pre>
+
+<p>So, the last line executes our <code>fibonacci()</code> function, which returns an array of 10 integer numbers.</p>
+
+<p>That array is then <code>implode</code>d into a comma-separated string and printed with a line ending at the end.</p>
+
+<hr />
+
+<p>That was a quick intro into some of PHP's most common syntax elements.</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <hr>
+                                                                                                                                        
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="/chapters/installation/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="/chapters/a_web_application/">Next</a>
+            </div>
+</div>
+                    </div>
+                </div>
+            </section>
+
+                <a class="exit-off-canvas"></a>
+            </div>
+        </div>
+
+                <script src="/components/jquery/jquery.min.js"></script>
+        <script src="/components/foundation/js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+        <script src="/components/highlightjs/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+            </body>
+</html>
+
