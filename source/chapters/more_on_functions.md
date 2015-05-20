@@ -3,7 +3,7 @@ title: More On Functions
 layout: default
 ---
 
-We already covered the basics about functions in [basic syntax](02_basic_syntax_example.md#function-definitions).
+We already covered the basics about functions in [basic syntax](/chapters/basic_syntax/#function-definitions).
 Now we're going to get into more detail about them.
 
 ## Type hinting
@@ -63,7 +63,7 @@ These errors can be caught like other exceptions. We will cover exception handli
 This ensures that a function can only be called with arguments of the correct type as long as the type is `array` or a class.
 Because of this, it's often beneficial in PHP to wrap primitive values into objects so that they can be type hinted.
 
-Type hints can prevent many of the [issues caused by PHP's type system](08_type_juggling.md) introduced in the previous chapter.
+Type hints can prevent many of the [issues caused by PHP's type system](/chapters/type_juggling) introduced in the previous chapter.
 
 ## Default values for arguments
 

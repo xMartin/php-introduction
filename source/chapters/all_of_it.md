@@ -26,7 +26,7 @@ This project will use most of the things that we covered in the past 11 chapters
 * TWIG templates
   * template inheritance
 
-The complete code, along with some sample data can be found [here](examples/12). We won't discuss every piece of it in this chapter, just the parts that are new so read through all of the code carefully, look up things that are not clear, use the PHP manual, find documentation on the used third party components online. This is where the training wheels come off.
+The complete code, along with some sample data can be found [here]({{site.github_base_url}}examples/12). We won't discuss every piece of it in this chapter, just the parts that are new so read through all of the code carefully, look up things that are not clear, use the PHP manual, find documentation on the used third party components online. This is where the training wheels come off.
 
 Just a quick recap of what I did to set this project up:
 
@@ -38,7 +38,7 @@ Just a quick recap of what I did to set this project up:
     * `twig/twig` - templates
     * `symfony/finder` - searching for files
 1. composer install
-1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace](11_namespaces_and_autoloading.md#autoloading)
+1. make an 'src/ImageDemo/' directory and [register `src` as the root namespace](/chapters/namespaces_and_autoloading/#autoloading)
 
 Now, there are some new concepts in this application. Let's talk about those.
 

@@ -216,7 +216,7 @@ class Article implements Document
 }
 ```
 
-Now PHP doesn't complain anymore and since interfaces also work with [type hinting](09_more_on_functions.md#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
+Now PHP doesn't complain anymore and since interfaces also work with [type hinting](/chapters/more_on_functions/#type-hinting), any part of our application that expects a `Document` can now use it as a type hint without knowing about all the different kinds of documents. This way, we could later add more classes that implement the `Document` interface and the functions that are type hinted with it will still work as long as they as well adhere to the "contract" that is set up by the interface.
 
 
 ## Traits
@@ -282,7 +282,7 @@ echo $article->toHTML();
 
 ## Visibility and inheritance
 
-The [visibility modifiers](https://github.com/lnwdr/php-introduction/blob/master/04_objects_and_classes.md#visibility) `public`, `protected` and `private` play an important role in inehritance in PHP.
+The [visibility modifiers](/chapters/objects_and_classes/#visibility) `public`, `protected` and `private` play an important role in inehritance in PHP.
 
 Back in chapter 4 we established that
 

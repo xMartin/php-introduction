@@ -4,6 +4,8 @@
 title: PHP Introduction
 subtitle: A short introduction to PHP web development
 
+github_base_url: "https://github.com/lnwdr/php-introduction/tree/master/"
+
 toc:
   - title: "Intro"
     url: "/chapters/intro/"
