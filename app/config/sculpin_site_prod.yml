@@ -1,1 +1,4 @@
+imports:
+  - sculpin_site.yml
+
 url: "http://lnwdr.github.io/php-introduction/"

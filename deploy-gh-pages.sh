@@ -8,14 +8,15 @@ if [ -d output_prod ]; then rm -rf output_prod; fi
 git clone $REMOTE output_prod
 
 cd output_prod
-git checkout -b gh-pages
+git checkout -b gh-pages origin/gh-pages
+git pull --rebase
 rm -rf *
 cd ..
 sculpin generate --env=prod
 cd output_prod
 git add -A .
 git commit -m "gh-pages deploy $DATE"
-#git push origin gh-pages
+git push origin gh-pages
 cd ..
 
 
