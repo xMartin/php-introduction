@@ -14,14 +14,14 @@ Most of that resentment probably comes from a time,
 somewhere around the early 2000s, when PHP was the only option
 in server-side web development that people had. Web hosting
 companies didn't usually offer any alternatives and PHP
-was the only language of it's that you could find
+was the only language of it's kind that you could find
 substantial helpful resources on the web.
 
 Back then, PHP 4 was the current major version and it was indeed not a good
 language. It's object system was rudimentary, it's APIs were inconsistent because
 over the years, people had added features to it without adhering to a consistent style.
 
-When Ruby (mostly through Rails) became popular, many people left PHP and never looked back. So now, a lot of people compare the languages and frameworks they use today, in 2015, with what they used in PHP around 2006, almost a decade years ago.
+When Ruby (mostly through Rails) became popular, many people left PHP and never looked back. So now, a lot of people compare the languages and frameworks they use today, in 2015, with what they used in PHP around 2006, almost a decade ago.
 
 So much has changed since then ...
 
