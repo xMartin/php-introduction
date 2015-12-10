@@ -1,0 +1,23 @@
+code {
+    overflow-x: scroll;
+}
+
+pre {
+    margin-bottom: 1.25em;
+}
+
+.main-section {
+    padding-top: 20px;
+}
+
+.main-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.main-footer li {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A Web Application &mdash; PHP Introduction &mdash; A short introduction to PHP web development</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://berlinonline.github.io/php-introduction//components/foundation/css/foundation.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://berlinonline.github.io/php-introduction//components/highlightjs/styles/default.css" rel="stylesheet" type="text/css" />
+        <link href="http://berlinonline.github.io/php-introduction//css/style.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="http://berlinonline.github.io/php-introduction//components/highlightjs/styles/github.css" />
+                                    </head>
+    <body>
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                                    <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                </section>
+                <section class="middle tab-bar-section">
+                    <h1 class="title">A Web Application &mdash; PHP Introduction</h1>
+                </section>
+                </nav>
+                            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list">
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/intro/">Intro</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/installation/">Installing PHP</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/basic_syntax/">Basic Syntax</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/a_web_application/">A Web Application</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/objects_and_classes/">Objects and Classes</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/a_real_application/">A Real Application</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/builtin_functions_and_classes/">Built-in Functions and Classes</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/arrays/">Arrays</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/type_juggling/">Type Juggling and Comparisons</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/more_on_functions/">More On Functions</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/inheritance/">Inheritance</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/namespaces_and_autoloading/">Namespaces and Autoloading</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/all_of_it/">All Of It</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/where_to_go_from_here/">Where To Go From Here</a>
+    </li>
+</ul>
+            </aside>
+
+            <section class="main-section">
+                <div class="row">
+                    <div class="small-12 columns">
+                                                                                                                                            
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/basic_syntax/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="http://berlinonline.github.io/php-introduction/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/objects_and_classes/">Next</a>
+            </div>
+</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <p>In this chapter, we will start right away with a web application.
+After all, that's what PHP is almost exclusively used for.</p>
+
+<h2 id="preparation">Preparation</h2>
+
+<p>You will need a new directory for this. Also, copy over the <code>composer</code> file from chapter one
+so you can use it here as well.</p>
+
+<p>Change into that new directory and run <code>./composer init</code></p>
+
+<p>First it will ask you for some details:</p>
+
+<pre><code>  Welcome to the Composer config generator
+
+
+
+This command will guide you through creating your composer.json config.
+
+Package name (&lt;vendor&gt;/&lt;name&gt;) []:
+Description []:
+Author []:
+Minimum Stability []:
+License []:
+</code></pre>
+
+<p>You can leave all of those at their default values or leave them blank.
+They only matter, if you intend to publish your project.</p>
+
+<p>Then, it will ask, if you want to define your dependencies interactively.</p>
+
+<p>Answer <code>yes</code>, search for <code>"silex"</code> and pick the one called <code>silex/silex</code> from the list,
+it should be the top entry with index <code>0</code>. Leave the version constraint question blank.</p>
+
+<pre><code>Would you like to define your dependencies (require) interactively [yes]?
+Search for a package []: silex
+
+Found 15 packages matching silex
+
+   [0] silex/silex
+   [1] silex/web-profiler
+   [2] silex/ckan_client
+   [3] jdesrosiers/silex-cors-provider
+   [4] bernard/silex
+   [5] mheap/silex-assetic
+   [6] gigablah/silex-oauth
+   [7] neutron/silex-imagine-provider
+   [8] guzzle/silex-provider
+   [9] sorien/silex-dbal-profiler
+  [10] jasongrimes/silex-simpleuser
+  [11] silex/api
+  [12] macedigital/silex-jms-serializer
+  [13] mheap/silex-memcache
+  [14] herrera-io/silex-pdo
+
+Enter package # to add, or the complete package name if it is not listed []: 0
+Enter the version constraint to require (or leave blank to use the latest version) []:
+Using version ~1.2 for silex/silex
+Search for a package []:
+Would you like to define your dev dependencies (require-dev) interactively [yes]? no
+</code></pre>
+
+<p>When composer asks for a search term again, just hit ENTER,
+and answer the question for dev-dependencies with <code>no</code>.</p>
+
+<p>Composer will now ask for a final confirmation of the data it just collected. Just hit ENTER.</p>
+
+<pre><code>Do you confirm generation [yes]?
+</code></pre>
+
+<p>Now run <code>./composer install</code>. Composer will now download some libraries. This might take a moment.</p>
+
+<p>Afterwards, there should be a new directory called <code>vendor</code>. That's where composer puts all dependencies.</p>
+
+<h2 id="getting-it-started">Getting it started</h2>
+
+<p>Create a new file, called <code>index.php</code> with the following content:</p>
+
+<pre><code class="php">&lt;?php
+
+require "vendor/autoload.php";
+
+$app = new Silex\Application();
+
+$app-&gt;get("/", function(){
+    return "Hello world!";
+});
+
+$app-&gt;run();
+</code></pre>
+
+<p>Now run <code>php -S localhost:8000 index.php</code> from your terminal
+and open <code>http://localhost:8000/</code> in your web browser. You should see this:</p>
+
+<pre><code>Hello World!
+</code></pre>
+
+<h2 id="what-just-happened%3F">What just happened?</h2>
+
+<p>We just created a web application that runs on your computer and answers every request with "Hello World!".</p>
+
+<p>Using Composer, we downloaded an application framework called "silex". Silex helps us handle web requests
+without needing to do much. So, how does it work?</p>
+
+<p>First, we need to tell PHP where it can find all the dependencies that we just downloaded.</p>
+
+<pre><code class="php">require "vendor/autoload.php";
+</code></pre>
+
+<p>When we ran <code>./composer install</code> it created an <code>autoload.php</code> file inside the <code>vendor</code> directory.
+That file contains instructions for PHP how to find Silex and all other dependencies.</p>
+
+<p>The <code>require</code> keyword is used to load another PHP file into our program. After that, PHP knows where to find everything.</p>
+
+<p>Next, we create an <code>Application</code> object. PHP is also an object oriented language and it uses a
+class based object system, like Java or Ruby. Classes are organized into "namespaces" to prevent multiple
+classes from having the same name. Silex has it's own namespace <code>Silex</code> and to get the <code>Application</code> class from that
+namespace we use <code>Silex\Application</code>. Nested namespaces are separated with a <code>\</code> in PHP.</p>
+
+<p>To make a new object from a class, we use the <code>new</code> keyword:</p>
+
+<pre><code class="php">$app = new Silex\Application();
+</code></pre>
+
+<p>The <code>()</code> at the end indicate that this is in fact a function call and that it can accept arguments. This one doesn't, though.</p>
+
+<p>Now we tell our Silex application what URLs we want it to respond to. Our example only uses the <code>/</code> URL so far.</p>
+
+<pre><code class="php">$app-&gt;get("/", function(){
+    return "Hello world!";
+});
+</code></pre>
+
+<p>This is a method call. Methods are functions that belong to an object. In this case <code>get()</code> is a method of <code>$app</code>.
+PHP uses the <code>-&gt;</code> operator to address methods and properties of objects.</p>
+
+<p>This <code>get()</code> method accepts two arguments: The URL that our app should respond to and a function. Functions in PHP can
+also be used anonymously. Now, when a user sends a request for <code>/</code> to our application, it will execute this anonymous function
+and respond with whatever that function returned.</p>
+
+<p>In this case, it just always returns <code>"Hello World!"</code>. Silex takes care of sending that response back to the browser for us.</p>
+
+<p>Finally, after we have set up our application, we launch it with another method call <code>$app-&gt;run()</code>
+and Silex handles everything from there.</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <hr>
+                                                                                                                                            
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/basic_syntax/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="http://berlinonline.github.io/php-introduction/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/objects_and_classes/">Next</a>
+            </div>
+</div>
+                    </div>
+                </div>
+            </section>
+
+                <div class="row">
+                    <div class="small-12 columns">
+                        <footer class="main-footer">
+                            <nav><ul class="inline-list">
+                                    <li><a href="http://www.lnwdr.de">Author: Leon Weidauer</a></li>
+                                    <li>
+                                        <a href="https://www.github.com/berlinonline/php-introduction">PHP Introduction on Github</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.berlinonline.net">BerlinOnline Stadtportal GmbH & Co. KG</a>
+                                    </li>
+                            </ul></nav>
+                        </footer>
+                </div>
+                <a class="exit-off-canvas"></a>
+            </div>
+        </div>
+
+                <script src="http://berlinonline.github.io/php-introduction//components/jquery/jquery.min.js"></script>
+        <script src="http://berlinonline.github.io/php-introduction//components/foundation/js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+        <script src="http://berlinonline.github.io/php-introduction//components/highlightjs/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+            </body>
+</html>
+

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Built-in Functions and Classes &mdash; PHP Introduction &mdash; A short introduction to PHP web development</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://berlinonline.github.io/php-introduction//components/foundation/css/foundation.min.css" rel="stylesheet" type="text/css" />
+        <link href="http://berlinonline.github.io/php-introduction//components/highlightjs/styles/default.css" rel="stylesheet" type="text/css" />
+        <link href="http://berlinonline.github.io/php-introduction//css/style.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="stylesheet" href="http://berlinonline.github.io/php-introduction//components/highlightjs/styles/github.css" />
+                                    </head>
+    <body>
+        <div class="off-canvas-wrap" data-offcanvas>
+            <div class="inner-wrap">
+                <nav class="tab-bar">
+                                    <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+                </section>
+                <section class="middle tab-bar-section">
+                    <h1 class="title">Built-in Functions and Classes &mdash; PHP Introduction</h1>
+                </section>
+                </nav>
+                            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list">
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/intro/">Intro</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/installation/">Installing PHP</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/basic_syntax/">Basic Syntax</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/a_web_application/">A Web Application</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/objects_and_classes/">Objects and Classes</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/a_real_application/">A Real Application</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/builtin_functions_and_classes/">Built-in Functions and Classes</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/arrays/">Arrays</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/type_juggling/">Type Juggling and Comparisons</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/more_on_functions/">More On Functions</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/inheritance/">Inheritance</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/namespaces_and_autoloading/">Namespaces and Autoloading</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/all_of_it/">All Of It</a>
+    </li>
+    <li>
+        <a href="http://berlinonline.github.io/php-introduction/chapters/where_to_go_from_here/">Where To Go From Here</a>
+    </li>
+</ul>
+            </aside>
+
+            <section class="main-section">
+                <div class="row">
+                    <div class="small-12 columns">
+                                                                                                                                            
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/a_real_application/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="http://berlinonline.github.io/php-introduction/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/arrays/">Next</a>
+            </div>
+</div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <p>PHP comes with a pretty large set of features that are already built into it. Most of them are available as plain functions that can be called from anywhere in your code. This is a big difference to languages where the standard library is completely organized into modules and classes. When PHP first became really popular, object oriented programming was not nearly as widely adopted as today and PHP adopted the style of the C programming language that also uses globally available functions. Later, mostly after PHP 5 was widely is use, some of the core functionality was also made available via classes, the probably most common example being the <a href="http://php.net/manual/en/class.datetime.php"><code>DateTime</code></a> class.</p>
+
+<p>In today's PHP, the "old way" of just calling functions is still available and it's often the only way to access a feature of the PHP runtime. Some things have also gotten object oriented API's (like <a href="http://php.net/manual/en/class.datetime.php"><code>DateTime</code></a>) and some new features are only available as object oriented APIs like the classes from the <a href="http://php.net/manual/en/book.spl.php">SPL (Standard PHP Library)</a>.</p>
+
+<h2 id="built-in-functions">Built-in Functions</h2>
+
+<p>In the previous chapter, we already encountered <a href="http://php.net/manual/en/function.array-map.php"><code>array_map()</code></a> and <a href="http://php.net/manual/en/function.usort.php"><code>usort()</code></a>. Both are functions that provide common operations on arrays. The PHP manual has a complete list of <a href="http://php.net/manual/en/ref.array.php">PHP's array functions</a>.</p>
+
+<p>A common source of errors and annoyance is that the arguments of these functions are not always consistent. For example, <a href="http://php.net/manual/en/function.array-map.php"><code>array_map()</code></a> expects the first argument to be a function and the second to be an array while <a href="http://php.net/manual/en/function.usort.php"><code>usort()</code></a> expects them the other way around. <a href="http://php.net/manual/en/function.array-reduce.php"><code>array_reduce()</code></a> also expects the callback function as the second argument.</p>
+
+<p>Another inconsistency is in the function names. Some are written with underscores, others in one word, for example <a href="http://php.net/manual/en/function.get-class.php"><code>get_class()</code></a> and <a href="http://php.net/manual/en/function.gettype.php"><code>gettype()</code></a>.</p>
+
+<p>The reason for this is that for a long time, people have added features to PHP without worrying about consistency of the APIs and to maintain backwards compatibility this can't be changed easily anymore. You will need to pay close attention to the order of arguments for PHP's built-in functions.</p>
+
+<h3 id="string-functions">String functions</h3>
+
+<p>PHP has a lot of functions to handle strings. The problem with them is that most of them don't work well with Unicode strings. Take <a href="http://php.net/manual/en/function.substr.php"><code>substr()</code></a> for example, it's supposed to extract a part of a string but when we use it with something like German umlauts, it messes up the characters:</p>
+
+<pre><code class="php">$str = "äöü";
+echo substr($str, 0, 1) . PHP_EOL; //echoes "�" instead of the correct "ä"
+echo mb_subtsr($str, 0, 1, "utf-8"); //echoes "ä" correctly with "utf-8" as encoding argument
+</code></pre>
+
+<p>When using string functions with input that potentially has Unicode characters in it, always use the <code>mb_</code> version of it, if there is one, and by default, you should use "utf-8" as your encoding throughout your application to avoid any issues caused by not matching encodings. If you have to receive or send data to external systems in different encodings, convert the encoding right at the edges of your application and keep everything as UTF-8 internally.</p>
+
+<p>The <code>mb_</code> string functions are provided by a PHP extension called "mbstring", it is usually installed by default.</p>
+
+<p>These are some of the most commonly used string functions. You should definitely read about those:</p>
+
+<ul>
+<li><a href="http://php.net/manual/en/function.mb-substr.php"><code>mb_substr()</code></a></li>
+<li><a href="http://php.net/manual/en/function.mb-strpos.php"><code>mb_strpos()</code></a></li>
+<li><a href="http://php.net/manual/en/function.mb-strtolower.php"><code>mb_strtolower()</code></a> and <a href="http://php.net/manual/en/function.mb-strtolower.php"><code>mb_strtoupper()</code></a></li>
+<li><a href="http://php.net/manual/en/function.sprintf.php"><code>sprintf()</code></a></li>
+<li><a href="http://php.net/manual/en/function.trim.php"><code>trim()</code></a>, <a href="http://php.net/manual/en/function.rtrim.php"><code>rtrim()</code></a> and <a href="http://php.net/manual/en/function.ltrim.php"><code>ltrim()</code></a></li>
+<li><a href="http://php.net/manual/en/function.str_pad.php"><code>str_pad()</code></a></li>
+</ul>
+
+<h3 id="array-functions">Array functions</h3>
+
+<p>Apart from string operation, handling arrays is hugely important in PHP. We will see in one of the chapters, why. Most array operations are available as functions in PHP. Here are some of the most used ones:</p>
+
+<ul>
+<li><a href="http://php.net/manual/en/function.array-map.php"><code>array_map()</code></a></li>
+<li><a href="http://php.net/manual/en/function.sort.php"><code>sort()</code></a>, <a href="http://php.net/manual/en/function.usort.php"><code>usort()</code></a> and <a href="http://php.net/manual/en/function.ksort.php"><code>ksort()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-filter.php"><code>array_filter()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-push.php"><code>array_push()</code></a>, <a href="http://php.net/manual/en/function.array-pop.php"><code>array_pop()</code></a>, <a href="http://php.net/manual/en/function.array-shift.php"><code>array_shift()</code></a> and <a href="http://php.net/manual/en/function.array-unshift.php"><code>array_unshift()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-key-exists.php"><code>array_key_exists()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-merge.php"><code>array_merge()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-slice.php"><code>array_slice()</code></a></li>
+<li><a href="http://php.net/manual/en/function.count.php"><code>count()</code></a></li>
+<li><a href="http://php.net/manual/en/function.array-values.php"><code>array_values()</code></a> and <a href="http://php.net/manual/en/function.array-keys.php"><code>array_keys()</code></a></li>
+<li><a href="http://php.net/manual/en/function.explode.php"><code>explode()</code></a> and <a href="http://php.net/manual/en/function.implode.php"><code>implode()</code></a></li>
+</ul>
+
+<h3 id="file-io-functions">File IO functions</h3>
+
+<p>Reading and writing files is a very common task in almost any programming language. PHP has several ways of doing that.</p>
+
+<p>The simplest way is to use <a href="http://php.net/manual/en/function.file-get-contents.php"><code>file_get_contents()</code></a> and <a href="http://php.net/manual/en/function.file-put-contents.php"><code>file_put_contents()</code></a>. These two function read and write entire files from/into a string. They are very convenient but can cause problems with larger files because they load the entire contents of the file into memory at once.</p>
+
+<p>There are also <a href="http://php.net/manual/en/function.fopen.php"><code>fopen()</code></a>, <a href="http://php.net/manual/en/function.fread.php"><code>fread()</code></a>, <a href="http://php.net/manual/en/function.fwrite.php"><code>fwrite()</code></a> and <a href="http://php.net/manual/en/function.fclose.php"><code>fclose()</code></a>. They provide far more control over how files are read/written. There will be a dedicated chapter on file IO where we explore these in more detail.</p>
+
+<h3 id="other-functions">Other functions</h3>
+
+<p>These are a few more commonly used functions that you'll probably need often:</p>
+
+<ul>
+<li><a href="http://php.net/manual/en/function.isset.php"><code>isset()</code></a></li>
+<li><a href="http://php.net/manual/en/function.empty.php"><code>empty()</code></a></li>
+<li><a href="http://php.net/manual/en/function.get-class.php"><code>get_class()</code></a></li>
+<li><a href="http://php.net/manual/en/function.gettype.php"><code>gettype()</code></a></li>
+<li><a href="http://php.net/manual/en/function.is_a.php"><code>is_a()</code></a> and <a href="http://php.net/manual/en/ref.var.php">the other <code>is_...()</code> functions</a></li>
+</ul>
+
+<h2 id="builtin-classes">Builtin Classes</h2>
+
+<p>As object oriented style got more and more popular with PHP, new features have also gotten class based APIs. The most common one being <a href="http://php.net/manual/en/class.datetime.php"><code>DateTime</code></a> and its related classes.</p>
+
+<h3 id="%60datetime%60"><code>DateTime</code></h3>
+
+<p>A <code>DateTime</code> object represents a single point in time in PHP with up to microsecond precision. It enables you to reliably do date manipulations like "take NOW and add 423 days and 7 hours", correctly compare dates or describe and calculate time intervals like "the time span from NOW to the end of the year". Here are a few examples:</p>
+
+<p><em>Note: Don't forget to set the timezone for your application with <a href="http://php.net/manual/en/function.date-default-timezone-set.php"><code>date_default_timezone_set()</code></a>.</em></p>
+
+<pre><code class="php">$towel_day = new DateTime("2015-05-25"); //http://en.wikipedia.org/wiki/Towel_Day
+var_dump($towel_day);
+/* prints:
+object(DateTime)#1 (3) {
+  ["date"]=&gt;
+  string(26) "2015-05-25 00:00:00.000000"
+  ["timezone_type"]=&gt;
+  int(3)
+  ["timezone"]=&gt;
+  string(13) "Europe/Berlin"
+}
+*/
+</code></pre>
+
+<p>As you can see, if you don't specify parts of the date, PHP set's them to 0. So, when you make a <code>DateTime</code> with no time information, PHP assumes, you mean "00:00:00" on that day for example.</p>
+
+<p>For output it's usually a good idea to use a date format. <code>DateTime</code> objects have a <a href="http://php.net/manual/en/datetime.format.php"><code>format()</code></a> method that does that. It uses a <a href="http://php.net/manual/en/function.date.php">special syntax for defining date formats from the <code>date()</code> function</a>:</p>
+
+<pre><code class="php">$towel_day_afternoon = new DateTime("2015-05-25 16:30:00");
+
+//now print the date in a format that's common in the USA
+echo $towel_day_afternoon-&gt;format("F j Y, g:h a") . PHP_EOL;
+
+//now print it as an ISO-8601 time stamp, PHP has a shortcut for that
+echo $towel_day_afternoon-&gt;format("c") . PHP_EOL;
+</code></pre>
+
+<pre><code class="php">//How many days is it from the start of 2015 to Towel Day?
+$towel_day = new DateTime("2015-05-25");
+$january_first = new DateTime("2015-01-01");
+$diff = $january_first-&gt;diff($towel_day);
+
+//$diff is a DateInterval object:
+var_dump($diff);
+/* prints:
+object(DateInterval)#6 (15) {
+  ["y"]=&gt;
+  int(0)
+  ["m"]=&gt;
+  int(4)
+  ["d"]=&gt;
+  int(23)
+  ["h"]=&gt;
+  int(0)
+  ["i"]=&gt;
+  int(0)
+  ["s"]=&gt;
+  int(0)
+  ["weekday"]=&gt;
+  int(0)
+  ["weekday_behavior"]=&gt;
+  int(0)
+  ["first_last_day_of"]=&gt;
+  int(0)
+  ["invert"]=&gt;
+  int(0)
+  ["days"]=&gt;
+  int(144)
+  ["special_type"]=&gt;
+  int(0)
+  ["special_amount"]=&gt;
+  int(0)
+  ["have_weekday_relative"]=&gt;
+  int(0)
+  ["have_special_relative"]=&gt;
+  int(0)
+}
+*/
+
+//to print only the total number of days:
+echo $diff-&gt;days . PHP_EOL;
+*/
+</code></pre>
+
+<p><strong>When doing any arithmetic with time or date values, always use the <code>DateTime</code> (and related) classes. There are so many edge cases in date/time calculations that you certainly don't want to do it yourself.</strong></p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <hr>
+                                                                                                                                            
+<div class="row">
+    <div class="small-4 columns text-left">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/a_real_application/">Previous</a>
+            </div>
+    <div class="small-4 columns text-center">
+        <a href="http://berlinonline.github.io/php-introduction/">Index</a>
+    </div>
+    <div class="small-4 columns text-right">
+                    <a href="http://berlinonline.github.io/php-introduction/chapters/arrays/">Next</a>
+            </div>
+</div>
+                    </div>
+                </div>
+            </section>
+
+                <div class="row">
+                    <div class="small-12 columns">
+                        <footer class="main-footer">
+                            <nav><ul class="inline-list">
+                                    <li><a href="http://www.lnwdr.de">Author: Leon Weidauer</a></li>
+                                    <li>
+                                        <a href="https://www.github.com/berlinonline/php-introduction">PHP Introduction on Github</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://www.berlinonline.net">BerlinOnline Stadtportal GmbH & Co. KG</a>
+                                    </li>
+                            </ul></nav>
+                        </footer>
+                </div>
+                <a class="exit-off-canvas"></a>
+            </div>
+        </div>
+
+                <script src="http://berlinonline.github.io/php-introduction//components/jquery/jquery.min.js"></script>
+        <script src="http://berlinonline.github.io/php-introduction//components/foundation/js/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+        <script src="http://berlinonline.github.io/php-introduction//components/highlightjs/highlight.pack.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+            </body>
+</html>
+
