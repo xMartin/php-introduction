@@ -11,8 +11,11 @@
         }
     ],
     "require": {
-        "components/foundation": "*",
-        "components/highlightjs": "*"
+        "components/foundation": "^5.5",
+        "components/highlightjs": "^8.5",
+        "sculpin/sculpin": "^3.0",
+        "robloach/component-installer": "^0.2.3",
+        "components/jquery": "^2.1"
     },
     "config": {
         "component-dir": "source/components"

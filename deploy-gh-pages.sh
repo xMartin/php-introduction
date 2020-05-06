@@ -12,7 +12,7 @@ git checkout -b gh-pages origin/gh-pages
 git pull --rebase
 rm -rf *
 cd ..
-sculpin generate --env=prod
+vendor/bin/sculpin generate --env=prod
 cd output_prod
 git add -A .
 git commit -m "gh-pages deploy $DATE"
