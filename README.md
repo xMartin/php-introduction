@@ -1,7 +1,7 @@
 PHP introduction
 =====================
 
-Source files for <http://berlinonline.github.io/php-introduction/>.
+Source files for <https://xmartin.github.io/php-introduction/>.
 
 ## Setup
 
